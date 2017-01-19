@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans default-lazy-init="false" xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+       http://www.springframework.org/schema/aop 
+       http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+       http://www.springframework.org/schema/task   
+        http://www.springframework.org/schema/task/spring-task-4.0.xsd
+      http://www.springframework.org/schema/context
+      http://www.springframework.org/schema/context/spring-context-4.0.xsd
+      http://www.springframework.org/schema/mvc
+      http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+      
+	<task:scheduler id="taskScheduler" pool-size="100" />
+	<task:scheduled-tasks scheduler="taskScheduler">
+		<!-- 联赛抓取 -->
+		<task:scheduled ref="leagueTask" method="spiderLeague" fixed-delay="86400000" />
+		<!-- 1.球员技术统计抓取消费队列抓取 -->
+		<task:scheduled ref="leagueTask" method="scheduleConsumQueueOne" fixed-delay="600000" />
+		<!-- 2.联赛积分抓取消费队列抓取 -->
+		<task:scheduled ref="leagueTask" method="scheduleConsumQueueTwo" fixed-delay="600000" />
+		<!-- 3.联赛整个赛季赛程消费队列抓取 -->
+		<task:scheduled ref="leagueTask" method="scheduleConsumQueueThree" fixed-delay="600000" />
+		
+		<!-- 子联赛抓取 -->
+		<task:scheduled ref="subLeagueTask" method="spiderLeague" fixed-delay="86400000" />
+		
+		<!-- 赛程赛果抓取 -->
+		<task:scheduled ref="scheduleTask" method="spiderSchedule" fixed-delay="10800000" />
+		<!-- 1.赛程赛果队列消费 -->
+	 	<task:scheduled ref="scheduleTask" method="scheduleConsumQueueOne" fixed-delay="600000" />
+	 	<!-- 2.杯赛积分统计队列消费 -->
+		<task:scheduled ref="scheduleTask" method="scheduleConsumQueueTwo" fixed-delay="600000" />
+		<!-- 3.联赛积分统计队列消费 -->
+		<task:scheduled ref="scheduleTask" method="scheduleConsumQueueThree" fixed-delay="600000" />
+		
+		<!-- 彩票赛事与球探网的关联抓取 -->
+		<task:scheduled ref="matchLotteryTask" method="handlerMatchLottry" fixed-delay="10800000" />
+		<!-- <task:scheduled ref="matchLotteryTask" method="handlerMatchLottry" cron="30 1 0,11,15 * * ?" />  -->
+		<!-- 球队信息抓取 -->
+		<task:scheduled ref="teamTask" method="spiderTeam" fixed-delay="86400000" />
+		<!-- 1.根据球队抓取球队的球员数据消费队列 -->
+		<task:scheduled ref="teamTask" method="scheduleConsumQueueOne" fixed-delay="3600000" />
+		
+		<!-- 球员信息抓取 -->
+		<task:scheduled ref="playerTask" method="spiderPlayer" fixed-delay="86400000" />
+		<!-- 球员单场比赛技术统计抓取 -->
+		<task:scheduled ref="playerDetailTask" method="spiderPlayerDetail" fixed-delay="3600000" />
+		<!-- 球员整个赛季技术统计抓取 -->
+		<task:scheduled ref="playerTechBySclassTask" method="spiderPlayer" fixed-delay="172800000" />
+		
+		<!-- 整个赛季联赛积分统计 -->
+		<task:scheduled ref="scoreBySclassTask" method="spiderScore" fixed-delay="172800000" />
+		
+		<!-- 比赛事件 -->
+		<task:scheduled ref="detailResultTask" method="spiderTechAndEvent" fixed-delay="60000" />
+		<!-- 技术统计 -->
+		<task:scheduled ref="technicStatistTask" method="spiderTechStatics" fixed-delay="60000" />
+		<!-- 期次抓取维护管理 -->
+		<task:scheduled ref="stageTask" method="spiderJcStage" fixed-delay="1800000" />
+		<task:scheduled ref="stageTask" method="spiderBdStage" fixed-delay="1800000" />
+		<task:scheduled ref="stageTask" method="spiderZcStage" fixed-delay="1800000" />
+		
+		<!-- 首发阵容 -->
+		<task:scheduled ref="lineUpTask" method="spiderLineUp" fixed-delay="3600000" />
+		
+		<!-- 比赛伤停 -->
+		<task:scheduled ref="injuryTask" method="spiderInjury" fixed-delay="3600000" />
+		
+		<!-- 8小时内的赛程删除、比赛时间修改记录 -->
+		<task:scheduled ref="modifyRecordTask" method="spiderModify" fixed-delay="600000" />
+		
+		<!-- 即时比分 -->
+		<!-- 即时比分更新对阵数据 -->
+		<task:scheduled ref="jsbfMatchTask" method="spiderMatchScore" fixed-delay="60000" />
+		<!-- 即时比分生成比赛直播文件队列消费 -->
+		<task:scheduled ref="jsbfMatchTask" method="scheduleConsumQueueOne" fixed-delay="300000" />
+		<!-- 即时比分变化数据 -->
+		<task:scheduled ref="jsBfChangeTask" method="spiderCreateChange" fixed-delay="3000" />
+		<!-- 1.即时比分更新比赛状态队列消费 -->
+		<task:scheduled ref="jsBfChangeTask" method="scheduleConsumQueueOne" fixed-delay="2000" />
+		
+		<!-- 生成即时比分期次 接口-->
+		<task:scheduled ref="jsBfStageTask" method="spiderAllStage" fixed-delay="1800000" />
+		<task:scheduled ref="jsBfStageTask" method="spiderJcStage" fixed-delay="1800000" />
+		<task:scheduled ref="jsBfStageTask" method="spiderBdStage" fixed-delay="1800000" />
+		<task:scheduled ref="jsBfStageTask" method="spideZcStage" fixed-delay="1800000" />
+		
+		<!-- 即时比分 -->
+		<!-- 完整赛事对阵 -->
+		<task:scheduled ref="jsBfAllMatchTask" method="spiderAllCurrentMatch" fixed-delay="60000" />
+		<task:scheduled ref="jsBfAllMatchTask" method="spiderAllFutureMatch" fixed-delay="3600000" />
+		<task:scheduled ref="jsBfAllMatchTask" method="spiderAllHistoryMatch" fixed-delay="3600000" />
+		<!-- 竞彩赛事对阵 -->
+		<task:scheduled ref="jsBfJcMatchTask" method="spiderJcCurrentMatch" fixed-delay="60000" />
+		<task:scheduled ref="jsBfJcMatchTask" method="spiderJcFutureMatch" fixed-delay="3600000" />
+		<task:scheduled ref="jsBfJcMatchTask" method="spiderJcHistoryMatch" fixed-delay="3600000" />
+		<!-- 北单赛事对阵 -->
+		<task:scheduled ref="jsBfBdMatchTask" method="spiderBdCurrentMatch" fixed-delay="60000" />
+		<task:scheduled ref="jsBfBdMatchTask" method="spiderBdHistoryMatch" fixed-delay="3600000" />
+		<!-- 足彩赛事对阵 -->
+		<task:scheduled ref="jsBfZcMatchTask" method="spiderZcCurrentMatch" fixed-delay="60000" />
+		<task:scheduled ref="jsBfZcMatchTask" method="spiderZcHistoryMatch" fixed-delay="3600000" />
+		
+		<!-- 主站跟数据中心的匹配接口 -->
+		<task:scheduled ref="mainMatchingTask" method="matchingInterface" fixed-delay="3600000" />
+		
+	</task:scheduled-tasks>
+</beans>

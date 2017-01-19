@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dayspass.datacenter.dao.ZqPlayerTechMapper" >
+  <resultMap id="BaseResultMap" type="com.dayspass.datacenter.domain.ZqPlayerTech" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="PlayerID" property="playerid" jdbcType="INTEGER" />
+    <result column="TeamID" property="teamid" jdbcType="INTEGER" />
+    <result column="season" property="season" jdbcType="CHAR" />
+    <result column="SclassID" property="sclassid" jdbcType="INTEGER" />
+    <result column="ModifyTime" property="modifytime" jdbcType="TIMESTAMP" />
+    <result column="rounds" property="rounds" jdbcType="INTEGER" />
+    <result column="backrounds" property="backrounds" jdbcType="INTEGER" />
+    <result column="playtime" property="playtime" jdbcType="INTEGER" />
+    <result column="goals" property="goals" jdbcType="INTEGER" />
+    <result column="shotsnum" property="shotsnum" jdbcType="INTEGER" />
+    <result column="shotson" property="shotson" jdbcType="INTEGER" />
+    <result column="bestsum" property="bestsum" jdbcType="INTEGER" />
+    <result column="interception" property="interception" jdbcType="INTEGER" />
+    <result column="assist" property="assist" jdbcType="INTEGER" />
+    <result column="pass" property="pass" jdbcType="INTEGER" />
+    <result column="passsuc" property="passsuc" jdbcType="INTEGER" />
+    <result column="clearance" property="clearance" jdbcType="INTEGER" />
+    <result column="clearancesuc" property="clearancesuc" jdbcType="INTEGER" />
+    <result column="rating" property="rating" jdbcType="NUMERIC" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, PlayerID, TeamID, season, SclassID, ModifyTime, rounds, backrounds, playtime, 
+    goals, shotsnum, shotson, bestsum, interception, assist, pass, passsuc, clearance, 
+    clearancesuc, rating
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ZQ_PlayerTech
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ZQ_PlayerTech
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.dayspass.datacenter.domain.ZqPlayerTech" >
+    insert into ZQ_PlayerTech (ID, PlayerID, TeamID, 
+      season, SclassID, ModifyTime, 
+      rounds, backrounds, playtime, 
+      goals, shotsnum, shotson, 
+      bestsum, interception, assist, 
+      pass, passsuc, clearance, 
+      clearancesuc, rating)
+    values (#{id,jdbcType=INTEGER}, #{playerid,jdbcType=INTEGER}, #{teamid,jdbcType=INTEGER}, 
+      #{season,jdbcType=CHAR}, #{sclassid,jdbcType=INTEGER}, #{modifytime,jdbcType=TIMESTAMP}, 
+      #{rounds,jdbcType=INTEGER}, #{backrounds,jdbcType=INTEGER}, #{playtime,jdbcType=INTEGER}, 
+      #{goals,jdbcType=INTEGER}, #{shotsnum,jdbcType=INTEGER}, #{shotson,jdbcType=INTEGER}, 
+      #{bestsum,jdbcType=INTEGER}, #{interception,jdbcType=INTEGER}, #{assist,jdbcType=INTEGER}, 
+      #{pass,jdbcType=INTEGER}, #{passsuc,jdbcType=INTEGER}, #{clearance,jdbcType=INTEGER}, 
+      #{clearancesuc,jdbcType=INTEGER}, #{rating,jdbcType=NUMERIC})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dayspass.datacenter.domain.ZqPlayerTech" >
+    insert into ZQ_PlayerTech
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="playerid != null" >
+        PlayerID,
+      </if>
+      <if test="teamid != null" >
+        TeamID,
+      </if>
+      <if test="season != null" >
+        season,
+      </if>
+      <if test="sclassid != null" >
+        SclassID,
+      </if>
+      <if test="modifytime != null" >
+        ModifyTime,
+      </if>
+      <if test="rounds != null" >
+        rounds,
+      </if>
+      <if test="backrounds != null" >
+        backrounds,
+      </if>
+      <if test="playtime != null" >
+        playtime,
+      </if>
+      <if test="goals != null" >
+        goals,
+      </if>
+      <if test="shotsnum != null" >
+        shotsnum,
+      </if>
+      <if test="shotson != null" >
+        shotson,
+      </if>
+      <if test="bestsum != null" >
+        bestsum,
+      </if>
+      <if test="interception != null" >
+        interception,
+      </if>
+      <if test="assist != null" >
+        assist,
+      </if>
+      <if test="pass != null" >
+        pass,
+      </if>
+      <if test="passsuc != null" >
+        passsuc,
+      </if>
+      <if test="clearance != null" >
+        clearance,
+      </if>
+      <if test="clearancesuc != null" >
+        clearancesuc,
+      </if>
+      <if test="rating != null" >
+        rating,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="playerid != null" >
+        #{playerid,jdbcType=INTEGER},
+      </if>
+      <if test="teamid != null" >
+        #{teamid,jdbcType=INTEGER},
+      </if>
+      <if test="season != null" >
+        #{season,jdbcType=CHAR},
+      </if>
+      <if test="sclassid != null" >
+        #{sclassid,jdbcType=INTEGER},
+      </if>
+      <if test="modifytime != null" >
+        #{modifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rounds != null" >
+        #{rounds,jdbcType=INTEGER},
+      </if>
+      <if test="backrounds != null" >
+        #{backrounds,jdbcType=INTEGER},
+      </if>
+      <if test="playtime != null" >
+        #{playtime,jdbcType=INTEGER},
+      </if>
+      <if test="goals != null" >
+        #{goals,jdbcType=INTEGER},
+      </if>
+      <if test="shotsnum != null" >
+        #{shotsnum,jdbcType=INTEGER},
+      </if>
+      <if test="shotson != null" >
+        #{shotson,jdbcType=INTEGER},
+      </if>
+      <if test="bestsum != null" >
+        #{bestsum,jdbcType=INTEGER},
+      </if>
+      <if test="interception != null" >
+        #{interception,jdbcType=INTEGER},
+      </if>
+      <if test="assist != null" >
+        #{assist,jdbcType=INTEGER},
+      </if>
+      <if test="pass != null" >
+        #{pass,jdbcType=INTEGER},
+      </if>
+      <if test="passsuc != null" >
+        #{passsuc,jdbcType=INTEGER},
+      </if>
+      <if test="clearance != null" >
+        #{clearance,jdbcType=INTEGER},
+      </if>
+      <if test="clearancesuc != null" >
+        #{clearancesuc,jdbcType=INTEGER},
+      </if>
+      <if test="rating != null" >
+        #{rating,jdbcType=NUMERIC},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dayspass.datacenter.domain.ZqPlayerTech" >
+    update ZQ_PlayerTech
+    <set >
+      <if test="playerid != null" >
+        PlayerID = #{playerid,jdbcType=INTEGER},
+      </if>
+      <if test="teamid != null" >
+        TeamID = #{teamid,jdbcType=INTEGER},
+      </if>
+      <if test="season != null" >
+        season = #{season,jdbcType=CHAR},
+      </if>
+      <if test="sclassid != null" >
+        SclassID = #{sclassid,jdbcType=INTEGER},
+      </if>
+      <if test="modifytime != null" >
+        ModifyTime = #{modifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rounds != null" >
+        rounds = #{rounds,jdbcType=INTEGER},
+      </if>
+      <if test="backrounds != null" >
+        backrounds = #{backrounds,jdbcType=INTEGER},
+      </if>
+      <if test="playtime != null" >
+        playtime = #{playtime,jdbcType=INTEGER},
+      </if>
+      <if test="goals != null" >
+        goals = #{goals,jdbcType=INTEGER},
+      </if>
+      <if test="shotsnum != null" >
+        shotsnum = #{shotsnum,jdbcType=INTEGER},
+      </if>
+      <if test="shotson != null" >
+        shotson = #{shotson,jdbcType=INTEGER},
+      </if>
+      <if test="bestsum != null" >
+        bestsum = #{bestsum,jdbcType=INTEGER},
+      </if>
+      <if test="interception != null" >
+        interception = #{interception,jdbcType=INTEGER},
+      </if>
+      <if test="assist != null" >
+        assist = #{assist,jdbcType=INTEGER},
+      </if>
+      <if test="pass != null" >
+        pass = #{pass,jdbcType=INTEGER},
+      </if>
+      <if test="passsuc != null" >
+        passsuc = #{passsuc,jdbcType=INTEGER},
+      </if>
+      <if test="clearance != null" >
+        clearance = #{clearance,jdbcType=INTEGER},
+      </if>
+      <if test="clearancesuc != null" >
+        clearancesuc = #{clearancesuc,jdbcType=INTEGER},
+      </if>
+      <if test="rating != null" >
+        rating = #{rating,jdbcType=NUMERIC},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dayspass.datacenter.domain.ZqPlayerTech" >
+    update ZQ_PlayerTech
+    set PlayerID = #{playerid,jdbcType=INTEGER},
+      TeamID = #{teamid,jdbcType=INTEGER},
+      season = #{season,jdbcType=CHAR},
+      SclassID = #{sclassid,jdbcType=INTEGER},
+      ModifyTime = #{modifytime,jdbcType=TIMESTAMP},
+      rounds = #{rounds,jdbcType=INTEGER},
+      backrounds = #{backrounds,jdbcType=INTEGER},
+      playtime = #{playtime,jdbcType=INTEGER},
+      goals = #{goals,jdbcType=INTEGER},
+      shotsnum = #{shotsnum,jdbcType=INTEGER},
+      shotson = #{shotson,jdbcType=INTEGER},
+      bestsum = #{bestsum,jdbcType=INTEGER},
+      interception = #{interception,jdbcType=INTEGER},
+      assist = #{assist,jdbcType=INTEGER},
+      pass = #{pass,jdbcType=INTEGER},
+      passsuc = #{passsuc,jdbcType=INTEGER},
+      clearance = #{clearance,jdbcType=INTEGER},
+      clearancesuc = #{clearancesuc,jdbcType=INTEGER},
+      rating = #{rating,jdbcType=NUMERIC}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <!-- 条件查询 -->
+  <select id="queryAll" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ZQ_PlayerTech
+    where 1 = 1
+    <if test="playerid != null">
+		and PlayerID = #{playerid} 
+	 </if>
+	 <if test="teamid != null and teamid != ''">
+		and TeamID = #{teamid} 
+	 </if>
+	 <if test="season != null" >
+        and season = #{season}
+      </if>
+	 <if test="sclassid != null" >
+        and SclassID = #{sclassid}
+      </if>
+  </select>
+  
+</mapper>

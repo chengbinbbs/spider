@@ -1,0 +1,12 @@
+eclipse.preferences.version=1
+encoding//src/main/java=UTF-8
+encoding//src/main/resources=UTF-8
+encoding//src/main/resources/apiUrl.properties=UTF-8
+encoding//src/main/resources/cacheKey.properties=UTF-8
+encoding//src/main/resources/graburl.properties=UTF-8
+encoding//src/main/resources/path.properties=UTF-8
+encoding//src/main/resources/path2.properties=UTF-8
+encoding//src/main/resources/task.properties=UTF-8
+encoding//src/test/java=UTF-8
+encoding//src/test/resources=UTF-8
+encoding/<project>=UTF-8

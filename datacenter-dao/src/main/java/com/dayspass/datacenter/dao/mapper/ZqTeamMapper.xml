@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dayspass.datacenter.dao.ZqTeamMapper" >
+  <resultMap id="BaseResultMap" type="com.dayspass.datacenter.domain.ZqTeam" >
+    <id column="TeamID" property="teamid" jdbcType="INTEGER" />
+    <result column="Kind" property="kind" jdbcType="SMALLINT" />
+    <result column="SClassID" property="sclassid" jdbcType="INTEGER" />
+    <result column="Name_Short" property="nameShort" jdbcType="NCHAR" />
+    <result column="Name_J" property="nameJ" jdbcType="NCHAR" />
+    <result column="Name_F" property="nameF" jdbcType="NCHAR" />
+    <result column="Name_E" property="nameE" jdbcType="NCHAR" />
+    <result column="Found_date" property="foundDate" jdbcType="CHAR" />
+    <result column="Area" property="area" jdbcType="CHAR" />
+    <result column="Gymnasium" property="gymnasium" jdbcType="NVARCHAR" />
+    <result column="Capacity" property="capacity" jdbcType="INTEGER" />
+    <result column="Flag" property="flag" jdbcType="CHAR" />
+    <result column="address" property="address" jdbcType="CHAR" />
+    <result column="URL" property="url" jdbcType="CHAR" />
+    <result column="Introduce" property="introduce" jdbcType="VARCHAR" />
+    <result column="Drillmaster" property="drillmaster" jdbcType="CHAR" />
+    <result column="MasterPic" property="masterpic" jdbcType="CHAR" />
+    <result column="GuestPoloShirt" property="guestpoloshirt" jdbcType="CHAR" />
+    <result column="HomePoloShirt" property="homepoloshirt" jdbcType="CHAR" />
+    <result column="ModifyTime" property="modifytime" jdbcType="TIMESTAMP" />
+    <result column="MasterIntro" property="masterintro" jdbcType="NCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    TeamID, Kind, SClassID, Name_Short, Name_J, Name_F, Name_E, Found_date, Area, Gymnasium, 
+    Capacity, Flag, address, URL, Introduce, Drillmaster, MasterPic, GuestPoloShirt, 
+    HomePoloShirt, ModifyTime, MasterIntro
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ZQ_Team
+    where TeamID = #{teamid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ZQ_Team
+    where TeamID = #{teamid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.dayspass.datacenter.domain.ZqTeam" >
+    insert into ZQ_Team (TeamID, Kind, SClassID, 
+      Name_Short, Name_J, Name_F, 
+      Name_E, Found_date, Area, Gymnasium, 
+      Capacity, Flag, address, 
+      URL, Introduce, Drillmaster, 
+      MasterPic, GuestPoloShirt, HomePoloShirt, 
+      ModifyTime, MasterIntro)
+    values (#{teamid,jdbcType=INTEGER}, #{kind,jdbcType=SMALLINT}, #{sclassid,jdbcType=INTEGER}, 
+      #{nameShort,jdbcType=NCHAR}, #{nameJ,jdbcType=NCHAR}, #{nameF,jdbcType=NCHAR}, 
+      #{nameE,jdbcType=NCHAR}, #{foundDate,jdbcType=CHAR}, #{area,jdbcType=CHAR}, #{gymnasium,jdbcType=NVARCHAR}, 
+      #{capacity,jdbcType=INTEGER}, #{flag,jdbcType=CHAR}, #{address,jdbcType=CHAR}, 
+      #{url,jdbcType=CHAR}, #{introduce,jdbcType=VARCHAR}, #{drillmaster,jdbcType=CHAR}, 
+      #{masterpic,jdbcType=CHAR}, #{guestpoloshirt,jdbcType=CHAR}, #{homepoloshirt,jdbcType=CHAR}, 
+      #{modifytime,jdbcType=TIMESTAMP}, #{masterintro,jdbcType=NCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dayspass.datacenter.domain.ZqTeam" >
+    insert into ZQ_Team
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="teamid != null" >
+        TeamID,
+      </if>
+      <if test="kind != null" >
+        Kind,
+      </if>
+      <if test="sclassid != null" >
+        SClassID,
+      </if>
+      <if test="nameShort != null" >
+        Name_Short,
+      </if>
+      <if test="nameJ != null" >
+        Name_J,
+      </if>
+      <if test="nameF != null" >
+        Name_F,
+      </if>
+      <if test="nameE != null" >
+        Name_E,
+      </if>
+      <if test="foundDate != null" >
+        Found_date,
+      </if>
+      <if test="area != null" >
+        Area,
+      </if>
+      <if test="gymnasium != null" >
+        Gymnasium,
+      </if>
+      <if test="capacity != null" >
+        Capacity,
+      </if>
+      <if test="flag != null" >
+        Flag,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="url != null" >
+        URL,
+      </if>
+      <if test="introduce != null" >
+        Introduce,
+      </if>
+      <if test="drillmaster != null" >
+        Drillmaster,
+      </if>
+      <if test="masterpic != null" >
+        MasterPic,
+      </if>
+      <if test="guestpoloshirt != null" >
+        GuestPoloShirt,
+      </if>
+      <if test="homepoloshirt != null" >
+        HomePoloShirt,
+      </if>
+      <if test="modifytime != null" >
+        ModifyTime,
+      </if>
+      <if test="masterintro != null" >
+        MasterIntro,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="teamid != null" >
+        #{teamid,jdbcType=INTEGER},
+      </if>
+      <if test="kind != null" >
+        #{kind,jdbcType=SMALLINT},
+      </if>
+      <if test="sclassid != null" >
+        #{sclassid,jdbcType=INTEGER},
+      </if>
+      <if test="nameShort != null" >
+        #{nameShort,jdbcType=NCHAR},
+      </if>
+      <if test="nameJ != null" >
+        #{nameJ,jdbcType=NCHAR},
+      </if>
+      <if test="nameF != null" >
+        #{nameF,jdbcType=NCHAR},
+      </if>
+      <if test="nameE != null" >
+        #{nameE,jdbcType=NCHAR},
+      </if>
+      <if test="foundDate != null" >
+        #{foundDate,jdbcType=CHAR},
+      </if>
+      <if test="area != null" >
+        #{area,jdbcType=CHAR},
+      </if>
+      <if test="gymnasium != null" >
+        #{gymnasium,jdbcType=NVARCHAR},
+      </if>
+      <if test="capacity != null" >
+        #{capacity,jdbcType=INTEGER},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=CHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=CHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=CHAR},
+      </if>
+      <if test="introduce != null" >
+        #{introduce,jdbcType=VARCHAR},
+      </if>
+      <if test="drillmaster != null" >
+        #{drillmaster,jdbcType=CHAR},
+      </if>
+      <if test="masterpic != null" >
+        #{masterpic,jdbcType=CHAR},
+      </if>
+      <if test="guestpoloshirt != null" >
+        #{guestpoloshirt,jdbcType=CHAR},
+      </if>
+      <if test="homepoloshirt != null" >
+        #{homepoloshirt,jdbcType=CHAR},
+      </if>
+      <if test="modifytime != null" >
+        #{modifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="masterintro != null" >
+        #{masterintro,jdbcType=NCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dayspass.datacenter.domain.ZqTeam" >
+    update ZQ_Team
+    <set >
+      <if test="kind != null" >
+        Kind = #{kind,jdbcType=SMALLINT},
+      </if>
+      <if test="sclassid != null" >
+        SClassID = #{sclassid,jdbcType=INTEGER},
+      </if>
+      <if test="nameShort != null" >
+        Name_Short = #{nameShort,jdbcType=NCHAR},
+      </if>
+      <if test="nameJ != null" >
+        Name_J = #{nameJ,jdbcType=NCHAR},
+      </if>
+      <if test="nameF != null" >
+        Name_F = #{nameF,jdbcType=NCHAR},
+      </if>
+      <if test="nameE != null" >
+        Name_E = #{nameE,jdbcType=NCHAR},
+      </if>
+      <if test="foundDate != null" >
+        Found_date = #{foundDate,jdbcType=CHAR},
+      </if>
+      <if test="area != null" >
+        Area = #{area,jdbcType=CHAR},
+      </if>
+      <if test="gymnasium != null" >
+        Gymnasium = #{gymnasium,jdbcType=NVARCHAR},
+      </if>
+      <if test="capacity != null" >
+        Capacity = #{capacity,jdbcType=INTEGER},
+      </if>
+      <if test="flag != null" >
+        Flag = #{flag,jdbcType=CHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=CHAR},
+      </if>
+      <if test="url != null" >
+        URL = #{url,jdbcType=CHAR},
+      </if>
+      <if test="introduce != null" >
+        Introduce = #{introduce,jdbcType=VARCHAR},
+      </if>
+      <if test="drillmaster != null" >
+        Drillmaster = #{drillmaster,jdbcType=CHAR},
+      </if>
+      <if test="masterpic != null" >
+        MasterPic = #{masterpic,jdbcType=CHAR},
+      </if>
+      <if test="guestpoloshirt != null" >
+        GuestPoloShirt = #{guestpoloshirt,jdbcType=CHAR},
+      </if>
+      <if test="homepoloshirt != null" >
+        HomePoloShirt = #{homepoloshirt,jdbcType=CHAR},
+      </if>
+      <if test="modifytime != null" >
+        ModifyTime = #{modifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="masterintro != null" >
+        MasterIntro = #{masterintro,jdbcType=NCHAR},
+      </if>
+    </set>
+    where TeamID = #{teamid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dayspass.datacenter.domain.ZqTeam" >
+    update ZQ_Team
+    set Kind = #{kind,jdbcType=SMALLINT},
+      SClassID = #{sclassid,jdbcType=INTEGER},
+      Name_Short = #{nameShort,jdbcType=NCHAR},
+      Name_J = #{nameJ,jdbcType=NCHAR},
+      Name_F = #{nameF,jdbcType=NCHAR},
+      Name_E = #{nameE,jdbcType=NCHAR},
+      Found_date = #{foundDate,jdbcType=CHAR},
+      Area = #{area,jdbcType=CHAR},
+      Gymnasium = #{gymnasium,jdbcType=NVARCHAR},
+      Capacity = #{capacity,jdbcType=INTEGER},
+      Flag = #{flag,jdbcType=CHAR},
+      address = #{address,jdbcType=CHAR},
+      URL = #{url,jdbcType=CHAR},
+      Introduce = #{introduce,jdbcType=VARCHAR},
+      Drillmaster = #{drillmaster,jdbcType=CHAR},
+      MasterPic = #{masterpic,jdbcType=CHAR},
+      GuestPoloShirt = #{guestpoloshirt,jdbcType=CHAR},
+      HomePoloShirt = #{homepoloshirt,jdbcType=CHAR},
+      ModifyTime = #{modifytime,jdbcType=TIMESTAMP},
+      MasterIntro = #{masterintro,jdbcType=NCHAR}
+    where TeamID = #{teamid,jdbcType=INTEGER}
+  </update>
+</mapper>

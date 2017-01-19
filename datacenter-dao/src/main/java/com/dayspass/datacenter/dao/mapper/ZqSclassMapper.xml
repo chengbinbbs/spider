@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dayspass.datacenter.dao.ZqSclassMapper" >
+  <resultMap id="BaseResultMap" type="com.dayspass.datacenter.domain.ZqSclass" >
+    <id column="sclassID" property="sclassid" jdbcType="INTEGER" />
+    <result column="Color" property="color" jdbcType="CHAR" />
+    <result column="Name_J" property="nameJ" jdbcType="NCHAR" />
+    <result column="Name_F" property="nameF" jdbcType="NCHAR" />
+    <result column="Name_E" property="nameE" jdbcType="NCHAR" />
+    <result column="Name_JS" property="nameJs" jdbcType="NCHAR" />
+    <result column="Name_FS" property="nameFs" jdbcType="NCHAR" />
+    <result column="Name_ES" property="nameEs" jdbcType="NCHAR" />
+    <result column="Name_S" property="nameS" jdbcType="CHAR" />
+    <result column="Kind" property="kind" jdbcType="SMALLINT" />
+    <result column="Mode" property="mode" jdbcType="SMALLINT" />
+    <result column="count_round" property="countRound" jdbcType="SMALLINT" />
+    <result column="curr_round" property="currRound" jdbcType="SMALLINT" />
+    <result column="Curr_matchSeason" property="currMatchseason" jdbcType="CHAR" />
+    <result column="Sclass_pic" property="sclassPic" jdbcType="VARCHAR" />
+    <result column="ifstop" property="ifstop" jdbcType="TINYINT" />
+    <result column="Sclass_type" property="sclassType" jdbcType="TINYINT" />
+    <result column="count_group" property="countGroup" jdbcType="SMALLINT" />
+    <result column="Bf_simply_disp" property="bfSimplyDisp" jdbcType="TINYINT" />
+    <result column="sclass_sequence" property="sclassSequence" jdbcType="SMALLINT" />
+    <result column="InfoID" property="infoid" jdbcType="SMALLINT" />
+    <result column="InfoUrl" property="infourl" jdbcType="VARCHAR" />
+    <result column="ModifyTime" property="modifytime" jdbcType="TIMESTAMP" />
+    <result column="BeginSeason" property="beginseason" jdbcType="VARCHAR" />
+    <result column="subSclassID" property="subsclassid" jdbcType="INTEGER" />
+    <result column="ifHaveSub" property="ifhavesub" jdbcType="BIT" />
+    <result column="ifSort" property="ifsort" jdbcType="BIT" />
+    <result column="sclass_rule" property="sclassRule" jdbcType="LONGVARCHAR" />
+    <result column="league_id" property="leagueId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    sclassID, Color, Name_J, Name_F, Name_E, Name_JS, Name_FS, Name_ES, Name_S, Kind, 
+    Mode, count_round, curr_round, Curr_matchSeason, Sclass_pic, ifstop, Sclass_type, 
+    count_group, Bf_simply_disp, sclass_sequence, InfoID, InfoUrl, ModifyTime, BeginSeason, 
+    subSclassID, ifHaveSub, ifSort,sclass_rule,league_id
+  </sql>
+  <select id="selectByLeagueId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ZQ_Sclass
+    where league_id = #{leagueId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByLeagueId" parameterType="java.lang.Integer" >
+    delete from ZQ_Sclass
+    where league_id = #{leagueId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.dayspass.datacenter.domain.ZqSclass" >
+    insert into ZQ_Sclass (sclassID, Color, Name_J, 
+      Name_F, Name_E, Name_JS, Name_FS, 
+      Name_ES, Name_S, Kind, Mode, 
+      count_round, curr_round, Curr_matchSeason, 
+      Sclass_pic, ifstop, Sclass_type, 
+      count_group, Bf_simply_disp, sclass_sequence, 
+      InfoID, InfoUrl, ModifyTime, 
+      BeginSeason, subSclassID, ifHaveSub, 
+      ifSort, sclass_rule,league_id)
+    values (#{sclassid,jdbcType=INTEGER}, #{color,jdbcType=CHAR}, #{nameJ,jdbcType=NCHAR}, 
+      #{nameF,jdbcType=NCHAR}, #{nameE,jdbcType=NCHAR}, #{nameJs,jdbcType=NCHAR}, #{nameFs,jdbcType=NCHAR}, 
+      #{nameEs,jdbcType=NCHAR}, #{nameS,jdbcType=CHAR}, #{kind,jdbcType=SMALLINT}, #{mode,jdbcType=SMALLINT}, 
+      #{countRound,jdbcType=SMALLINT}, #{currRound,jdbcType=SMALLINT}, #{currMatchseason,jdbcType=CHAR}, 
+      #{sclassPic,jdbcType=VARCHAR}, #{ifstop,jdbcType=TINYINT}, #{sclassType,jdbcType=TINYINT}, 
+      #{countGroup,jdbcType=SMALLINT}, #{bfSimplyDisp,jdbcType=TINYINT}, #{sclassSequence,jdbcType=SMALLINT}, 
+      #{infoid,jdbcType=SMALLINT}, #{infourl,jdbcType=VARCHAR}, #{modifytime,jdbcType=TIMESTAMP}, 
+      #{beginseason,jdbcType=VARCHAR}, #{subsclassid,jdbcType=INTEGER}, #{ifhavesub,jdbcType=BIT}, 
+      #{ifsort,jdbcType=BIT}, #{sclassRule,jdbcType=LONGVARCHAR},#{leagueId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dayspass.datacenter.domain.ZqSclass" >
+    insert into ZQ_Sclass
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sclassid != null" >
+        sclassID,
+      </if>
+      <if test="color != null" >
+        Color,
+      </if>
+      <if test="nameJ != null" >
+        Name_J,
+      </if>
+      <if test="nameF != null" >
+        Name_F,
+      </if>
+      <if test="nameE != null" >
+        Name_E,
+      </if>
+      <if test="nameJs != null" >
+        Name_JS,
+      </if>
+      <if test="nameFs != null" >
+        Name_FS,
+      </if>
+      <if test="nameEs != null" >
+        Name_ES,
+      </if>
+      <if test="nameS != null" >
+        Name_S,
+      </if>
+      <if test="kind != null" >
+        Kind,
+      </if>
+      <if test="mode != null" >
+        Mode,
+      </if>
+      <if test="countRound != null" >
+        count_round,
+      </if>
+      <if test="currRound != null" >
+        curr_round,
+      </if>
+      <if test="currMatchseason != null" >
+        Curr_matchSeason,
+      </if>
+      <if test="sclassPic != null" >
+        Sclass_pic,
+      </if>
+      <if test="ifstop != null" >
+        ifstop,
+      </if>
+      <if test="sclassType != null" >
+        Sclass_type,
+      </if>
+      <if test="countGroup != null" >
+        count_group,
+      </if>
+      <if test="bfSimplyDisp != null" >
+        Bf_simply_disp,
+      </if>
+      <if test="sclassSequence != null" >
+        sclass_sequence,
+      </if>
+      <if test="infoid != null" >
+        InfoID,
+      </if>
+      <if test="infourl != null" >
+        InfoUrl,
+      </if>
+      <if test="modifytime != null" >
+        ModifyTime,
+      </if>
+      <if test="beginseason != null" >
+        BeginSeason,
+      </if>
+      <if test="subsclassid != null" >
+        subSclassID,
+      </if>
+      <if test="ifhavesub != null" >
+        ifHaveSub,
+      </if>
+      <if test="ifsort != null" >
+        ifSort,
+      </if>
+      <if test="sclassRule != null" >
+        sclass_rule,
+      </if>
+      <if test="leagueId != null" >
+        league_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sclassid != null" >
+        #{sclassid,jdbcType=INTEGER},
+      </if>
+      <if test="color != null" >
+        #{color,jdbcType=CHAR},
+      </if>
+      <if test="nameJ != null" >
+        #{nameJ,jdbcType=NCHAR},
+      </if>
+      <if test="nameF != null" >
+        #{nameF,jdbcType=NCHAR},
+      </if>
+      <if test="nameE != null" >
+        #{nameE,jdbcType=NCHAR},
+      </if>
+      <if test="nameJs != null" >
+        #{nameJs,jdbcType=NCHAR},
+      </if>
+      <if test="nameFs != null" >
+        #{nameFs,jdbcType=NCHAR},
+      </if>
+      <if test="nameEs != null" >
+        #{nameEs,jdbcType=NCHAR},
+      </if>
+      <if test="nameS != null" >
+        #{nameS,jdbcType=CHAR},
+      </if>
+      <if test="kind != null" >
+        #{kind,jdbcType=SMALLINT},
+      </if>
+      <if test="mode != null" >
+        #{mode,jdbcType=SMALLINT},
+      </if>
+      <if test="countRound != null" >
+        #{countRound,jdbcType=SMALLINT},
+      </if>
+      <if test="currRound != null" >
+        #{currRound,jdbcType=SMALLINT},
+      </if>
+      <if test="currMatchseason != null" >
+        #{currMatchseason,jdbcType=CHAR},
+      </if>
+      <if test="sclassPic != null" >
+        #{sclassPic,jdbcType=VARCHAR},
+      </if>
+      <if test="ifstop != null" >
+        #{ifstop,jdbcType=TINYINT},
+      </if>
+      <if test="sclassType != null" >
+        #{sclassType,jdbcType=TINYINT},
+      </if>
+      <if test="countGroup != null" >
+        #{countGroup,jdbcType=SMALLINT},
+      </if>
+      <if test="bfSimplyDisp != null" >
+        #{bfSimplyDisp,jdbcType=TINYINT},
+      </if>
+      <if test="sclassSequence != null" >
+        #{sclassSequence,jdbcType=SMALLINT},
+      </if>
+      <if test="infoid != null" >
+        #{infoid,jdbcType=SMALLINT},
+      </if>
+      <if test="infourl != null" >
+        #{infourl,jdbcType=VARCHAR},
+      </if>
+      <if test="modifytime != null" >
+        #{modifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="beginseason != null" >
+        #{beginseason,jdbcType=VARCHAR},
+      </if>
+      <if test="subsclassid != null" >
+        #{subsclassid,jdbcType=INTEGER},
+      </if>
+      <if test="ifhavesub != null" >
+        #{ifhavesub,jdbcType=BIT},
+      </if>
+      <if test="ifsort != null" >
+        #{ifsort,jdbcType=BIT},
+      </if>
+      <if test="sclassRule != null" >
+        #{sclassRule,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="leagueId != null" >
+        #{leagueId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dayspass.datacenter.domain.ZqSclass" >
+    update ZQ_Sclass
+    <set >
+      <if test="color != null" >
+        Color = #{color,jdbcType=CHAR},
+      </if>
+      <if test="nameJ != null" >
+        Name_J = #{nameJ,jdbcType=NCHAR},
+      </if>
+      <if test="nameF != null" >
+        Name_F = #{nameF,jdbcType=NCHAR},
+      </if>
+      <if test="nameE != null" >
+        Name_E = #{nameE,jdbcType=NCHAR},
+      </if>
+      <if test="nameJs != null" >
+        Name_JS = #{nameJs,jdbcType=NCHAR},
+      </if>
+      <if test="nameFs != null" >
+        Name_FS = #{nameFs,jdbcType=NCHAR},
+      </if>
+      <if test="nameEs != null" >
+        Name_ES = #{nameEs,jdbcType=NCHAR},
+      </if>
+      <if test="nameS != null" >
+        Name_S = #{nameS,jdbcType=CHAR},
+      </if>
+      <if test="kind != null" >
+        Kind = #{kind,jdbcType=SMALLINT},
+      </if>
+      <if test="mode != null" >
+        Mode = #{mode,jdbcType=SMALLINT},
+      </if>
+      <if test="countRound != null" >
+        count_round = #{countRound,jdbcType=SMALLINT},
+      </if>
+      <if test="currRound != null" >
+        curr_round = #{currRound,jdbcType=SMALLINT},
+      </if>
+      <if test="currMatchseason != null" >
+        Curr_matchSeason = #{currMatchseason,jdbcType=CHAR},
+      </if>
+      <if test="sclassPic != null" >
+        Sclass_pic = #{sclassPic,jdbcType=VARCHAR},
+      </if>
+      <if test="ifstop != null" >
+        ifstop = #{ifstop,jdbcType=TINYINT},
+      </if>
+      <if test="sclassType != null" >
+        Sclass_type = #{sclassType,jdbcType=TINYINT},
+      </if>
+      <if test="countGroup != null" >
+        count_group = #{countGroup,jdbcType=SMALLINT},
+      </if>
+      <if test="bfSimplyDisp != null" >
+        Bf_simply_disp = #{bfSimplyDisp,jdbcType=TINYINT},
+      </if>
+      <if test="sclassSequence != null" >
+        sclass_sequence = #{sclassSequence,jdbcType=SMALLINT},
+      </if>
+      <if test="infoid != null" >
+        InfoID = #{infoid,jdbcType=SMALLINT},
+      </if>
+      <if test="infourl != null" >
+        InfoUrl = #{infourl,jdbcType=VARCHAR},
+      </if>
+      <if test="modifytime != null" >
+        ModifyTime = #{modifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="beginseason != null" >
+        BeginSeason = #{beginseason,jdbcType=VARCHAR},
+      </if>
+      <if test="subsclassid != null" >
+        subSclassID = #{subsclassid,jdbcType=INTEGER},
+      </if>
+      <if test="ifhavesub != null" >
+        ifHaveSub = #{ifhavesub,jdbcType=BIT},
+      </if>
+      <if test="ifsort != null" >
+        ifSort = #{ifsort,jdbcType=BIT},
+      </if>
+      <if test="sclassRule != null" >
+        sclass_rule = #{sclassRule,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where league_id = #{leagueId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dayspass.datacenter.domain.ZqSclass" >
+    update ZQ_Sclass
+    set Color = #{color,jdbcType=CHAR},
+      Name_J = #{nameJ,jdbcType=NCHAR},
+      Name_F = #{nameF,jdbcType=NCHAR},
+      Name_E = #{nameE,jdbcType=NCHAR},
+      Name_JS = #{nameJs,jdbcType=NCHAR},
+      Name_FS = #{nameFs,jdbcType=NCHAR},
+      Name_ES = #{nameEs,jdbcType=NCHAR},
+      Name_S = #{nameS,jdbcType=CHAR},
+      Kind = #{kind,jdbcType=SMALLINT},
+      Mode = #{mode,jdbcType=SMALLINT},
+      count_round = #{countRound,jdbcType=SMALLINT},
+      curr_round = #{currRound,jdbcType=SMALLINT},
+      Curr_matchSeason = #{currMatchseason,jdbcType=CHAR},
+      Sclass_pic = #{sclassPic,jdbcType=VARCHAR},
+      ifstop = #{ifstop,jdbcType=TINYINT},
+      Sclass_type = #{sclassType,jdbcType=TINYINT},
+      count_group = #{countGroup,jdbcType=SMALLINT},
+      Bf_simply_disp = #{bfSimplyDisp,jdbcType=TINYINT},
+      sclass_sequence = #{sclassSequence,jdbcType=SMALLINT},
+      InfoID = #{infoid,jdbcType=SMALLINT},
+      InfoUrl = #{infourl,jdbcType=VARCHAR},
+      ModifyTime = #{modifytime,jdbcType=TIMESTAMP},
+      BeginSeason = #{beginseason,jdbcType=VARCHAR},
+      subSclassID = #{subsclassid,jdbcType=INTEGER},
+      ifHaveSub = #{ifhavesub,jdbcType=BIT},
+      ifSort = #{ifsort,jdbcType=BIT},
+      sclass_rule = #{sclassRule,jdbcType=LONGVARCHAR}
+    where league_id = #{leagueId,jdbcType=INTEGER}
+  </update>
+  
+  <!-- 条件查询赛事列表 -->
+  <select id="queryAll" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ZQ_Sclass
+    where 1 = 1
+     <if test="leagueId != null and leagueId != ''">
+		and league_id = #{leagueId} 
+	 </if>
+	 <if test="kind != null and kind != ''">
+		and Kind = #{kind} 
+	 </if>
+	 <if test="currMatchseason != null and currMatchseason != ''">
+		and Curr_matchSeason = #{currMatchseason} 
+	 </if>
+  </select>
+  
+  <!-- 查询球队所在的联赛 -->
+  <select id="selectSclassByTeam" resultMap="BaseResultMap">
+    select s.*
+    from ZQ_Sclass s left join ZQ_Team t on t.league_id = s.sclassID
+    where t.TeamID=#{teamid}
+  </select>
+  
+</mapper>

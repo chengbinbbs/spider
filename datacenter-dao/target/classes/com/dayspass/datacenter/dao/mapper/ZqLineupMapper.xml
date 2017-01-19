@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dayspass.datacenter.dao.ZqLineupMapper" >
+  <resultMap id="BaseResultMap" type="com.dayspass.datacenter.domain.ZqLineup" >
+    <result column="id" property="id" jdbcType="INTEGER" />
+    <result column="ScheduleID" property="scheduleid" jdbcType="INTEGER" />
+    <result column="home_form" property="homeForm" jdbcType="VARCHAR" />
+    <result column="guest_form" property="guestForm" jdbcType="VARCHAR" />
+    <result column="home_lineup" property="homeLineup" jdbcType="VARCHAR" />
+    <result column="guest_lineup" property="guestLineup" jdbcType="VARCHAR" />
+    <result column="home_backup" property="homeBackup" jdbcType="VARCHAR" />
+    <result column="guest_backup" property="guestBackup" jdbcType="VARCHAR" />
+    <result column="is_statis" property="isStatis" jdbcType="BIT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    id, ScheduleID, home_form, guest_form, home_lineup, guest_lineup, home_backup, guest_backup,is_statis, 
+    create_time, update_time
+  </sql>
+
+<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ZQ_Lineup
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ZQ_Lineup
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.dayspass.datacenter.domain.ZqLineup" >
+    insert into ZQ_Lineup (id, ScheduleID, home_form, 
+      guest_form, home_lineup, guest_lineup, 
+      home_backup, guest_backup, is_statis,create_time, 
+      update_time)
+    values (#{id,jdbcType=INTEGER}, #{scheduleid,jdbcType=INTEGER}, #{homeForm,jdbcType=VARCHAR}, 
+      #{guestForm,jdbcType=VARCHAR}, #{homeLineup,jdbcType=VARCHAR}, #{guestLineup,jdbcType=VARCHAR}, 
+      #{homeBackup,jdbcType=VARCHAR}, #{guestBackup,jdbcType=VARCHAR},#{isStatis,jdbcType=BIT},  #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dayspass.datacenter.domain.ZqLineup" >
+    insert into ZQ_Lineup
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="scheduleid != null" >
+        ScheduleID,
+      </if>
+      <if test="homeForm != null" >
+        home_form,
+      </if>
+      <if test="guestForm != null" >
+        guest_form,
+      </if>
+      <if test="homeLineup != null" >
+        home_lineup,
+      </if>
+      <if test="guestLineup != null" >
+        guest_lineup,
+      </if>
+      <if test="homeBackup != null" >
+        home_backup,
+      </if>
+      <if test="guestBackup != null" >
+        guest_backup,
+      </if>
+       <if test="isStatis != null" >
+        is_statis,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="scheduleid != null" >
+        #{scheduleid,jdbcType=INTEGER},
+      </if>
+      <if test="homeForm != null" >
+        #{homeForm,jdbcType=VARCHAR},
+      </if>
+      <if test="guestForm != null" >
+        #{guestForm,jdbcType=VARCHAR},
+      </if>
+      <if test="homeLineup != null" >
+        #{homeLineup,jdbcType=VARCHAR},
+      </if>
+      <if test="guestLineup != null" >
+        #{guestLineup,jdbcType=VARCHAR},
+      </if>
+      <if test="homeBackup != null" >
+        #{homeBackup,jdbcType=VARCHAR},
+      </if>
+      <if test="guestBackup != null" >
+        #{guestBackup,jdbcType=VARCHAR},
+      </if>
+      <if test="isStatis != null" >
+        #{isStatis,jdbcType=BIT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dayspass.datacenter.domain.ZqLineup" >
+    update ZQ_Lineup
+    <set >
+      <if test="scheduleid != null" >
+        ScheduleID = #{scheduleid,jdbcType=INTEGER},
+      </if>
+      <if test="homeForm != null" >
+        home_form = #{homeForm,jdbcType=VARCHAR},
+      </if>
+      <if test="guestForm != null" >
+        guest_form = #{guestForm,jdbcType=VARCHAR},
+      </if>
+      <if test="homeLineup != null" >
+        home_lineup = #{homeLineup,jdbcType=VARCHAR},
+      </if>
+      <if test="guestLineup != null" >
+        guest_lineup = #{guestLineup,jdbcType=VARCHAR},
+      </if>
+      <if test="homeBackup != null" >
+        home_backup = #{homeBackup,jdbcType=VARCHAR},
+      </if>
+      <if test="guestBackup != null" >
+        guest_backup = #{guestBackup,jdbcType=VARCHAR},
+      </if>
+      <if test="isStatis != null" >
+        is_statis = #{isStatis,jdbcType=BIT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dayspass.datacenter.domain.ZqLineup" >
+    update ZQ_Lineup
+    set ScheduleID = #{scheduleid,jdbcType=INTEGER},
+      home_form = #{homeForm,jdbcType=VARCHAR},
+      guest_form = #{guestForm,jdbcType=VARCHAR},
+      home_lineup = #{homeLineup,jdbcType=VARCHAR},
+      guest_lineup = #{guestLineup,jdbcType=VARCHAR},
+      home_backup = #{homeBackup,jdbcType=VARCHAR},
+      guest_backup = #{guestBackup,jdbcType=VARCHAR},
+      is_statis = #{isStatis,jdbcType=BIT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <!-- 查询比赛的赛前阵容 -->
+  <select id="selectByScheduleID" resultMap="BaseResultMap">
+    select top 1
+    <include refid="Base_Column_List" />
+    from ZQ_Lineup
+    where ScheduleID = #{scheduleid}
+  </select>
+</mapper>

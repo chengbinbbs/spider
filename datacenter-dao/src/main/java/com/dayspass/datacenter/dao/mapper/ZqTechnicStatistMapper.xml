@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dayspass.datacenter.dao.ZqTechnicStatistMapper" >
+  <resultMap id="BaseResultMap" type="com.dayspass.datacenter.domain.ZqTechnicStatist" >
+    <result column="ScheduleID" property="scheduleid" jdbcType="INTEGER" />
+    <result column="TechnicCount" property="techniccount" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  
+   <sql id="Base_Column_List" >
+    ScheduleID, TechnicCount,create_time,update_time
+  </sql>
+  
+  <insert id="insert" parameterType="com.dayspass.datacenter.domain.ZqTechnicStatist" >
+    insert into ZQ_TechnicStatist (ScheduleID, TechnicCount, create_time, 
+      update_time)
+    values (#{scheduleid,jdbcType=INTEGER}, #{techniccount,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dayspass.datacenter.domain.ZqTechnicStatist" >
+    insert into ZQ_TechnicStatist
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="scheduleid != null" >
+        ScheduleID,
+      </if>
+      <if test="techniccount != null" >
+        TechnicCount,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="scheduleid != null" >
+        #{scheduleid,jdbcType=INTEGER},
+      </if>
+      <if test="techniccount != null" >
+        #{techniccount,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.dayspass.datacenter.domain.ZqTechnicStatist" >
+    update ZQ_TechnicStatist
+    <set >
+      <if test="techniccount != null" >
+        TechnicCount = #{techniccount,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ScheduleID = #{scheduleid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dayspass.datacenter.domain.ZqTechnicStatist" >
+    update ZQ_TechnicStatist
+    set TechnicCount = #{techniccount,jdbcType=VARCHAR},
+    update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where ScheduleID = #{scheduleid,jdbcType=INTEGER}
+  </update>
+  <!-- 根据赛程id查出技术统计 -->
+  <select id="selectByScheduleId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ZQ_TechnicStatist
+    where ScheduleID = #{ScheduleID}
+  </select>
+  
+</mapper>

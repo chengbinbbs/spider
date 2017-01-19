@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dayspass.datacenter.dao.ZqSclassInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.dayspass.datacenter.domain.ZqSclassInfo" >
+    <id column="InfoID" property="infoid" jdbcType="INTEGER" />
+    <result column="NameCN" property="namecn" jdbcType="VARCHAR" />
+    <result column="NameEN" property="nameen" jdbcType="VARCHAR" />
+    <result column="NameFN" property="namefn" jdbcType="VARCHAR" />
+    <result column="FlagPic" property="flagpic" jdbcType="VARCHAR" />
+    <result column="InfoOrder" property="infoorder" jdbcType="SMALLINT" />
+    <result column="Info_type" property="infoType" jdbcType="TINYINT" />
+    <result column="ModifyTime" property="modifytime" jdbcType="TIMESTAMP" />
+    <result column="allOrder" property="allorder" jdbcType="SMALLINT" />
+    <result column="NameTH" property="nameth" jdbcType="NVARCHAR" />
+    <result column="NameKR" property="namekr" jdbcType="NVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    InfoID, NameCN, NameEN, NameFN, FlagPic, InfoOrder, Info_type, ModifyTime, allOrder, 
+    NameTH, NameKR
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ZQ_SclassInfo
+    where InfoID = #{infoid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ZQ_SclassInfo
+    where InfoID = #{infoid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.dayspass.datacenter.domain.ZqSclassInfo" >
+    insert into ZQ_SclassInfo (InfoID, NameCN, NameEN, 
+      NameFN, FlagPic, InfoOrder, 
+      Info_type, ModifyTime, allOrder, 
+      NameTH, NameKR)
+    values (#{infoid,jdbcType=INTEGER}, #{namecn,jdbcType=VARCHAR}, #{nameen,jdbcType=VARCHAR}, 
+      #{namefn,jdbcType=VARCHAR}, #{flagpic,jdbcType=VARCHAR}, #{infoorder,jdbcType=SMALLINT}, 
+      #{infoType,jdbcType=TINYINT}, #{modifytime,jdbcType=TIMESTAMP}, #{allorder,jdbcType=SMALLINT}, 
+      #{nameth,jdbcType=NVARCHAR}, #{namekr,jdbcType=NVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dayspass.datacenter.domain.ZqSclassInfo" >
+    insert into ZQ_SclassInfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="infoid != null" >
+        InfoID,
+      </if>
+      <if test="namecn != null" >
+        NameCN,
+      </if>
+      <if test="nameen != null" >
+        NameEN,
+      </if>
+      <if test="namefn != null" >
+        NameFN,
+      </if>
+      <if test="flagpic != null" >
+        FlagPic,
+      </if>
+      <if test="infoorder != null" >
+        InfoOrder,
+      </if>
+      <if test="infoType != null" >
+        Info_type,
+      </if>
+      <if test="modifytime != null" >
+        ModifyTime,
+      </if>
+      <if test="allorder != null" >
+        allOrder,
+      </if>
+      <if test="nameth != null" >
+        NameTH,
+      </if>
+      <if test="namekr != null" >
+        NameKR,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="infoid != null" >
+        #{infoid,jdbcType=INTEGER},
+      </if>
+      <if test="namecn != null" >
+        #{namecn,jdbcType=VARCHAR},
+      </if>
+      <if test="nameen != null" >
+        #{nameen,jdbcType=VARCHAR},
+      </if>
+      <if test="namefn != null" >
+        #{namefn,jdbcType=VARCHAR},
+      </if>
+      <if test="flagpic != null" >
+        #{flagpic,jdbcType=VARCHAR},
+      </if>
+      <if test="infoorder != null" >
+        #{infoorder,jdbcType=SMALLINT},
+      </if>
+      <if test="infoType != null" >
+        #{infoType,jdbcType=TINYINT},
+      </if>
+      <if test="modifytime != null" >
+        #{modifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="allorder != null" >
+        #{allorder,jdbcType=SMALLINT},
+      </if>
+      <if test="nameth != null" >
+        #{nameth,jdbcType=NVARCHAR},
+      </if>
+      <if test="namekr != null" >
+        #{namekr,jdbcType=NVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dayspass.datacenter.domain.ZqSclassInfo" >
+    update ZQ_SclassInfo
+    <set >
+      <if test="namecn != null" >
+        NameCN = #{namecn,jdbcType=VARCHAR},
+      </if>
+      <if test="nameen != null" >
+        NameEN = #{nameen,jdbcType=VARCHAR},
+      </if>
+      <if test="namefn != null" >
+        NameFN = #{namefn,jdbcType=VARCHAR},
+      </if>
+      <if test="flagpic != null" >
+        FlagPic = #{flagpic,jdbcType=VARCHAR},
+      </if>
+      <if test="infoorder != null" >
+        InfoOrder = #{infoorder,jdbcType=SMALLINT},
+      </if>
+      <if test="infoType != null" >
+        Info_type = #{infoType,jdbcType=TINYINT},
+      </if>
+      <if test="modifytime != null" >
+        ModifyTime = #{modifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="allorder != null" >
+        allOrder = #{allorder,jdbcType=SMALLINT},
+      </if>
+      <if test="nameth != null" >
+        NameTH = #{nameth,jdbcType=NVARCHAR},
+      </if>
+      <if test="namekr != null" >
+        NameKR = #{namekr,jdbcType=NVARCHAR},
+      </if>
+    </set>
+    where InfoID = #{infoid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dayspass.datacenter.domain.ZqSclassInfo" >
+    update ZQ_SclassInfo
+    set NameCN = #{namecn,jdbcType=VARCHAR},
+      NameEN = #{nameen,jdbcType=VARCHAR},
+      NameFN = #{namefn,jdbcType=VARCHAR},
+      FlagPic = #{flagpic,jdbcType=VARCHAR},
+      InfoOrder = #{infoorder,jdbcType=SMALLINT},
+      Info_type = #{infoType,jdbcType=TINYINT},
+      ModifyTime = #{modifytime,jdbcType=TIMESTAMP},
+      allOrder = #{allorder,jdbcType=SMALLINT},
+      NameTH = #{nameth,jdbcType=NVARCHAR},
+      NameKR = #{namekr,jdbcType=NVARCHAR}
+    where InfoID = #{infoid,jdbcType=INTEGER}
+  </update>
+</mapper>

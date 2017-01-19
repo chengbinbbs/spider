@@ -1,0 +1,472 @@
+body{
+	width:100%;
+	background:#f9f8f0;
+	/*overflow:hidden;*/
+}
+.warp{
+	margin-bottom:20px;
+}
+.screheader{
+	width:100%;
+	height:48px;
+	background:#d91d37;
+	position:relative;
+	
+}
+.blcklist{
+    height:24px;
+	padding:12px 4px;
+	text-align:center;
+	position:relative;
+}
+.screheader .blck{
+	display:inline-block;
+	height:24px;
+	line-height:24px;
+	color:#ffffff;
+	font-size:14px;
+	padding:0px 16px;
+	vertical-align:middle;
+	position:relative;
+}
+.screheader .blck.current{
+	background:#ffffff;
+	border-radius:10px;
+	-webkit-border-radius:10px;
+	color:#d91d37;
+}
+
+.screheader  .spacelay{
+   width:14px;
+   display:inline-block;      	
+}
+.screheader .settbnt{
+	display:block;
+	width:48px;
+	height:48px;
+	background:url('../images/settbnt.png') no-repeat;
+	background-position:center center;
+	background-size:32px 32px;
+	top:0px;
+	left:10px;
+	position:absolute;
+}
+.screheader .filterbnt{
+	display:block;
+	width:48px;
+	height:48px;
+	background:url('../images/filterbnt.png') no-repeat;
+	background-position:center center;
+	background-size:32px 32px;
+	right:10px;
+	top:0px;
+	position:absolute; 
+}
+.seledatelist{
+	width:100%;
+	background:#ffffff;
+	font-size:0px;
+	overflow:hidden;
+	
+}
+.seledatelist li{
+	width:14.28%;
+	display:inline-block;
+	padding:10px 0px;
+	text-align:center;
+	font-size:14px;
+	background:#ffffff;
+}
+.seledatelist li.current span{
+	color:#d91d37;
+}
+.seledatelist li.current{
+   border-bottom:4px solid  #d91d37;
+}
+.seledatelist li span{
+	display:block;
+}
+.scoremtlist{
+   width:100%;
+   margin-top:20px;	
+   position:relative;
+}
+.scoremtlist .scoretbox{
+	padding:30px 0px;
+	background:#ffffff;
+	position:relative;
+	border-bottom:1px solid  #939393;
+}
+.scoremtlist .scoretbox:after{
+	content:".";display:block;height:0;clear:both;visibility:hidden;
+}
+.scoremtlist .scoretbox .scorefpart{
+	width:100px;
+	float:left;
+	text-align:center;
+	left:0px;
+	top:30px;
+	position:absolute;
+}
+.scoremtlist .scoretbox .scorespart{
+	width:100%;
+	padding-left:100px;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	position:relative;
+	/*text-align:center;*/
+}
+.scoremtlist .scoretbox .scoreilist{
+   width:100%;
+}
+.scoremtlist .scoretbox  .scdesc{
+	display:block;
+}
+.scoremtlist .scoretbox  .scdesc.mt10{
+	margin-bottom:10px;
+}
+/*
+.scoremtlist .scoretbox  .downicon{
+	display:block;
+	width:100%;
+	height:32px;
+	background:url('../images/downicon.png') no-repeat;
+	background-size:32px 32px;
+	background-position:center 0px;
+}*/
+.scoremtlist .scoretbox  .downicon.dwn1{
+	display:block;
+	width:100%;
+	height:32px;
+	background:url('../images/downiconihover.png') no-repeat;
+	background-size:32px 32px;
+	background-position:center 0px;
+}
+.scoremtlist .scoretbox  .downicon.dwn2{
+	display:block;
+	width:100%;
+	height:32px;
+	background:url('../images/upicon.png') no-repeat;
+	background-size:32px 32px;
+	background-position:center 0px;
+}
+.scoremtlist .scoretbox  .downicon.dwn3{
+	display:block;
+	width:100%;
+	height:32px;
+	background:url('../images/downicon.png') no-repeat;
+	background-size:32px 32px;
+	background-position:center 0px;
+}
+.scoremtlist .scoretbox  .scorespart{
+
+	
+}
+.scoremtlist .scoretbox  .scoreblck{
+   display:inline-block;      	
+}
+.scoremtlist .scoretbox .scimg{
+	width:60px;
+	height:60px;
+	
+}
+.scoremtlist .scoretbox .sceimg{
+	width:60px;
+	height:60px;
+}
+.scoremtlist .scoretbox  .sdesc{
+  color:#000000; 
+  font-size:16px;
+  font-weight:800;
+  margin-bottom:4px;        	
+}
+.scoremtlist .scoretbox  .scoreblck.scoreconts{
+	  /*float:left; */
+	  /*width:100%;*/ 
+	  /*width:100%;*/
+	 /*
+	  width:auto;
+	  margin-left:64px;*/
+	  /*margin-right:20px;*/
+	  width:100%;
+	  padding-left:60px;
+	  padding-right:65px;
+	  box-sizing:border-box;
+	  -webkit-box-sizing:border-box;
+	  /*padding-right:60px;*/
+	  /*height:90px;*/
+	  height:115px;
+	  text-align:center;
+	  vertical-align:top;  
+}
+.scoremtlist .scoretbox .scpoint{
+	color:#4caf50;
+    font-size:26px;
+    margin-bottom:10px;
+}
+.scoremtlist .scoretbox  .scoreblck.firblck{
+    top:0px;
+    left:100px; 
+    position:absolute;
+    text-align:center;  	
+ }
+.scoremtlist .scoretbox  .scoreblck.thirblck{
+     right:5px;   
+     top:0px;
+     position:absolute;
+     text-align:center;
+ }
+ .mt10{
+ 	margin-bottom:10px;
+ }
+.orclr{
+	color:#fc8e00;
+}
+.bluclr{
+	color:#4caf50;
+}
+.scoremtlist .scoretbox .scpoint.orclr{
+	color:#fc8e00;
+}
+.scoremtlist .scoretbox:last-child{
+	border-bottom:none;
+}
+.scoremtlist .scoretbox  .scoredesc{
+	/*
+    height:20px;
+    line-height:20px;*/            	
+}
+.scoremtlist .scoretbox  .scoreblck.scoreconts .scround{
+	width:10px;
+	height:10px;
+	background:url('../images/sprain.gif') no-repeat;
+	background-size:10px 10px;
+	/*display:block;*/
+	display:inline-block;
+	
+	/*
+	border-radius:50%;
+	-webkit-border-radius:50%;*/
+}
+
+.scoremtlist .scoretbox  .scoreblck.scoreconts b{
+	height:20px;
+    line-height:20px; 
+    font-weight:normal;
+}
+ .scoremtlist .scoretbox  .scoreblck.scoreconts b.ftsize{
+    font-size:16px;      	
+ }
+ .scoremtlist .scoretbox  .scoreblck.scoreconts b.scont{
+ 	margin-left:5px;
+ }
+ .competlist li{
+ 	width:90%;
+ 	margin:0px auto;
+ 	position:relative;
+ }
+
+ .competlist li  .guestpart{
+ 	width:100%;
+ 	height:70px;
+ 	background:#8fc75f;
+ 	margin-bottom:10px;
+ 	border-radius:30px;
+    -webkit-border-radius:30px;
+    position:relative;
+ }
+ .competlist li  .hostpart{
+ 	width:100%;
+ 	height:70px;
+ 	background:#8fc75f;
+ 	border-radius:30px;
+    -webkit-border-radius:30px;
+    position:relative;
+ }
+ .competlist li  .guestpart  .hotpart{
+ 	width:80px;
+ 	height:70px;
+ 	background:url('../images/hot.png') no-repeat;
+ 	background-position:center center;
+ 	left:0px;
+ 	top:0px;
+ 	position:absolute;
+ }
+ .competlist li  .hostpart  .ftpart{
+ 	width:80px;
+ 	height:70px;
+ 	background:url('../images/footbal.png') no-repeat;
+ 	background-position:center center;
+ 	left:0px;
+ 	top:0px;
+ 	position:absolute;
+ }
+  .competlist li .sportlist{
+  	 width:100%;
+  	 padding-left:80px;
+  	 padding-top:12px;
+  	 box-sizing:border-box;
+	 -webkit-box-sizing:border-box;
+  	 
+  }
+  .wrap  .sptlist{
+  	 font-size:0px;
+  }   
+  .sptblck{
+   	 display:inline-block;
+   	 font-size:16px;
+   	  color:#ffffff;
+   }
+   .sptpartdesc{
+   	  width:36%;
+   }
+   .sptsecdesc{
+   	  width:20%;
+   	  text-align:center;
+   	 
+   }
+   .rclor{
+    	color:#d91d37;
+    	font-weight:800;
+   }
+   /*
+   .wrap  .sportlist .sptpartdesc{
+   	  width:36%;
+   }*/
+   /*
+   .wrap  .sptlist .sptpart{
+   	 width:36%;
+   }*/
+   /******************新增部分*****************************/
+   .screheader .blck .trgleicon{
+	width:24px;
+	height:24px;
+	background:url('../images/triangleup.png') no-repeat;
+	background-size:12px 8px;
+	background-position:10px center;
+	top:0px;
+	right:0px;
+	position:absolute;
+}
+.screheader .blck.current .trgleicon.on{
+	width:24px;
+	height:24px;
+	background:url('../images/triangledown.png') no-repeat;
+	background-size:12px 8px;
+	background-position:10px center;
+	top:0px;
+	right:0px;
+	position:absolute;
+}
+#MoreLocked {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    display: none;
+    background: rgba(0,0,0,.2);
+}
+#MoreDetail{position:absolute;top:48px;z-index:999;width:100%;left: 0;display:none;}
+#MoreLists{padding-top:18px;padding-bottom:18px;background:#fff;font-size:0px;}
+.MoreLists{
+	width:100%;
+}
+.MoreLists .matcomp{
+	width:50%;
+	display:inline-block;
+	position:relative;
+}
+.MoreLists .matcomp .sportblck{
+	width:70%;
+	height:36px;
+	line-height:36px;
+	display:inline-block;
+	margin-left:20%;
+	margin-right:10%;
+	/*border:1px solid  #de0b2e;*/
+	border:1px solid  #e5e5e2;
+	color:#060001;
+	font-size:14px;
+	text-align:center;
+	position:relative;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+}
+.MoreLists .matcomp .sportblck.secblckspt{
+	margin-left:10%;
+	margin-right:20%;
+}
+.MoreLists .matcomp .sportblck.current{
+	border:1px solid  #d91d37;
+	color:#d91d37;
+}
+.MoreLists .matcomp .sportblck  .tickicon{
+    width: 22px;
+    height: 16px;
+    background: url('../images/tickiconsec.png') no-repeat;
+    background-size: 22px 16px;
+    right: 2px;
+    bottom: 2px;
+    position: absolute;
+    display:none;
+}
+.MoreLists .matcomp .sportblck.current .tickicon{
+	display:block;
+}
+
+.termlist{
+	width:100%;
+	font-size:0px;
+	margin-top:10px;
+}
+.termlist li{
+	width:20%;
+	padding: 10px 0px;
+	display: inline-block;
+    text-align: center;
+    font-size: 14px;
+    background:#ffffff;
+}
+.termlist li span{
+	width:100%;
+	display:block;
+	text-align: center;
+	color:#000000;
+}
+.termlist li.current span{
+	color:#d91d37;
+}
+.screheader .blck.firblck{
+	width:70px;
+} 
+/***************************************************/
+.inblcks{
+	display:inline-block;
+}
+.inblcks.oracls{
+	background:#fbc02d;
+	padding:2px 2px;
+	color:#ffffff;
+}
+.inblcks.revocls{
+	background:#ff5252;
+	padding:2px 2px;
+	color:#ffffff;
+}
+.scoremtlist .scoretbox  .scoreblck.scoreconts  .halfsprt{
+	color:#000000;
+	font-size:16px;
+}
+.scoremtlist .scoretbox .scpoint{
+    margin-bottom:10px;
+}
+/*
+.screheader {width:48px;height:48px;display:block;line-height:48px;position:absolute;top:0;text-align:center;text-indent:6px;}*/
+.screheader .GoIndex{
+	width:60px;height:48px;display:block;line-height:48px;position:absolute;top:0;text-align:center;text-indent:6px;
+	left:0;background-position:0px center;background-repeat:no-repeat;background-size:contain;color:#fff;
+    background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAADICAYAAAAePETBAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAATDSURBVHic7d25jhxVGEfxY4TI2LHHSJARAMZ44wUGmIQnIAFCXoW3IOQJSFjMAzAGI/YlwxIzZpXJcDAERcuDNZq+1Z5bde6t/wnHFXzST7e/6la369TBwQHJ031zD5D+X0BkBURWQGQFRFZAZAVEVkBkBURWQGQFRFZAZAVEVkBkBURWQGQFRFZAZAVEVkBkBURWQGQFRFZAZAVEVkBkBURWQGQFRFZAZAVEVkBkBURWQGQFRFZAZAVEVkBkBURWQGQFRFZAZAVEVkBkBURWQGQFRFZAZAVEVkBkBURWQGQFRFZAZAVEVkBkBURWQGQFRFZAZAVE1v1zDzBBDwJvAueAPeA94MdZJzqmU50/ruJF4H3gqUN/uw28Dbw7y0Rr6hnkAvAhcPqIf/sHOA/8MOlEBfW6Q47DAHgAeH26ccrrcYdcAD4Cnlhz3dYEs4yutxNSigHwbeVZNqqnHTIG4wbDXdetqhNtUC8n5CLlGL8CryHEgD5ALjIs8FKMV4Evq050D7W+1MdivIIYA9o+Id1hQLsnZLUzHi+4thkMaBNkLMbLwFdVJzrBWnvJ6hoD2gK5ROcY0M5L1iWGBV6KsQ18XXWiSrVwQhaDAX6QRWGAG2TMzrhJBxjgBVlhPFZw7U2GBd48BjhBFosBPpDLLBgDXLe9lxkWeCnGNvBN1YlmyHJCgvFfBpBgHGpukDE7Y5/OMWBekBXGowXX7jMs8K4xYD6QKwTjyOa4y7rCsDNKMbaRfmWnRlOfkGCsaUqQYBQ0FciYnbHHQjFgGpAVxiMF1+4xLPBFYkB9kGCMrCbISwRjdLW+bP0M8CnlGNvAdzUGaa1aJ+QdgrFRtU7ILYYfWx5XMI5ozs+yuvlhyklWC+SDgmueBK4Cz1aaoclqLvVd4OGCa39huMPKSxf1TshPDD+M+avg2pyUQ9XcIbvADuUonxCU6kt9DMpZgjLJXdYmKM9VnUjcVLe9u5TvlLMMO2WRKFO+D7lGUNY29RvDoKxpjnfqK5Q/C65d3E6Z66OTawyLvgRliwWhzPlZVlCOaO5vLm6C8nzViWZubhAYt1O2GBZ9tygGEIDPCArgAYGgAC4QuIPyR8G1Xe4UGwgMKDuUoZyhMxQjCCwYxQoCm6GcqzrRBJlBYNxOOcOw6JtGsYMAfM6CUFoAgQWhtAICd1B+L7i22Z3SEggMKDuUoZymQZTWQGAzlBeqTnSCtQgC41Gu0ghKqyAwbqc0g9IyCMB1xqOcrzrRPdY6CIxH+RjxSenpcRVj/uvxnxnuvv6uOtEG9XBCVl1nWPS/FVz7NPBW3XE2qycQGIei/MJEbyBwZ6esQ9mfYJbR9bRD7u64RyDdZrjb+n7SiQrq8YSs+oLhMRU37vr76sGSOgzo+4Ssegh4g+FWd/XoVd0DJVctAaSpen7JarKAyAqIrIDICoisgMgKiKyAyAqIrIDICoisgMgKiKyAyAqIrIDICoisgMgKiKyAyAqIrIDICoisgMgKiKyAyAqIrIDICoisgMgKiKyAyAqIrIDICoisgMgKiKyAyAqIrIDICoisgMgKiKyAyAqIrIDICoisgMgKiKyAyAqIrIDICoisgMgKiKyAyAqIrIDICoisgMgKiKx/AdkR/g7GDdTJAAAAAElFTkSuQmCC);
+    z-index: 9999;}
+

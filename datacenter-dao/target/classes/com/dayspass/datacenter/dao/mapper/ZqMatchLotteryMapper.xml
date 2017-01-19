@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dayspass.datacenter.dao.ZqMatchLotteryMapper" >
+  <resultMap id="BaseResultMap" type="com.dayspass.datacenter.domain.ZqMatchLottery" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="lotteryName" property="lotteryname" jdbcType="VARCHAR" />
+    <result column="sort" property="sort" jdbcType="VARCHAR" />
+    <result column="stageId" property="stageid" jdbcType="INTEGER" />
+    <result column="ScheduleID" property="scheduleid" jdbcType="INTEGER" />
+    <result column="mtime" property="mtime" jdbcType="TIMESTAMP" />
+    <result column="homeTeamName" property="hometeamname" jdbcType="VARCHAR" />
+    <result column="homeTeamId" property="hometeamid" jdbcType="INTEGER" />
+    <result column="guestTeamName" property="guestteamname" jdbcType="VARCHAR" />
+    <result column="guestTeamId" property="guestteamid" jdbcType="INTEGER" />
+    <result column="swapTeam" property="swapteam" jdbcType="BIT" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, lotteryName, sort, stageId, ScheduleID, mtime, homeTeamName, homeTeamId, guestTeamName, 
+    guestTeamId, swapTeam, createTime, updateTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ZQ_MatchLottery
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ZQ_MatchLottery
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.dayspass.datacenter.domain.ZqMatchLottery" >
+    insert into ZQ_MatchLottery (id, lotteryName, sort, 
+      stageId, ScheduleID, mtime, 
+      homeTeamName, homeTeamId, guestTeamName, 
+      guestTeamId, swapTeam, createTime, 
+      updateTime)
+    values (#{id,jdbcType=INTEGER}, #{lotteryname,jdbcType=VARCHAR}, #{sort,jdbcType=VARCHAR}, 
+      #{stageid,jdbcType=INTEGER}, #{scheduleid,jdbcType=INTEGER}, #{mtime,jdbcType=TIMESTAMP}, 
+      #{hometeamname,jdbcType=VARCHAR}, #{hometeamid,jdbcType=INTEGER}, #{guestteamname,jdbcType=VARCHAR}, 
+      #{guestteamid,jdbcType=INTEGER}, #{swapteam,jdbcType=BIT}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{updatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dayspass.datacenter.domain.ZqMatchLottery" >
+    insert into ZQ_MatchLottery
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="lotteryname != null" >
+        lotteryName,
+      </if>
+      <if test="sort != null" >
+        sort,
+      </if>
+      <if test="stageid != null" >
+        stageId,
+      </if>
+      <if test="scheduleid != null" >
+        ScheduleID,
+      </if>
+      <if test="mtime != null" >
+        mtime,
+      </if>
+      <if test="hometeamname != null" >
+        homeTeamName,
+      </if>
+      <if test="hometeamid != null" >
+        homeTeamId,
+      </if>
+      <if test="guestteamname != null" >
+        guestTeamName,
+      </if>
+      <if test="guestteamid != null" >
+        guestTeamId,
+      </if>
+      <if test="swapteam != null" >
+        swapTeam,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="updatetime != null" >
+        updateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="lotteryname != null" >
+        #{lotteryname,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        #{sort,jdbcType=VARCHAR},
+      </if>
+      <if test="stageid != null" >
+        #{stageid,jdbcType=INTEGER},
+      </if>
+      <if test="scheduleid != null" >
+        #{scheduleid,jdbcType=INTEGER},
+      </if>
+      <if test="mtime != null" >
+        #{mtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="hometeamname != null" >
+        #{hometeamname,jdbcType=VARCHAR},
+      </if>
+      <if test="hometeamid != null" >
+        #{hometeamid,jdbcType=INTEGER},
+      </if>
+      <if test="guestteamname != null" >
+        #{guestteamname,jdbcType=VARCHAR},
+      </if>
+      <if test="guestteamid != null" >
+        #{guestteamid,jdbcType=INTEGER},
+      </if>
+      <if test="swapteam != null" >
+        #{swapteam,jdbcType=BIT},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dayspass.datacenter.domain.ZqMatchLottery" >
+    update ZQ_MatchLottery
+    <set >
+      <if test="lotteryname != null" >
+        lotteryName = #{lotteryname,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        sort = #{sort,jdbcType=VARCHAR},
+      </if>
+      <if test="stageid != null" >
+        stageId = #{stageid,jdbcType=INTEGER},
+      </if>
+      <if test="scheduleid != null" >
+        ScheduleID = #{scheduleid,jdbcType=INTEGER},
+      </if>
+      <if test="mtime != null" >
+        mtime = #{mtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="hometeamname != null" >
+        homeTeamName = #{hometeamname,jdbcType=VARCHAR},
+      </if>
+      <if test="hometeamid != null" >
+        homeTeamId = #{hometeamid,jdbcType=INTEGER},
+      </if>
+      <if test="guestteamname != null" >
+        guestTeamName = #{guestteamname,jdbcType=VARCHAR},
+      </if>
+      <if test="guestteamid != null" >
+        guestTeamId = #{guestteamid,jdbcType=INTEGER},
+      </if>
+      <if test="swapteam != null" >
+        swapTeam = #{swapteam,jdbcType=BIT},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dayspass.datacenter.domain.ZqMatchLottery" >
+    update ZQ_MatchLottery
+    set lotteryName = #{lotteryname,jdbcType=VARCHAR},
+      sort = #{sort,jdbcType=VARCHAR},
+      stageId = #{stageid,jdbcType=INTEGER},
+      ScheduleID = #{scheduleid,jdbcType=INTEGER},
+      mtime = #{mtime,jdbcType=TIMESTAMP},
+      homeTeamName = #{hometeamname,jdbcType=VARCHAR},
+      homeTeamId = #{hometeamid,jdbcType=INTEGER},
+      guestTeamName = #{guestteamname,jdbcType=VARCHAR},
+      guestTeamId = #{guestteamid,jdbcType=INTEGER},
+      swapTeam = #{swapteam,jdbcType=BIT},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <!-- 条件查询列表 -->
+  <select id="queryAll" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ZQ_MatchLottery
+     where 1 = 1
+     <if test="id != null">
+		and id = #{id} 
+	 </if>
+	 <if test="sort != null">
+		and sort = #{sort} 
+	 </if>
+	 <if test="stageid != null">
+		and stageId = #{stageid} 
+	 </if>
+	 <if test="scheduleid != null">
+		and ScheduleID = #{scheduleid} 
+	 </if>
+	 <if test="mtime != null">
+		and mtime = #{mtime} 
+	 </if>
+	 order by sort
+  </select>
+  
+  <select id="queryMatchListByStage" resultMap="BaseResultMap">
+    select m.* from ZQ_MatchLottery m left join ZQ_Stage s on s.id=m.stageid
+     where 1 = 1
+	 <if test="name != null and name != ''">
+		and s.name = #{name} 
+	 </if>
+	 <if test="type != null">
+		and s.type = #{type} 
+	 </if>
+	 order by sort
+  </select>
+  <!-- 根据期次号和竞彩编号查询赛事 -->
+  <select id="queryMatchLottery" resultMap="BaseResultMap">
+    select m.* from ZQ_MatchLottery m left join ZQ_Stage s on s.id=m.stageid
+     where 1 = 1
+	 <if test="name != null and name != ''">
+		and s.name = #{name} 
+	 </if>
+	 <if test="type != null">
+		and s.type = #{type} 
+	 </if>
+	 <if test="sort != null and sort != ''">
+		and m.sort = #{sort} 
+	 </if>
+	 order by sort
+  </select>
+  
+</mapper>

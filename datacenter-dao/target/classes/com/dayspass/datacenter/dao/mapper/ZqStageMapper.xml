@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dayspass.datacenter.dao.ZqStageMapper" >
+  <resultMap id="BaseResultMap" type="com.dayspass.datacenter.domain.ZqStage" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="is_current" property="isCurrent" jdbcType="BIT" />
+    <result column="available" property="available" jdbcType="BIT" />
+    <result column="status" property="status" jdbcType="BIT" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, type, is_current, available, status, createTime, updateTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ZQ_Stage
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ZQ_Stage
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.dayspass.datacenter.domain.ZqStage" >
+    insert into ZQ_Stage (id, name, type, 
+      is_current, available, status, createTime, 
+      updateTime)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, 
+      #{isCurrent,jdbcType=BIT}, #{available,jdbcType=BIT}, #{status,jdbcType=BIT}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{updatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dayspass.datacenter.domain.ZqStage"  useGeneratedKeys="true" keyProperty="id">
+    insert into ZQ_Stage
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="isCurrent != null" >
+        is_current,
+      </if>
+      <if test="available != null" >
+        available,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="updatetime != null" >
+        updateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="isCurrent != null" >
+        #{isCurrent,jdbcType=BIT},
+      </if>
+      <if test="available != null" >
+        #{available,jdbcType=BIT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=BIT},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dayspass.datacenter.domain.ZqStage" >
+    update ZQ_Stage
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="isCurrent != null" >
+        is_current = #{isCurrent,jdbcType=BIT},
+      </if>
+      <if test="available != null" >
+        available = #{available,jdbcType=BIT},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=BIT},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dayspass.datacenter.domain.ZqStage" >
+    update ZQ_Stage
+    set name = #{name,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      is_current = #{isCurrent,jdbcType=BIT},
+      available = #{available,jdbcType=BIT},
+      status = #{status,jdbcType=BIT},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <!-- 条件查询列表 -->
+  <select id="queryAll" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ZQ_Stage
+     where 1 = 1
+     <if test="id != null">
+		and id = #{id} 
+	 </if>
+	 <if test="name != null">
+		and name = #{name} 
+	 </if>
+	 <if test="type != null">
+		and type = #{type} 
+	 </if>
+	 <if test="isCurrent != null">
+		and is_current = #{isCurrent} 
+	 </if>
+	 <if test="available != null">
+		and available = #{available} 
+	 </if>
+	 <if test="status != null">
+		and status = #{status} 
+	 </if>
+	 ORDER BY name desc
+  </select>
+  
+  <!-- 获取足彩当前期，历史、未来各两期 -->
+  <select id="queryZcStageList" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from (
+			select top ${limit} * from ZQ_Stage where type = #{type} ORDER BY name desc
+	) t ORDER BY t.name asc
+  </select>
+  
+  <!-- 获取北单近n期 -->
+  <select id="queryBdStageList" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from (
+			select top ${limit} * from ZQ_Stage where type = #{type} ORDER BY name desc
+	) t ORDER BY t.name asc
+  </select>
+  
+  <!-- 更新当前期次-->
+  <update id="updateCurrentStage">
+    update ZQ_Stage
+    set is_current = #{isCurrent},
+      updateTime = getdate() 
+    where 1=1
+	 <if test="name != null">
+		and name = #{name} 
+	 </if>
+	 <if test="type != null">
+		and type = #{type} 
+	 </if>
+	 <if test="available != null">
+		and available = #{available} 
+	 </if>
+	 <if test="status != null">
+		and status = #{status} 
+	 </if>
+  </update>
+  
+  <!-- 查询足彩当前以及未来期 -->
+  <select id="queryZucai" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ZQ_Stage where type=3 and name &gt;= (SELECT top 1 name from ZQ_Stage where type=3 and is_current=1)
+  </select>
+  
+  <select id="queryJcStageList" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ZQ_Stage where type=#{type} and name &gt;= #{name} order by name
+  </select>
+  
+</mapper>

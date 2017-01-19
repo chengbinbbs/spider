@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dayspass.datacenter.dao.ZqPlayerMapper" >
+  <resultMap id="BaseResultMap" type="com.dayspass.datacenter.domain.ZqPlayer" >
+    <id column="PlayerID" property="playerid" jdbcType="INTEGER" />
+    <result column="Kind" property="kind" jdbcType="SMALLINT" />
+    <result column="Name_short" property="nameShort" jdbcType="NCHAR" />
+    <result column="Name_F" property="nameF" jdbcType="NCHAR" />
+    <result column="Name_J" property="nameJ" jdbcType="NCHAR" />
+    <result column="Name_E" property="nameE" jdbcType="NCHAR" />
+    <result column="Name_Es" property="nameEs" jdbcType="NCHAR" />
+    <result column="Birthday" property="birthday" jdbcType="TIMESTAMP" />
+    <result column="Tallness" property="tallness" jdbcType="SMALLINT" />
+    <result column="Weight" property="weight" jdbcType="SMALLINT" />
+    <result column="Country" property="country" jdbcType="CHAR" />
+    <result column="Photo" property="photo" jdbcType="CHAR" />
+    <result column="Introduce" property="introduce" jdbcType="VARCHAR" />
+    <result column="Health" property="health" jdbcType="CHAR" />
+    <result column="ModifyTime" property="modifytime" jdbcType="TIMESTAMP" />
+    <result column="CountryID" property="countryid" jdbcType="INTEGER" />
+    <result column="ExpectedValue" property="expectedvalue" jdbcType="VARCHAR" />
+    <result column="HonorInfo" property="honorinfo" jdbcType="NVARCHAR" />
+    <result column="EndDateContract" property="enddatecontract" jdbcType="TIMESTAMP" />
+    <result column="IdiomaticFeet" property="idiomaticfeet" jdbcType="TINYINT" />
+    <result column="Country2ID" property="country2id" jdbcType="INTEGER" />
+    <result column="hotSortNumber" property="hotsortnumber" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    PlayerID, Kind, Name_short, Name_F, Name_J, Name_E, Name_Es, Birthday, Tallness, 
+    Weight, Country, Photo, Introduce, Health, ModifyTime, CountryID, ExpectedValue, 
+    HonorInfo, EndDateContract, IdiomaticFeet, Country2ID, hotSortNumber
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ZQ_Player
+    where PlayerID = #{playerid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ZQ_Player
+    where PlayerID = #{playerid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.dayspass.datacenter.domain.ZqPlayer" >
+    insert into ZQ_Player (PlayerID, Kind, Name_short, 
+      Name_F, Name_J, Name_E, Name_Es, 
+      Birthday, Tallness, Weight, 
+      Country, Photo, Introduce, 
+      Health, ModifyTime, CountryID, 
+      ExpectedValue, HonorInfo, EndDateContract, 
+      IdiomaticFeet, Country2ID, hotSortNumber
+      )
+    values (#{playerid,jdbcType=INTEGER}, #{kind,jdbcType=SMALLINT}, #{nameShort,jdbcType=NCHAR}, 
+      #{nameF,jdbcType=NCHAR}, #{nameJ,jdbcType=NCHAR}, #{nameE,jdbcType=NCHAR}, #{nameEs,jdbcType=NCHAR}, 
+      #{birthday,jdbcType=TIMESTAMP}, #{tallness,jdbcType=SMALLINT}, #{weight,jdbcType=SMALLINT}, 
+      #{country,jdbcType=CHAR}, #{photo,jdbcType=CHAR}, #{introduce,jdbcType=VARCHAR}, 
+      #{health,jdbcType=CHAR}, #{modifytime,jdbcType=TIMESTAMP}, #{countryid,jdbcType=INTEGER}, 
+      #{expectedvalue,jdbcType=VARCHAR}, #{honorinfo,jdbcType=NVARCHAR}, #{enddatecontract,jdbcType=TIMESTAMP}, 
+      #{idiomaticfeet,jdbcType=TINYINT}, #{country2id,jdbcType=INTEGER}, #{hotsortnumber,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.dayspass.datacenter.domain.ZqPlayer" >
+    insert into ZQ_Player
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="playerid != null" >
+        PlayerID,
+      </if>
+      <if test="kind != null" >
+        Kind,
+      </if>
+      <if test="nameShort != null" >
+        Name_short,
+      </if>
+      <if test="nameF != null" >
+        Name_F,
+      </if>
+      <if test="nameJ != null" >
+        Name_J,
+      </if>
+      <if test="nameE != null" >
+        Name_E,
+      </if>
+      <if test="nameEs != null" >
+        Name_Es,
+      </if>
+      <if test="birthday != null" >
+        Birthday,
+      </if>
+      <if test="tallness != null" >
+        Tallness,
+      </if>
+      <if test="weight != null" >
+        Weight,
+      </if>
+      <if test="country != null" >
+        Country,
+      </if>
+      <if test="photo != null" >
+        Photo,
+      </if>
+      <if test="introduce != null" >
+        Introduce,
+      </if>
+      <if test="health != null" >
+        Health,
+      </if>
+      <if test="modifytime != null" >
+        ModifyTime,
+      </if>
+      <if test="countryid != null" >
+        CountryID,
+      </if>
+      <if test="expectedvalue != null" >
+        ExpectedValue,
+      </if>
+      <if test="honorinfo != null" >
+        HonorInfo,
+      </if>
+      <if test="enddatecontract != null" >
+        EndDateContract,
+      </if>
+      <if test="idiomaticfeet != null" >
+        IdiomaticFeet,
+      </if>
+      <if test="country2id != null" >
+        Country2ID,
+      </if>
+      <if test="hotsortnumber != null" >
+        hotSortNumber,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="playerid != null" >
+        #{playerid,jdbcType=INTEGER},
+      </if>
+      <if test="kind != null" >
+        #{kind,jdbcType=SMALLINT},
+      </if>
+      <if test="nameShort != null" >
+        #{nameShort,jdbcType=NCHAR},
+      </if>
+      <if test="nameF != null" >
+        #{nameF,jdbcType=NCHAR},
+      </if>
+      <if test="nameJ != null" >
+        #{nameJ,jdbcType=NCHAR},
+      </if>
+      <if test="nameE != null" >
+        #{nameE,jdbcType=NCHAR},
+      </if>
+      <if test="nameEs != null" >
+        #{nameEs,jdbcType=NCHAR},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tallness != null" >
+        #{tallness,jdbcType=SMALLINT},
+      </if>
+      <if test="weight != null" >
+        #{weight,jdbcType=SMALLINT},
+      </if>
+      <if test="country != null" >
+        #{country,jdbcType=CHAR},
+      </if>
+      <if test="photo != null" >
+        #{photo,jdbcType=CHAR},
+      </if>
+      <if test="introduce != null" >
+        #{introduce,jdbcType=VARCHAR},
+      </if>
+      <if test="health != null" >
+        #{health,jdbcType=CHAR},
+      </if>
+      <if test="modifytime != null" >
+        #{modifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="countryid != null" >
+        #{countryid,jdbcType=INTEGER},
+      </if>
+      <if test="expectedvalue != null" >
+        #{expectedvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="honorinfo != null" >
+        #{honorinfo,jdbcType=NVARCHAR},
+      </if>
+      <if test="enddatecontract != null" >
+        #{enddatecontract,jdbcType=TIMESTAMP},
+      </if>
+      <if test="idiomaticfeet != null" >
+        #{idiomaticfeet,jdbcType=TINYINT},
+      </if>
+      <if test="country2id != null" >
+        #{country2id,jdbcType=INTEGER},
+      </if>
+      <if test="hotsortnumber != null" >
+        #{hotsortnumber,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dayspass.datacenter.domain.ZqPlayer" >
+    update ZQ_Player
+    <set >
+      <if test="kind != null" >
+        Kind = #{kind,jdbcType=SMALLINT},
+      </if>
+      <if test="nameShort != null" >
+        Name_short = #{nameShort,jdbcType=NCHAR},
+      </if>
+      <if test="nameF != null" >
+        Name_F = #{nameF,jdbcType=NCHAR},
+      </if>
+      <if test="nameJ != null" >
+        Name_J = #{nameJ,jdbcType=NCHAR},
+      </if>
+      <if test="nameE != null" >
+        Name_E = #{nameE,jdbcType=NCHAR},
+      </if>
+      <if test="nameEs != null" >
+        Name_Es = #{nameEs,jdbcType=NCHAR},
+      </if>
+      <if test="birthday != null" >
+        Birthday = #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tallness != null" >
+        Tallness = #{tallness,jdbcType=SMALLINT},
+      </if>
+      <if test="weight != null" >
+        Weight = #{weight,jdbcType=SMALLINT},
+      </if>
+      <if test="country != null" >
+        Country = #{country,jdbcType=CHAR},
+      </if>
+      <if test="photo != null" >
+        Photo = #{photo,jdbcType=CHAR},
+      </if>
+      <if test="introduce != null" >
+        Introduce = #{introduce,jdbcType=VARCHAR},
+      </if>
+      <if test="health != null" >
+        Health = #{health,jdbcType=CHAR},
+      </if>
+      <if test="modifytime != null" >
+        ModifyTime = #{modifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="countryid != null" >
+        CountryID = #{countryid,jdbcType=INTEGER},
+      </if>
+      <if test="expectedvalue != null" >
+        ExpectedValue = #{expectedvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="honorinfo != null" >
+        HonorInfo = #{honorinfo,jdbcType=NVARCHAR},
+      </if>
+      <if test="enddatecontract != null" >
+        EndDateContract = #{enddatecontract,jdbcType=TIMESTAMP},
+      </if>
+      <if test="idiomaticfeet != null" >
+        IdiomaticFeet = #{idiomaticfeet,jdbcType=TINYINT},
+      </if>
+      <if test="country2id != null" >
+        Country2ID = #{country2id,jdbcType=INTEGER},
+      </if>
+      <if test="hotsortnumber != null" >
+        hotSortNumber = #{hotsortnumber,jdbcType=INTEGER},
+      </if>
+    </set>
+    where PlayerID = #{playerid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dayspass.datacenter.domain.ZqPlayer" >
+    update ZQ_Player
+    set Kind = #{kind,jdbcType=SMALLINT},
+      Name_short = #{nameShort,jdbcType=NCHAR},
+      Name_F = #{nameF,jdbcType=NCHAR},
+      Name_J = #{nameJ,jdbcType=NCHAR},
+      Name_E = #{nameE,jdbcType=NCHAR},
+      Name_Es = #{nameEs,jdbcType=NCHAR},
+      Birthday = #{birthday,jdbcType=TIMESTAMP},
+      Tallness = #{tallness,jdbcType=SMALLINT},
+      Weight = #{weight,jdbcType=SMALLINT},
+      Country = #{country,jdbcType=CHAR},
+      Photo = #{photo,jdbcType=CHAR},
+      Introduce = #{introduce,jdbcType=VARCHAR},
+      Health = #{health,jdbcType=CHAR},
+      ModifyTime = #{modifytime,jdbcType=TIMESTAMP},
+      CountryID = #{countryid,jdbcType=INTEGER},
+      ExpectedValue = #{expectedvalue,jdbcType=VARCHAR},
+      HonorInfo = #{honorinfo,jdbcType=NVARCHAR},
+      EndDateContract = #{enddatecontract,jdbcType=TIMESTAMP},
+      IdiomaticFeet = #{idiomaticfeet,jdbcType=TINYINT},
+      Country2ID = #{country2id,jdbcType=INTEGER},
+      hotSortNumber = #{hotsortnumber,jdbcType=INTEGER}
+    where PlayerID = #{playerid,jdbcType=INTEGER}
+  </update>
+</mapper>

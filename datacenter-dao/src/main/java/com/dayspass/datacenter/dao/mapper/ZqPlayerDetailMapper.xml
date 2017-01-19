@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dayspass.datacenter.dao.ZqPlayerDetailMapper" >
+  <resultMap id="BaseResultMap" type="com.dayspass.datacenter.domain.ZqPlayerDetail" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="ScheduleID" property="scheduleid" jdbcType="INTEGER" />
+    <result column="player_id" property="playerId" jdbcType="INTEGER" />
+    <result column="team_id" property="teamId" jdbcType="INTEGER" />
+    <result column="number" property="number" jdbcType="INTEGER" />
+    <result column="player_name" property="playerName" jdbcType="VARCHAR" />
+    <result column="position" property="position" jdbcType="VARCHAR" />
+    <result column="shots_num" property="shotsNum" jdbcType="INTEGER" />
+    <result column="shots_on" property="shotsOn" jdbcType="INTEGER" />
+    <result column="key_pass" property="keyPass" jdbcType="INTEGER" />
+    <result column="pass_rate" property="passRate" jdbcType="REAL" />
+    <result column="aerial_win" property="aerialWin" jdbcType="INTEGER" />
+    <result column="touches" property="touches" jdbcType="INTEGER" />
+    <result column="dribbles_win" property="dribblesWin" jdbcType="INTEGER" />
+    <result column="was_fouled" property="wasFouled" jdbcType="INTEGER" />
+    <result column="dispossessed" property="dispossessed" jdbcType="INTEGER" />
+    <result column="turn_over" property="turnOver" jdbcType="INTEGER" />
+    <result column="off_sides" property="offSides" jdbcType="INTEGER" />
+    <result column="tackles" property="tackles" jdbcType="INTEGER" />
+    <result column="interception" property="interception" jdbcType="INTEGER" />
+    <result column="clearances" property="clearances" jdbcType="INTEGER" />
+    <result column="clearance_win" property="clearanceWin" jdbcType="INTEGER" />
+    <result column="shots_blocked" property="shotsBlocked" jdbcType="INTEGER" />
+    <result column="offside_provoked" property="offsideProvoked" jdbcType="INTEGER" />
+    <result column="fouls" property="fouls" jdbcType="INTEGER" />
+    <result column="total_pass" property="totalPass" jdbcType="INTEGER" />
+    <result column="accurate_pass" property="accuratePass" jdbcType="INTEGER" />
+    <result column="cross_num" property="crossNum" jdbcType="INTEGER" />
+    <result column="cross_win" property="crossWin" jdbcType="INTEGER" />
+    <result column="long_ball" property="longBall" jdbcType="INTEGER" />
+    <result column="longball_win" property="longballWin" jdbcType="INTEGER" />
+    <result column="through_ball" property="throughBall" jdbcType="INTEGER" />
+    <result column="throughball_win" property="throughballWin" jdbcType="INTEGER" />
+    <result column="rating" property="rating" jdbcType="REAL" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, ScheduleID, player_id, team_id, number, player_name, position, shots_num, shots_on, 
+    key_pass, pass_rate, aerial_win, touches, dribbles_win, was_fouled, dispossessed, 
+    turn_over, off_sides, tackles, interception, clearances, clearance_win, shots_blocked, 
+    offside_provoked, fouls, total_pass, accurate_pass, cross_num, cross_win, long_ball, 
+    longball_win, through_ball, throughball_win, rating, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ZQ_PlayerDetail
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ZQ_PlayerDetail
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.dayspass.datacenter.domain.ZqPlayerDetail" >
+    insert into ZQ_PlayerDetail (id, ScheduleID, player_id, 
+      team_id, number, player_name, 
+      position, shots_num, shots_on, 
+      key_pass, pass_rate, aerial_win, 
+      touches, dribbles_win, was_fouled, 
+      dispossessed, turn_over, off_sides, 
+      tackles, interception, clearances, 
+      clearance_win, shots_blocked, offside_provoked, 
+      fouls, total_pass, accurate_pass, 
+      cross_num, cross_win, long_ball, 
+      longball_win, through_ball, throughball_win, 
+      rating, create_time, update_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{scheduleid,jdbcType=INTEGER}, #{playerId,jdbcType=INTEGER}, 
+      #{teamId,jdbcType=INTEGER}, #{number,jdbcType=INTEGER}, #{playerName,jdbcType=VARCHAR}, 
+      #{position,jdbcType=VARCHAR}, #{shotsNum,jdbcType=INTEGER}, #{shotsOn,jdbcType=INTEGER}, 
+      #{keyPass,jdbcType=INTEGER}, #{passRate,jdbcType=REAL}, #{aerialWin,jdbcType=INTEGER}, 
+      #{touches,jdbcType=INTEGER}, #{dribblesWin,jdbcType=INTEGER}, #{wasFouled,jdbcType=INTEGER}, 
+      #{dispossessed,jdbcType=INTEGER}, #{turnOver,jdbcType=INTEGER}, #{offSides,jdbcType=INTEGER}, 
+      #{tackles,jdbcType=INTEGER}, #{interception,jdbcType=INTEGER}, #{clearances,jdbcType=INTEGER}, 
+      #{clearanceWin,jdbcType=INTEGER}, #{shotsBlocked,jdbcType=INTEGER}, #{offsideProvoked,jdbcType=INTEGER}, 
+      #{fouls,jdbcType=INTEGER}, #{totalPass,jdbcType=INTEGER}, #{accuratePass,jdbcType=INTEGER}, 
+      #{crossNum,jdbcType=INTEGER}, #{crossWin,jdbcType=INTEGER}, #{longBall,jdbcType=INTEGER}, 
+      #{longballWin,jdbcType=INTEGER}, #{throughBall,jdbcType=INTEGER}, #{throughballWin,jdbcType=INTEGER}, 
+      #{rating,jdbcType=REAL}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.dayspass.datacenter.domain.ZqPlayerDetail" >
+    insert into ZQ_PlayerDetail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="scheduleid != null" >
+        ScheduleID,
+      </if>
+      <if test="playerId != null" >
+        player_id,
+      </if>
+      <if test="teamId != null" >
+        team_id,
+      </if>
+      <if test="number != null" >
+        number,
+      </if>
+      <if test="playerName != null" >
+        player_name,
+      </if>
+      <if test="position != null" >
+        position,
+      </if>
+      <if test="shotsNum != null" >
+        shots_num,
+      </if>
+      <if test="shotsOn != null" >
+        shots_on,
+      </if>
+      <if test="keyPass != null" >
+        key_pass,
+      </if>
+      <if test="passRate != null" >
+        pass_rate,
+      </if>
+      <if test="aerialWin != null" >
+        aerial_win,
+      </if>
+      <if test="touches != null" >
+        touches,
+      </if>
+      <if test="dribblesWin != null" >
+        dribbles_win,
+      </if>
+      <if test="wasFouled != null" >
+        was_fouled,
+      </if>
+      <if test="dispossessed != null" >
+        dispossessed,
+      </if>
+      <if test="turnOver != null" >
+        turn_over,
+      </if>
+      <if test="offSides != null" >
+        off_sides,
+      </if>
+      <if test="tackles != null" >
+        tackles,
+      </if>
+      <if test="interception != null" >
+        interception,
+      </if>
+      <if test="clearances != null" >
+        clearances,
+      </if>
+      <if test="clearanceWin != null" >
+        clearance_win,
+      </if>
+      <if test="shotsBlocked != null" >
+        shots_blocked,
+      </if>
+      <if test="offsideProvoked != null" >
+        offside_provoked,
+      </if>
+      <if test="fouls != null" >
+        fouls,
+      </if>
+      <if test="totalPass != null" >
+        total_pass,
+      </if>
+      <if test="accuratePass != null" >
+        accurate_pass,
+      </if>
+      <if test="crossNum != null" >
+        cross_num,
+      </if>
+      <if test="crossWin != null" >
+        cross_win,
+      </if>
+      <if test="longBall != null" >
+        long_ball,
+      </if>
+      <if test="longballWin != null" >
+        longball_win,
+      </if>
+      <if test="throughBall != null" >
+        through_ball,
+      </if>
+      <if test="throughballWin != null" >
+        throughball_win,
+      </if>
+      <if test="rating != null" >
+        rating,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="scheduleid != null" >
+        #{scheduleid,jdbcType=INTEGER},
+      </if>
+      <if test="playerId != null" >
+        #{playerId,jdbcType=INTEGER},
+      </if>
+      <if test="teamId != null" >
+        #{teamId,jdbcType=INTEGER},
+      </if>
+      <if test="number != null" >
+        #{number,jdbcType=INTEGER},
+      </if>
+      <if test="playerName != null" >
+        #{playerName,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null" >
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="shotsNum != null" >
+        #{shotsNum,jdbcType=INTEGER},
+      </if>
+      <if test="shotsOn != null" >
+        #{shotsOn,jdbcType=INTEGER},
+      </if>
+      <if test="keyPass != null" >
+        #{keyPass,jdbcType=INTEGER},
+      </if>
+      <if test="passRate != null" >
+        #{passRate,jdbcType=REAL},
+      </if>
+      <if test="aerialWin != null" >
+        #{aerialWin,jdbcType=INTEGER},
+      </if>
+      <if test="touches != null" >
+        #{touches,jdbcType=INTEGER},
+      </if>
+      <if test="dribblesWin != null" >
+        #{dribblesWin,jdbcType=INTEGER},
+      </if>
+      <if test="wasFouled != null" >
+        #{wasFouled,jdbcType=INTEGER},
+      </if>
+      <if test="dispossessed != null" >
+        #{dispossessed,jdbcType=INTEGER},
+      </if>
+      <if test="turnOver != null" >
+        #{turnOver,jdbcType=INTEGER},
+      </if>
+      <if test="offSides != null" >
+        #{offSides,jdbcType=INTEGER},
+      </if>
+      <if test="tackles != null" >
+        #{tackles,jdbcType=INTEGER},
+      </if>
+      <if test="interception != null" >
+        #{interception,jdbcType=INTEGER},
+      </if>
+      <if test="clearances != null" >
+        #{clearances,jdbcType=INTEGER},
+      </if>
+      <if test="clearanceWin != null" >
+        #{clearanceWin,jdbcType=INTEGER},
+      </if>
+      <if test="shotsBlocked != null" >
+        #{shotsBlocked,jdbcType=INTEGER},
+      </if>
+      <if test="offsideProvoked != null" >
+        #{offsideProvoked,jdbcType=INTEGER},
+      </if>
+      <if test="fouls != null" >
+        #{fouls,jdbcType=INTEGER},
+      </if>
+      <if test="totalPass != null" >
+        #{totalPass,jdbcType=INTEGER},
+      </if>
+      <if test="accuratePass != null" >
+        #{accuratePass,jdbcType=INTEGER},
+      </if>
+      <if test="crossNum != null" >
+        #{crossNum,jdbcType=INTEGER},
+      </if>
+      <if test="crossWin != null" >
+        #{crossWin,jdbcType=INTEGER},
+      </if>
+      <if test="longBall != null" >
+        #{longBall,jdbcType=INTEGER},
+      </if>
+      <if test="longballWin != null" >
+        #{longballWin,jdbcType=INTEGER},
+      </if>
+      <if test="throughBall != null" >
+        #{throughBall,jdbcType=INTEGER},
+      </if>
+      <if test="throughballWin != null" >
+        #{throughballWin,jdbcType=INTEGER},
+      </if>
+      <if test="rating != null" >
+        #{rating,jdbcType=REAL},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dayspass.datacenter.domain.ZqPlayerDetail" >
+    update ZQ_PlayerDetail
+    <set >
+      <if test="scheduleid != null" >
+        ScheduleID = #{scheduleid,jdbcType=INTEGER},
+      </if>
+      <if test="playerId != null" >
+        player_id = #{playerId,jdbcType=INTEGER},
+      </if>
+      <if test="teamId != null" >
+        team_id = #{teamId,jdbcType=INTEGER},
+      </if>
+      <if test="number != null" >
+        number = #{number,jdbcType=INTEGER},
+      </if>
+      <if test="playerName != null" >
+        player_name = #{playerName,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null" >
+        position = #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="shotsNum != null" >
+        shots_num = #{shotsNum,jdbcType=INTEGER},
+      </if>
+      <if test="shotsOn != null" >
+        shots_on = #{shotsOn,jdbcType=INTEGER},
+      </if>
+      <if test="keyPass != null" >
+        key_pass = #{keyPass,jdbcType=INTEGER},
+      </if>
+      <if test="passRate != null" >
+        pass_rate = #{passRate,jdbcType=REAL},
+      </if>
+      <if test="aerialWin != null" >
+        aerial_win = #{aerialWin,jdbcType=INTEGER},
+      </if>
+      <if test="touches != null" >
+        touches = #{touches,jdbcType=INTEGER},
+      </if>
+      <if test="dribblesWin != null" >
+        dribbles_win = #{dribblesWin,jdbcType=INTEGER},
+      </if>
+      <if test="wasFouled != null" >
+        was_fouled = #{wasFouled,jdbcType=INTEGER},
+      </if>
+      <if test="dispossessed != null" >
+        dispossessed = #{dispossessed,jdbcType=INTEGER},
+      </if>
+      <if test="turnOver != null" >
+        turn_over = #{turnOver,jdbcType=INTEGER},
+      </if>
+      <if test="offSides != null" >
+        off_sides = #{offSides,jdbcType=INTEGER},
+      </if>
+      <if test="tackles != null" >
+        tackles = #{tackles,jdbcType=INTEGER},
+      </if>
+      <if test="interception != null" >
+        interception = #{interception,jdbcType=INTEGER},
+      </if>
+      <if test="clearances != null" >
+        clearances = #{clearances,jdbcType=INTEGER},
+      </if>
+      <if test="clearanceWin != null" >
+        clearance_win = #{clearanceWin,jdbcType=INTEGER},
+      </if>
+      <if test="shotsBlocked != null" >
+        shots_blocked = #{shotsBlocked,jdbcType=INTEGER},
+      </if>
+      <if test="offsideProvoked != null" >
+        offside_provoked = #{offsideProvoked,jdbcType=INTEGER},
+      </if>
+      <if test="fouls != null" >
+        fouls = #{fouls,jdbcType=INTEGER},
+      </if>
+      <if test="totalPass != null" >
+        total_pass = #{totalPass,jdbcType=INTEGER},
+      </if>
+      <if test="accuratePass != null" >
+        accurate_pass = #{accuratePass,jdbcType=INTEGER},
+      </if>
+      <if test="crossNum != null" >
+        cross_num = #{crossNum,jdbcType=INTEGER},
+      </if>
+      <if test="crossWin != null" >
+        cross_win = #{crossWin,jdbcType=INTEGER},
+      </if>
+      <if test="longBall != null" >
+        long_ball = #{longBall,jdbcType=INTEGER},
+      </if>
+      <if test="longballWin != null" >
+        longball_win = #{longballWin,jdbcType=INTEGER},
+      </if>
+      <if test="throughBall != null" >
+        through_ball = #{throughBall,jdbcType=INTEGER},
+      </if>
+      <if test="throughballWin != null" >
+        throughball_win = #{throughballWin,jdbcType=INTEGER},
+      </if>
+      <if test="rating != null" >
+        rating = #{rating,jdbcType=REAL},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dayspass.datacenter.domain.ZqPlayerDetail" >
+    update ZQ_PlayerDetail
+    set ScheduleID = #{scheduleid,jdbcType=INTEGER},
+      player_id = #{playerId,jdbcType=INTEGER},
+      team_id = #{teamId,jdbcType=INTEGER},
+      number = #{number,jdbcType=INTEGER},
+      player_name = #{playerName,jdbcType=VARCHAR},
+      position = #{position,jdbcType=VARCHAR},
+      shots_num = #{shotsNum,jdbcType=INTEGER},
+      shots_on = #{shotsOn,jdbcType=INTEGER},
+      key_pass = #{keyPass,jdbcType=INTEGER},
+      pass_rate = #{passRate,jdbcType=REAL},
+      aerial_win = #{aerialWin,jdbcType=INTEGER},
+      touches = #{touches,jdbcType=INTEGER},
+      dribbles_win = #{dribblesWin,jdbcType=INTEGER},
+      was_fouled = #{wasFouled,jdbcType=INTEGER},
+      dispossessed = #{dispossessed,jdbcType=INTEGER},
+      turn_over = #{turnOver,jdbcType=INTEGER},
+      off_sides = #{offSides,jdbcType=INTEGER},
+      tackles = #{tackles,jdbcType=INTEGER},
+      interception = #{interception,jdbcType=INTEGER},
+      clearances = #{clearances,jdbcType=INTEGER},
+      clearance_win = #{clearanceWin,jdbcType=INTEGER},
+      shots_blocked = #{shotsBlocked,jdbcType=INTEGER},
+      offside_provoked = #{offsideProvoked,jdbcType=INTEGER},
+      fouls = #{fouls,jdbcType=INTEGER},
+      total_pass = #{totalPass,jdbcType=INTEGER},
+      accurate_pass = #{accuratePass,jdbcType=INTEGER},
+      cross_num = #{crossNum,jdbcType=INTEGER},
+      cross_win = #{crossWin,jdbcType=INTEGER},
+      long_ball = #{longBall,jdbcType=INTEGER},
+      longball_win = #{longballWin,jdbcType=INTEGER},
+      through_ball = #{throughBall,jdbcType=INTEGER},
+      throughball_win = #{throughballWin,jdbcType=INTEGER},
+      rating = #{rating,jdbcType=REAL},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <!-- 条件查询球员统计列表 -->
+  <select id="queryAll" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ZQ_PlayerDetail
+    where 1 = 1
+     <if test="playerId != null">
+		and player_id = #{playerId} 
+	 </if>
+	 <if test="teamId != null">
+		and team_id = #{teamId} 
+	 </if>
+	 <if test="scheduleid != null">
+		and ScheduleID = #{scheduleid} 
+	 </if>
+  </select>
+  
+  <!-- 球员技术统计 -->
+  <select id="queryPlayerDetailSum" resultType="map" parameterType="Map">
+    SELECT count(*) rounds,count(p.shots_num) shotsNum,count(p.shots_on) shotsOn,count(p.key_pass) keypass,count(p.key_pass*p.pass_rate) keypasswin,
+	count(p.clearances) clearances,count(p.clearances*p.clearance_win) clearanceswin,count(p.interception) interception,avg(p.rating) avgscore FROM `ZQ_PlayerDetail` p 
+	LEFT JOIN `ZQ_Schedule` s on s.ScheduleID=p.ScheduleID where (s.HomeTeamID=#{teamid} or s.GuestTeamID=#{teamid}) and s.SclassID=#{sclassid}
+	and s.MatchSeason=#{matchseason} and p.player_id=#{playerid};
+  </select>
+  
+  <!-- 查询球员的赛季技术统计列表 -->
+  <select id="queryPlayerDetailSeason" resultMap="BaseResultMap">
+    select 
+    p.*
+    from ZQ_PlayerDetail p left join ZQ_Schedule s on s.ScheduleID=p.ScheduleID
+    where p.player_id = #{playerId} and p.team_id = #{teamId} and s.MatchSeason=#{matchseason}
+  </select>
+  
+  <!-- 查询本场最佳球员 -->
+  <select id="queryBestPlayerBySchedule" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from ZQ_PlayerDetail where ScheduleID = #{scheduleid} and team_id = #{teamId} ORDER BY rating desc limit 1
+  </select>
+  
+</mapper>

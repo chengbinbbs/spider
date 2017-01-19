@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dayspass.datacenter.dao.ZqCupMatchGroupingMapper" >
+  <resultMap id="BaseResultMap" type="com.dayspass.datacenter.domain.ZqCupMatchGrouping" >
+    <id column="GroupID" property="groupid" jdbcType="INTEGER" />
+    <result column="SclassID" property="sclassid" jdbcType="INTEGER" />
+    <result column="MatchSeason" property="matchseason" jdbcType="VARCHAR" />
+    <result column="IsGroup" property="isgroup" jdbcType="BIT" />
+    <result column="GroupName" property="groupname" jdbcType="VARCHAR" />
+    <result column="GroupNameEn" property="groupnameen" jdbcType="NVARCHAR" />
+    <result column="GroupNum" property="groupnum" jdbcType="SMALLINT" />
+    <result column="IsCurrentGroup" property="iscurrentgroup" jdbcType="BIT" />
+    <result column="taxis" property="taxis" jdbcType="SMALLINT" />
+    <result column="AddDateTime" property="adddatetime" jdbcType="TIMESTAMP" />
+    <result column="LyMatch" property="lymatch" jdbcType="VARCHAR" />
+    <result column="LineCount" property="linecount" jdbcType="SMALLINT" />
+    <result column="GroupName_F" property="groupnameF" jdbcType="VARCHAR" />
+    <result column="IsZu" property="iszu" jdbcType="BIT" />
+    <result column="ifMain" property="ifmain" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    GroupID, SclassID, MatchSeason, IsGroup, GroupName, GroupNameEn, GroupNum, IsCurrentGroup, 
+    taxis, AddDateTime, LyMatch, LineCount, GroupName_F, IsZu, ifMain
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ZQ_CupMatch_Grouping
+    where GroupID = #{groupid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ZQ_CupMatch_Grouping
+    where GroupID = #{groupid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.dayspass.datacenter.domain.ZqCupMatchGrouping" >
+    insert into ZQ_CupMatch_Grouping (GroupID, SclassID, MatchSeason, 
+      IsGroup, GroupName, GroupNameEn, 
+      GroupNum, IsCurrentGroup, taxis, 
+      AddDateTime, LyMatch, LineCount, 
+      GroupName_F, IsZu, ifMain)
+    values (#{groupid,jdbcType=INTEGER}, #{sclassid,jdbcType=INTEGER}, #{matchseason,jdbcType=VARCHAR}, 
+      #{isgroup,jdbcType=BIT}, #{groupname,jdbcType=VARCHAR}, #{groupnameen,jdbcType=NVARCHAR}, 
+      #{groupnum,jdbcType=SMALLINT}, #{iscurrentgroup,jdbcType=BIT}, #{taxis,jdbcType=SMALLINT}, 
+      #{adddatetime,jdbcType=TIMESTAMP}, #{lymatch,jdbcType=VARCHAR}, #{linecount,jdbcType=SMALLINT}, 
+      #{groupnameF,jdbcType=VARCHAR}, #{iszu,jdbcType=BIT}, #{ifmain,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dayspass.datacenter.domain.ZqCupMatchGrouping" >
+    insert into ZQ_CupMatch_Grouping
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="groupid != null" >
+        GroupID,
+      </if>
+      <if test="sclassid != null" >
+        SclassID,
+      </if>
+      <if test="matchseason != null" >
+        MatchSeason,
+      </if>
+      <if test="isgroup != null" >
+        IsGroup,
+      </if>
+      <if test="groupname != null" >
+        GroupName,
+      </if>
+      <if test="groupnameen != null" >
+        GroupNameEn,
+      </if>
+      <if test="groupnum != null" >
+        GroupNum,
+      </if>
+      <if test="iscurrentgroup != null" >
+        IsCurrentGroup,
+      </if>
+      <if test="taxis != null" >
+        taxis,
+      </if>
+      <if test="adddatetime != null" >
+        AddDateTime,
+      </if>
+      <if test="lymatch != null" >
+        LyMatch,
+      </if>
+      <if test="linecount != null" >
+        LineCount,
+      </if>
+      <if test="groupnameF != null" >
+        GroupName_F,
+      </if>
+      <if test="iszu != null" >
+        IsZu,
+      </if>
+      <if test="ifmain != null" >
+        ifMain,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="groupid != null" >
+        #{groupid,jdbcType=INTEGER},
+      </if>
+      <if test="sclassid != null" >
+        #{sclassid,jdbcType=INTEGER},
+      </if>
+      <if test="matchseason != null" >
+        #{matchseason,jdbcType=VARCHAR},
+      </if>
+      <if test="isgroup != null" >
+        #{isgroup,jdbcType=BIT},
+      </if>
+      <if test="groupname != null" >
+        #{groupname,jdbcType=VARCHAR},
+      </if>
+      <if test="groupnameen != null" >
+        #{groupnameen,jdbcType=NVARCHAR},
+      </if>
+      <if test="groupnum != null" >
+        #{groupnum,jdbcType=SMALLINT},
+      </if>
+      <if test="iscurrentgroup != null" >
+        #{iscurrentgroup,jdbcType=BIT},
+      </if>
+      <if test="taxis != null" >
+        #{taxis,jdbcType=SMALLINT},
+      </if>
+      <if test="adddatetime != null" >
+        #{adddatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lymatch != null" >
+        #{lymatch,jdbcType=VARCHAR},
+      </if>
+      <if test="linecount != null" >
+        #{linecount,jdbcType=SMALLINT},
+      </if>
+      <if test="groupnameF != null" >
+        #{groupnameF,jdbcType=VARCHAR},
+      </if>
+      <if test="iszu != null" >
+        #{iszu,jdbcType=BIT},
+      </if>
+      <if test="ifmain != null" >
+        #{ifmain,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dayspass.datacenter.domain.ZqCupMatchGrouping" >
+    update ZQ_CupMatch_Grouping
+    <set >
+      <if test="sclassid != null" >
+        SclassID = #{sclassid,jdbcType=INTEGER},
+      </if>
+      <if test="matchseason != null" >
+        MatchSeason = #{matchseason,jdbcType=VARCHAR},
+      </if>
+      <if test="isgroup != null" >
+        IsGroup = #{isgroup,jdbcType=BIT},
+      </if>
+      <if test="groupname != null" >
+        GroupName = #{groupname,jdbcType=VARCHAR},
+      </if>
+      <if test="groupnameen != null" >
+        GroupNameEn = #{groupnameen,jdbcType=NVARCHAR},
+      </if>
+      <if test="groupnum != null" >
+        GroupNum = #{groupnum,jdbcType=SMALLINT},
+      </if>
+      <if test="iscurrentgroup != null" >
+        IsCurrentGroup = #{iscurrentgroup,jdbcType=BIT},
+      </if>
+      <if test="taxis != null" >
+        taxis = #{taxis,jdbcType=SMALLINT},
+      </if>
+      <if test="adddatetime != null" >
+        AddDateTime = #{adddatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lymatch != null" >
+        LyMatch = #{lymatch,jdbcType=VARCHAR},
+      </if>
+      <if test="linecount != null" >
+        LineCount = #{linecount,jdbcType=SMALLINT},
+      </if>
+      <if test="groupnameF != null" >
+        GroupName_F = #{groupnameF,jdbcType=VARCHAR},
+      </if>
+      <if test="iszu != null" >
+        IsZu = #{iszu,jdbcType=BIT},
+      </if>
+      <if test="ifmain != null" >
+        ifMain = #{ifmain,jdbcType=BIT},
+      </if>
+    </set>
+    where GroupID = #{groupid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dayspass.datacenter.domain.ZqCupMatchGrouping" >
+    update ZQ_CupMatch_Grouping
+    set SclassID = #{sclassid,jdbcType=INTEGER},
+      MatchSeason = #{matchseason,jdbcType=VARCHAR},
+      IsGroup = #{isgroup,jdbcType=BIT},
+      GroupName = #{groupname,jdbcType=VARCHAR},
+      GroupNameEn = #{groupnameen,jdbcType=NVARCHAR},
+      GroupNum = #{groupnum,jdbcType=SMALLINT},
+      IsCurrentGroup = #{iscurrentgroup,jdbcType=BIT},
+      taxis = #{taxis,jdbcType=SMALLINT},
+      AddDateTime = #{adddatetime,jdbcType=TIMESTAMP},
+      LyMatch = #{lymatch,jdbcType=VARCHAR},
+      LineCount = #{linecount,jdbcType=SMALLINT},
+      GroupName_F = #{groupnameF,jdbcType=VARCHAR},
+      IsZu = #{iszu,jdbcType=BIT},
+      ifMain = #{ifmain,jdbcType=BIT}
+    where GroupID = #{groupid,jdbcType=INTEGER}
+  </update>
+  
+  <!-- 条件查询 -->
+  <select id="queryAll" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ZQ_CupMatch_Grouping 
+    where 1 = 1
+     <if test="sclassid != null" >
+        and SclassID = #{sclassid}
+      </if>
+      <if test="matchseason != null" >
+        and MatchSeason = #{matchseason}
+      </if>
+      <if test="isgroup != null" >
+        and IsGroup = #{isgroup}
+      </if>
+      <if test="groupname != null" >
+        and GroupName = #{groupname}
+      </if>
+      <if test="iscurrentgroup != null" >
+        and IsCurrentGroup = #{iscurrentgroup}
+      </if>
+  </select>
+  
+</mapper>

@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dayspass.datacenter.dao.ZqPlayerInTeamMapper" >
+  <resultMap id="BaseResultMap" type="com.dayspass.datacenter.domain.ZqPlayerInTeam" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="PlayerID" property="playerid" jdbcType="INTEGER" />
+    <result column="PlayerName" property="playername" jdbcType="CHAR" />
+    <result column="TeamID" property="teamid" jdbcType="INTEGER" />
+    <result column="TeamName" property="teamname" jdbcType="NCHAR" />
+    <result column="Place" property="place" jdbcType="NVARCHAR" />
+    <result column="Number" property="number" jdbcType="CHAR" />
+    <result column="Score" property="score" jdbcType="SMALLINT" />
+    <result column="ModifyTime" property="modifytime" jdbcType="TIMESTAMP" />
+    <result column="coachTypeID" property="coachtypeid" jdbcType="INTEGER" />
+    <result column="captainTypeID" property="captaintypeid" jdbcType="INTEGER" />
+    <result column="PlayerPositionID" property="playerpositionid" jdbcType="INTEGER" />
+    <result column="startTime" property="starttime" jdbcType="TIMESTAMP" />
+    <result column="endTime" property="endtime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, PlayerID, PlayerName, TeamID, TeamName, Place, Number, Score, ModifyTime, coachTypeID, 
+    captainTypeID, PlayerPositionID, startTime, endTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ZQ_PlayerInTeam
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ZQ_PlayerInTeam
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.dayspass.datacenter.domain.ZqPlayerInTeam" >
+    insert into ZQ_PlayerInTeam (ID, PlayerID, PlayerName, 
+      TeamID, TeamName, Place, 
+      Number, Score, ModifyTime, 
+      coachTypeID, captainTypeID, PlayerPositionID, 
+      startTime, endTime)
+    values (#{id,jdbcType=INTEGER}, #{playerid,jdbcType=INTEGER}, #{playername,jdbcType=CHAR}, 
+      #{teamid,jdbcType=INTEGER}, #{teamname,jdbcType=NCHAR}, #{place,jdbcType=NVARCHAR}, 
+      #{number,jdbcType=CHAR}, #{score,jdbcType=SMALLINT}, #{modifytime,jdbcType=TIMESTAMP}, 
+      #{coachtypeid,jdbcType=INTEGER}, #{captaintypeid,jdbcType=INTEGER}, #{playerpositionid,jdbcType=INTEGER}, 
+      #{starttime,jdbcType=TIMESTAMP}, #{endtime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dayspass.datacenter.domain.ZqPlayerInTeam" >
+    insert into ZQ_PlayerInTeam
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="playerid != null" >
+        PlayerID,
+      </if>
+      <if test="playername != null" >
+        PlayerName,
+      </if>
+      <if test="teamid != null" >
+        TeamID,
+      </if>
+      <if test="teamname != null" >
+        TeamName,
+      </if>
+      <if test="place != null" >
+        Place,
+      </if>
+      <if test="number != null" >
+        Number,
+      </if>
+      <if test="score != null" >
+        Score,
+      </if>
+      <if test="modifytime != null" >
+        ModifyTime,
+      </if>
+      <if test="coachtypeid != null" >
+        coachTypeID,
+      </if>
+      <if test="captaintypeid != null" >
+        captainTypeID,
+      </if>
+      <if test="playerpositionid != null" >
+        PlayerPositionID,
+      </if>
+      <if test="starttime != null" >
+        startTime,
+      </if>
+      <if test="endtime != null" >
+        endTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="playerid != null" >
+        #{playerid,jdbcType=INTEGER},
+      </if>
+      <if test="playername != null" >
+        #{playername,jdbcType=CHAR},
+      </if>
+      <if test="teamid != null" >
+        #{teamid,jdbcType=INTEGER},
+      </if>
+      <if test="teamname != null" >
+        #{teamname,jdbcType=NCHAR},
+      </if>
+      <if test="place != null" >
+        #{place,jdbcType=NVARCHAR},
+      </if>
+      <if test="number != null" >
+        #{number,jdbcType=CHAR},
+      </if>
+      <if test="score != null" >
+        #{score,jdbcType=SMALLINT},
+      </if>
+      <if test="modifytime != null" >
+        #{modifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="coachtypeid != null" >
+        #{coachtypeid,jdbcType=INTEGER},
+      </if>
+      <if test="captaintypeid != null" >
+        #{captaintypeid,jdbcType=INTEGER},
+      </if>
+      <if test="playerpositionid != null" >
+        #{playerpositionid,jdbcType=INTEGER},
+      </if>
+      <if test="starttime != null" >
+        #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null" >
+        #{endtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dayspass.datacenter.domain.ZqPlayerInTeam" >
+    update ZQ_PlayerInTeam
+    <set >
+      <if test="playerid != null" >
+        PlayerID = #{playerid,jdbcType=INTEGER},
+      </if>
+      <if test="playername != null" >
+        PlayerName = #{playername,jdbcType=CHAR},
+      </if>
+      <if test="teamid != null" >
+        TeamID = #{teamid,jdbcType=INTEGER},
+      </if>
+      <if test="teamname != null" >
+        TeamName = #{teamname,jdbcType=NCHAR},
+      </if>
+      <if test="place != null" >
+        Place = #{place,jdbcType=NVARCHAR},
+      </if>
+      <if test="number != null" >
+        Number = #{number,jdbcType=CHAR},
+      </if>
+      <if test="score != null" >
+        Score = #{score,jdbcType=SMALLINT},
+      </if>
+      <if test="modifytime != null" >
+        ModifyTime = #{modifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="coachtypeid != null" >
+        coachTypeID = #{coachtypeid,jdbcType=INTEGER},
+      </if>
+      <if test="captaintypeid != null" >
+        captainTypeID = #{captaintypeid,jdbcType=INTEGER},
+      </if>
+      <if test="playerpositionid != null" >
+        PlayerPositionID = #{playerpositionid,jdbcType=INTEGER},
+      </if>
+      <if test="starttime != null" >
+        startTime = #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null" >
+        endTime = #{endtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dayspass.datacenter.domain.ZqPlayerInTeam" >
+    update ZQ_PlayerInTeam
+    set PlayerID = #{playerid,jdbcType=INTEGER},
+      PlayerName = #{playername,jdbcType=CHAR},
+      TeamID = #{teamid,jdbcType=INTEGER},
+      TeamName = #{teamname,jdbcType=NCHAR},
+      Place = #{place,jdbcType=NVARCHAR},
+      Number = #{number,jdbcType=CHAR},
+      Score = #{score,jdbcType=SMALLINT},
+      ModifyTime = #{modifytime,jdbcType=TIMESTAMP},
+      coachTypeID = #{coachtypeid,jdbcType=INTEGER},
+      captainTypeID = #{captaintypeid,jdbcType=INTEGER},
+      PlayerPositionID = #{playerpositionid,jdbcType=INTEGER},
+      startTime = #{starttime,jdbcType=TIMESTAMP},
+      endTime = #{endtime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <!-- 条件查询 -->
+  <select id="queryAll" resultMap="BaseResultMap">
+    select 
+    pt.ID, pt.PlayerID, p.Name_short as PlayerName, pt.TeamID, pt.TeamName, pt.Place, pt.Number, pt.Score, pt.ModifyTime, pt.coachTypeID, 
+    pt.captainTypeID, pt.PlayerPositionID, pt.startTime, pt.endTime
+    from ZQ_PlayerInTeam pt,ZQ_Player p
+    where pt.PlayerID = p.PlayerID
+    <if test="playerid != null">
+		and pt.PlayerID = #{playerid} 
+	 </if>
+	 <if test="teamid != null and teamid != ''">
+		and pt.TeamID = #{teamid} 
+	 </if>
+	 <if test="playername != null" >
+        and pt.PlayerName = #{playername}
+      </if>
+	 <if test="number != null and number != ''">
+		and pt.Number = #{number} 
+	 </if>
+  </select>
+  
+  <update id="updatePlayerInTeam" parameterType="com.dayspass.datacenter.domain.ZqPlayerInTeam" >
+    update ZQ_PlayerInTeam
+    set 
+      <if test="playername != null" >
+        PlayerName = #{playername},
+      </if>
+      <if test="teamid != null" >
+        TeamID = #{teamid},
+      </if>
+      <if test="teamname != null" >
+        TeamName = #{teamname},
+      </if>
+      <if test="place != null" >
+        Place = #{place},
+      </if>
+      <if test="number != null" >
+        Number = #{number},
+      </if>
+      <if test="playerid != null">
+		PlayerID = #{playerid}
+	 </if>
+    where 1=1
+     <if test="playerid != null">
+		and PlayerID = #{playerid} 
+	 </if>
+	 <if test="teamid != null">
+		and TeamID = #{teamid} 
+	 </if>
+  </update>
+  
+</mapper>

@@ -1,0 +1,46 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>datacenter</groupId>
+    <artifactId>datacenter-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <relativePath>../datacenter-parent</relativePath>
+  </parent>
+  <artifactId>datacenter-task</artifactId>
+  <packaging>war</packaging>
+  <description>得仕彩票数据中心任务线程</description>
+  <dependencies>
+	<dependency>
+		<groupId>datacenter</groupId>
+		<artifactId>datacenter-service</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</dependency>
+</dependencies>
+
+  <properties>
+	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  
+  <build>
+  	<finalName>task</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.12.4</version>
+        <configuration>
+          <skipTests>true</skipTests>
+        </configuration>
+      </plugin>
+      
+      <plugin>
+			<groupId>org.apache.tomcat.maven</groupId>
+			<artifactId>tomcat7-maven-plugin</artifactId>
+			<configuration>
+				<port>8080</port>
+				<path>/</path>
+			</configuration>
+		</plugin>
+    </plugins>
+  </build>
+</project>

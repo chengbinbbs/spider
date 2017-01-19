@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dayspass.datacenter.dao.LqTeamMapper" >
+  <resultMap id="BaseResultMap" type="com.dayspass.datacenter.domain.LqTeam" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="SclassID" property="sclassid" jdbcType="INTEGER" />
+    <result column="LocationID" property="locationid" jdbcType="INTEGER" />
+    <result column="MatchAddrID" property="matchaddrid" jdbcType="INTEGER" />
+    <result column="Name_F" property="nameF" jdbcType="VARCHAR" />
+    <result column="Name_JS" property="nameJs" jdbcType="VARCHAR" />
+    <result column="Name_J" property="nameJ" jdbcType="VARCHAR" />
+    <result column="Name_E" property="nameE" jdbcType="VARCHAR" />
+    <result column="URL" property="url" jdbcType="CHAR" />
+    <result column="City" property="city" jdbcType="CHAR" />
+    <result column="Gymnasium" property="gymnasium" jdbcType="CHAR" />
+    <result column="Capacity" property="capacity" jdbcType="INTEGER" />
+    <result column="JoinYear" property="joinyear" jdbcType="SMALLINT" />
+    <result column="FirstTime" property="firsttime" jdbcType="SMALLINT" />
+    <result column="Drillmaster" property="drillmaster" jdbcType="CHAR" />
+    <result column="MasterPic" property="masterpic" jdbcType="CHAR" />
+    <result column="Flag" property="flag" jdbcType="CHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.dayspass.datacenter.domain.LqTeamWithBLOBs" extends="BaseResultMap" >
+    <result column="FormerGrade" property="formergrade" jdbcType="LONGVARCHAR" />
+    <result column="MasterIntro" property="masterintro" jdbcType="LONGVARCHAR" />
+    <result column="Introduce" property="introduce" jdbcType="LONGVARCHAR" />
+    <result column="MasterInfo" property="masterinfo" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, SclassID, LocationID, MatchAddrID, Name_F, Name_JS, Name_J, Name_E, URL, City, 
+    Gymnasium, Capacity, JoinYear, FirstTime, Drillmaster, MasterPic, Flag
+  </sql>
+  <sql id="Blob_Column_List" >
+    FormerGrade, MasterIntro, Introduce, MasterInfo
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from LQ_Team
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from LQ_Team
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.dayspass.datacenter.domain.LqTeamWithBLOBs" >
+    insert into LQ_Team (ID, SclassID, LocationID, 
+      MatchAddrID, Name_F, Name_JS, 
+      Name_J, Name_E, URL, City, 
+      Gymnasium, Capacity, JoinYear, 
+      FirstTime, Drillmaster, MasterPic, 
+      Flag, FormerGrade, MasterIntro, 
+      Introduce, MasterInfo)
+    values (#{id,jdbcType=INTEGER}, #{sclassid,jdbcType=INTEGER}, #{locationid,jdbcType=INTEGER}, 
+      #{matchaddrid,jdbcType=INTEGER}, #{nameF,jdbcType=VARCHAR}, #{nameJs,jdbcType=VARCHAR}, 
+      #{nameJ,jdbcType=VARCHAR}, #{nameE,jdbcType=VARCHAR}, #{url,jdbcType=CHAR}, #{city,jdbcType=CHAR}, 
+      #{gymnasium,jdbcType=CHAR}, #{capacity,jdbcType=INTEGER}, #{joinyear,jdbcType=SMALLINT}, 
+      #{firsttime,jdbcType=SMALLINT}, #{drillmaster,jdbcType=CHAR}, #{masterpic,jdbcType=CHAR}, 
+      #{flag,jdbcType=CHAR}, #{formergrade,jdbcType=LONGVARCHAR}, #{masterintro,jdbcType=LONGVARCHAR}, 
+      #{introduce,jdbcType=LONGVARCHAR}, #{masterinfo,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dayspass.datacenter.domain.LqTeamWithBLOBs" >
+    insert into LQ_Team
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="sclassid != null" >
+        SclassID,
+      </if>
+      <if test="locationid != null" >
+        LocationID,
+      </if>
+      <if test="matchaddrid != null" >
+        MatchAddrID,
+      </if>
+      <if test="nameF != null" >
+        Name_F,
+      </if>
+      <if test="nameJs != null" >
+        Name_JS,
+      </if>
+      <if test="nameJ != null" >
+        Name_J,
+      </if>
+      <if test="nameE != null" >
+        Name_E,
+      </if>
+      <if test="url != null" >
+        URL,
+      </if>
+      <if test="city != null" >
+        City,
+      </if>
+      <if test="gymnasium != null" >
+        Gymnasium,
+      </if>
+      <if test="capacity != null" >
+        Capacity,
+      </if>
+      <if test="joinyear != null" >
+        JoinYear,
+      </if>
+      <if test="firsttime != null" >
+        FirstTime,
+      </if>
+      <if test="drillmaster != null" >
+        Drillmaster,
+      </if>
+      <if test="masterpic != null" >
+        MasterPic,
+      </if>
+      <if test="flag != null" >
+        Flag,
+      </if>
+      <if test="formergrade != null" >
+        FormerGrade,
+      </if>
+      <if test="masterintro != null" >
+        MasterIntro,
+      </if>
+      <if test="introduce != null" >
+        Introduce,
+      </if>
+      <if test="masterinfo != null" >
+        MasterInfo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="sclassid != null" >
+        #{sclassid,jdbcType=INTEGER},
+      </if>
+      <if test="locationid != null" >
+        #{locationid,jdbcType=INTEGER},
+      </if>
+      <if test="matchaddrid != null" >
+        #{matchaddrid,jdbcType=INTEGER},
+      </if>
+      <if test="nameF != null" >
+        #{nameF,jdbcType=VARCHAR},
+      </if>
+      <if test="nameJs != null" >
+        #{nameJs,jdbcType=VARCHAR},
+      </if>
+      <if test="nameJ != null" >
+        #{nameJ,jdbcType=VARCHAR},
+      </if>
+      <if test="nameE != null" >
+        #{nameE,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=CHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=CHAR},
+      </if>
+      <if test="gymnasium != null" >
+        #{gymnasium,jdbcType=CHAR},
+      </if>
+      <if test="capacity != null" >
+        #{capacity,jdbcType=INTEGER},
+      </if>
+      <if test="joinyear != null" >
+        #{joinyear,jdbcType=SMALLINT},
+      </if>
+      <if test="firsttime != null" >
+        #{firsttime,jdbcType=SMALLINT},
+      </if>
+      <if test="drillmaster != null" >
+        #{drillmaster,jdbcType=CHAR},
+      </if>
+      <if test="masterpic != null" >
+        #{masterpic,jdbcType=CHAR},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=CHAR},
+      </if>
+      <if test="formergrade != null" >
+        #{formergrade,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="masterintro != null" >
+        #{masterintro,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="introduce != null" >
+        #{introduce,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="masterinfo != null" >
+        #{masterinfo,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dayspass.datacenter.domain.LqTeamWithBLOBs" >
+    update LQ_Team
+    <set >
+      <if test="sclassid != null" >
+        SclassID = #{sclassid,jdbcType=INTEGER},
+      </if>
+      <if test="locationid != null" >
+        LocationID = #{locationid,jdbcType=INTEGER},
+      </if>
+      <if test="matchaddrid != null" >
+        MatchAddrID = #{matchaddrid,jdbcType=INTEGER},
+      </if>
+      <if test="nameF != null" >
+        Name_F = #{nameF,jdbcType=VARCHAR},
+      </if>
+      <if test="nameJs != null" >
+        Name_JS = #{nameJs,jdbcType=VARCHAR},
+      </if>
+      <if test="nameJ != null" >
+        Name_J = #{nameJ,jdbcType=VARCHAR},
+      </if>
+      <if test="nameE != null" >
+        Name_E = #{nameE,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        URL = #{url,jdbcType=CHAR},
+      </if>
+      <if test="city != null" >
+        City = #{city,jdbcType=CHAR},
+      </if>
+      <if test="gymnasium != null" >
+        Gymnasium = #{gymnasium,jdbcType=CHAR},
+      </if>
+      <if test="capacity != null" >
+        Capacity = #{capacity,jdbcType=INTEGER},
+      </if>
+      <if test="joinyear != null" >
+        JoinYear = #{joinyear,jdbcType=SMALLINT},
+      </if>
+      <if test="firsttime != null" >
+        FirstTime = #{firsttime,jdbcType=SMALLINT},
+      </if>
+      <if test="drillmaster != null" >
+        Drillmaster = #{drillmaster,jdbcType=CHAR},
+      </if>
+      <if test="masterpic != null" >
+        MasterPic = #{masterpic,jdbcType=CHAR},
+      </if>
+      <if test="flag != null" >
+        Flag = #{flag,jdbcType=CHAR},
+      </if>
+      <if test="formergrade != null" >
+        FormerGrade = #{formergrade,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="masterintro != null" >
+        MasterIntro = #{masterintro,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="introduce != null" >
+        Introduce = #{introduce,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="masterinfo != null" >
+        MasterInfo = #{masterinfo,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.dayspass.datacenter.domain.LqTeamWithBLOBs" >
+    update LQ_Team
+    set SclassID = #{sclassid,jdbcType=INTEGER},
+      LocationID = #{locationid,jdbcType=INTEGER},
+      MatchAddrID = #{matchaddrid,jdbcType=INTEGER},
+      Name_F = #{nameF,jdbcType=VARCHAR},
+      Name_JS = #{nameJs,jdbcType=VARCHAR},
+      Name_J = #{nameJ,jdbcType=VARCHAR},
+      Name_E = #{nameE,jdbcType=VARCHAR},
+      URL = #{url,jdbcType=CHAR},
+      City = #{city,jdbcType=CHAR},
+      Gymnasium = #{gymnasium,jdbcType=CHAR},
+      Capacity = #{capacity,jdbcType=INTEGER},
+      JoinYear = #{joinyear,jdbcType=SMALLINT},
+      FirstTime = #{firsttime,jdbcType=SMALLINT},
+      Drillmaster = #{drillmaster,jdbcType=CHAR},
+      MasterPic = #{masterpic,jdbcType=CHAR},
+      Flag = #{flag,jdbcType=CHAR},
+      FormerGrade = #{formergrade,jdbcType=LONGVARCHAR},
+      MasterIntro = #{masterintro,jdbcType=LONGVARCHAR},
+      Introduce = #{introduce,jdbcType=LONGVARCHAR},
+      MasterInfo = #{masterinfo,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dayspass.datacenter.domain.LqTeam" >
+    update LQ_Team
+    set SclassID = #{sclassid,jdbcType=INTEGER},
+      LocationID = #{locationid,jdbcType=INTEGER},
+      MatchAddrID = #{matchaddrid,jdbcType=INTEGER},
+      Name_F = #{nameF,jdbcType=VARCHAR},
+      Name_JS = #{nameJs,jdbcType=VARCHAR},
+      Name_J = #{nameJ,jdbcType=VARCHAR},
+      Name_E = #{nameE,jdbcType=VARCHAR},
+      URL = #{url,jdbcType=CHAR},
+      City = #{city,jdbcType=CHAR},
+      Gymnasium = #{gymnasium,jdbcType=CHAR},
+      Capacity = #{capacity,jdbcType=INTEGER},
+      JoinYear = #{joinyear,jdbcType=SMALLINT},
+      FirstTime = #{firsttime,jdbcType=SMALLINT},
+      Drillmaster = #{drillmaster,jdbcType=CHAR},
+      MasterPic = #{masterpic,jdbcType=CHAR},
+      Flag = #{flag,jdbcType=CHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

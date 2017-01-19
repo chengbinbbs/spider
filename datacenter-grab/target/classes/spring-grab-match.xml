@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans default-lazy-init="false" xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+       http://www.springframework.org/schema/aop 
+       http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+       http://www.springframework.org/schema/task   
+        http://www.springframework.org/schema/task/spring-task-4.0.xsd
+      http://www.springframework.org/schema/context
+      http://www.springframework.org/schema/context/spring-context-4.0.xsd
+      http://www.springframework.org/schema/mvc
+      http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+    
+	<task:scheduler id="grabscheduler" pool-size="100" />
+	<task:scheduled-tasks scheduler="grabscheduler">
+		<!-- 抓取当前期完整赛事 15秒 -->
+		<task:scheduled ref="taskDayMatch" method="grabSchedule" fixed-delay="15000" />
+		<!-- 当前期比赛入库 队列消费5秒 -->
+		<task:scheduled ref="taskDayMatch" method="consumQueueOne" fixed-delay="5000" />
+		<!-- 当前期比赛更新缓存 队列消费5秒 -->
+		<task:scheduled ref="taskDayMatch" method="consumQueueTwo" fixed-delay="5000" />
+		<!-- 当前期比赛更新库 队列消费5秒 -->
+		<task:scheduled ref="taskDayMatch" method="consumQueueThree" fixed-delay="5000" />
+		<!-- 生成当前期赛事文件 3秒 -->
+		<task:scheduled ref="taskDayMatch" method="createJsbfMatch" fixed-delay="3000" />
+		<!-- 历史期次文件每天上午10点32分执行一次-->
+        <task:scheduled ref="taskDayMatch" method="createDistoryPeriod" cron="0 32 10 * * ?" />		
+		
+		<!-- 抓取比分直播文件 3秒 -->
+		<task:scheduled ref="taskChangeMatch" method="grabChange" fixed-delay="3000" />
+	</task:scheduled-tasks>
+</beans>

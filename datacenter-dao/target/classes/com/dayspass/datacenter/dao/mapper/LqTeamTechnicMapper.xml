@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dayspass.datacenter.dao.LqTeamTechnicMapper" >
+  <resultMap id="BaseResultMap" type="com.dayspass.datacenter.domain.LqTeamTechnic" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="ScheduleID" property="scheduleid" jdbcType="INTEGER" />
+    <result column="TeamID" property="teamid" jdbcType="INTEGER" />
+    <result column="MatchSeason" property="matchseason" jdbcType="CHAR" />
+    <result column="IsHome" property="ishome" jdbcType="BIT" />
+    <result column="PlayTime" property="playtime" jdbcType="SMALLINT" />
+    <result column="Score" property="score" jdbcType="SMALLINT" />
+    <result column="LostScore" property="lostscore" jdbcType="SMALLINT" />
+    <result column="Shoot" property="shoot" jdbcType="SMALLINT" />
+    <result column="Shoot_Hit" property="shootHit" jdbcType="SMALLINT" />
+    <result column="ThreeMin" property="threemin" jdbcType="SMALLINT" />
+    <result column="ThreeMin_Hit" property="threeminHit" jdbcType="SMALLINT" />
+    <result column="PunishBall" property="punishball" jdbcType="SMALLINT" />
+    <result column="PunishBall_Hit" property="punishballHit" jdbcType="SMALLINT" />
+    <result column="Attack" property="attack" jdbcType="SMALLINT" />
+    <result column="defend" property="defend" jdbcType="SMALLINT" />
+    <result column="HelpAttack" property="helpattack" jdbcType="SMALLINT" />
+    <result column="Rob" property="rob" jdbcType="SMALLINT" />
+    <result column="Cover" property="cover" jdbcType="SMALLINT" />
+    <result column="Misplay" property="misplay" jdbcType="SMALLINT" />
+    <result column="Foul" property="foul" jdbcType="SMALLINT" />
+    <result column="TwoAttack" property="twoattack" jdbcType="SMALLINT" />
+    <result column="TotalMis" property="totalmis" jdbcType="SMALLINT" />
+    <result column="result" property="result" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, ScheduleID, TeamID, MatchSeason, IsHome, PlayTime, Score, LostScore, Shoot, Shoot_Hit, 
+    ThreeMin, ThreeMin_Hit, PunishBall, PunishBall_Hit, Attack, defend, HelpAttack, Rob, 
+    Cover, Misplay, Foul, TwoAttack, TotalMis, result
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from LQ_TeamTechnic
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from LQ_TeamTechnic
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.dayspass.datacenter.domain.LqTeamTechnic" >
+    insert into LQ_TeamTechnic (ID, ScheduleID, TeamID, 
+      MatchSeason, IsHome, PlayTime, 
+      Score, LostScore, Shoot, 
+      Shoot_Hit, ThreeMin, ThreeMin_Hit, 
+      PunishBall, PunishBall_Hit, Attack, 
+      defend, HelpAttack, Rob, 
+      Cover, Misplay, Foul, 
+      TwoAttack, TotalMis, result
+      )
+    values (#{id,jdbcType=INTEGER}, #{scheduleid,jdbcType=INTEGER}, #{teamid,jdbcType=INTEGER}, 
+      #{matchseason,jdbcType=CHAR}, #{ishome,jdbcType=BIT}, #{playtime,jdbcType=SMALLINT}, 
+      #{score,jdbcType=SMALLINT}, #{lostscore,jdbcType=SMALLINT}, #{shoot,jdbcType=SMALLINT}, 
+      #{shootHit,jdbcType=SMALLINT}, #{threemin,jdbcType=SMALLINT}, #{threeminHit,jdbcType=SMALLINT}, 
+      #{punishball,jdbcType=SMALLINT}, #{punishballHit,jdbcType=SMALLINT}, #{attack,jdbcType=SMALLINT}, 
+      #{defend,jdbcType=SMALLINT}, #{helpattack,jdbcType=SMALLINT}, #{rob,jdbcType=SMALLINT}, 
+      #{cover,jdbcType=SMALLINT}, #{misplay,jdbcType=SMALLINT}, #{foul,jdbcType=SMALLINT}, 
+      #{twoattack,jdbcType=SMALLINT}, #{totalmis,jdbcType=SMALLINT}, #{result,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.dayspass.datacenter.domain.LqTeamTechnic" >
+    insert into LQ_TeamTechnic
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="scheduleid != null" >
+        ScheduleID,
+      </if>
+      <if test="teamid != null" >
+        TeamID,
+      </if>
+      <if test="matchseason != null" >
+        MatchSeason,
+      </if>
+      <if test="ishome != null" >
+        IsHome,
+      </if>
+      <if test="playtime != null" >
+        PlayTime,
+      </if>
+      <if test="score != null" >
+        Score,
+      </if>
+      <if test="lostscore != null" >
+        LostScore,
+      </if>
+      <if test="shoot != null" >
+        Shoot,
+      </if>
+      <if test="shootHit != null" >
+        Shoot_Hit,
+      </if>
+      <if test="threemin != null" >
+        ThreeMin,
+      </if>
+      <if test="threeminHit != null" >
+        ThreeMin_Hit,
+      </if>
+      <if test="punishball != null" >
+        PunishBall,
+      </if>
+      <if test="punishballHit != null" >
+        PunishBall_Hit,
+      </if>
+      <if test="attack != null" >
+        Attack,
+      </if>
+      <if test="defend != null" >
+        defend,
+      </if>
+      <if test="helpattack != null" >
+        HelpAttack,
+      </if>
+      <if test="rob != null" >
+        Rob,
+      </if>
+      <if test="cover != null" >
+        Cover,
+      </if>
+      <if test="misplay != null" >
+        Misplay,
+      </if>
+      <if test="foul != null" >
+        Foul,
+      </if>
+      <if test="twoattack != null" >
+        TwoAttack,
+      </if>
+      <if test="totalmis != null" >
+        TotalMis,
+      </if>
+      <if test="result != null" >
+        result,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="scheduleid != null" >
+        #{scheduleid,jdbcType=INTEGER},
+      </if>
+      <if test="teamid != null" >
+        #{teamid,jdbcType=INTEGER},
+      </if>
+      <if test="matchseason != null" >
+        #{matchseason,jdbcType=CHAR},
+      </if>
+      <if test="ishome != null" >
+        #{ishome,jdbcType=BIT},
+      </if>
+      <if test="playtime != null" >
+        #{playtime,jdbcType=SMALLINT},
+      </if>
+      <if test="score != null" >
+        #{score,jdbcType=SMALLINT},
+      </if>
+      <if test="lostscore != null" >
+        #{lostscore,jdbcType=SMALLINT},
+      </if>
+      <if test="shoot != null" >
+        #{shoot,jdbcType=SMALLINT},
+      </if>
+      <if test="shootHit != null" >
+        #{shootHit,jdbcType=SMALLINT},
+      </if>
+      <if test="threemin != null" >
+        #{threemin,jdbcType=SMALLINT},
+      </if>
+      <if test="threeminHit != null" >
+        #{threeminHit,jdbcType=SMALLINT},
+      </if>
+      <if test="punishball != null" >
+        #{punishball,jdbcType=SMALLINT},
+      </if>
+      <if test="punishballHit != null" >
+        #{punishballHit,jdbcType=SMALLINT},
+      </if>
+      <if test="attack != null" >
+        #{attack,jdbcType=SMALLINT},
+      </if>
+      <if test="defend != null" >
+        #{defend,jdbcType=SMALLINT},
+      </if>
+      <if test="helpattack != null" >
+        #{helpattack,jdbcType=SMALLINT},
+      </if>
+      <if test="rob != null" >
+        #{rob,jdbcType=SMALLINT},
+      </if>
+      <if test="cover != null" >
+        #{cover,jdbcType=SMALLINT},
+      </if>
+      <if test="misplay != null" >
+        #{misplay,jdbcType=SMALLINT},
+      </if>
+      <if test="foul != null" >
+        #{foul,jdbcType=SMALLINT},
+      </if>
+      <if test="twoattack != null" >
+        #{twoattack,jdbcType=SMALLINT},
+      </if>
+      <if test="totalmis != null" >
+        #{totalmis,jdbcType=SMALLINT},
+      </if>
+      <if test="result != null" >
+        #{result,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dayspass.datacenter.domain.LqTeamTechnic" >
+    update LQ_TeamTechnic
+    <set >
+      <if test="scheduleid != null" >
+        ScheduleID = #{scheduleid,jdbcType=INTEGER},
+      </if>
+      <if test="teamid != null" >
+        TeamID = #{teamid,jdbcType=INTEGER},
+      </if>
+      <if test="matchseason != null" >
+        MatchSeason = #{matchseason,jdbcType=CHAR},
+      </if>
+      <if test="ishome != null" >
+        IsHome = #{ishome,jdbcType=BIT},
+      </if>
+      <if test="playtime != null" >
+        PlayTime = #{playtime,jdbcType=SMALLINT},
+      </if>
+      <if test="score != null" >
+        Score = #{score,jdbcType=SMALLINT},
+      </if>
+      <if test="lostscore != null" >
+        LostScore = #{lostscore,jdbcType=SMALLINT},
+      </if>
+      <if test="shoot != null" >
+        Shoot = #{shoot,jdbcType=SMALLINT},
+      </if>
+      <if test="shootHit != null" >
+        Shoot_Hit = #{shootHit,jdbcType=SMALLINT},
+      </if>
+      <if test="threemin != null" >
+        ThreeMin = #{threemin,jdbcType=SMALLINT},
+      </if>
+      <if test="threeminHit != null" >
+        ThreeMin_Hit = #{threeminHit,jdbcType=SMALLINT},
+      </if>
+      <if test="punishball != null" >
+        PunishBall = #{punishball,jdbcType=SMALLINT},
+      </if>
+      <if test="punishballHit != null" >
+        PunishBall_Hit = #{punishballHit,jdbcType=SMALLINT},
+      </if>
+      <if test="attack != null" >
+        Attack = #{attack,jdbcType=SMALLINT},
+      </if>
+      <if test="defend != null" >
+        defend = #{defend,jdbcType=SMALLINT},
+      </if>
+      <if test="helpattack != null" >
+        HelpAttack = #{helpattack,jdbcType=SMALLINT},
+      </if>
+      <if test="rob != null" >
+        Rob = #{rob,jdbcType=SMALLINT},
+      </if>
+      <if test="cover != null" >
+        Cover = #{cover,jdbcType=SMALLINT},
+      </if>
+      <if test="misplay != null" >
+        Misplay = #{misplay,jdbcType=SMALLINT},
+      </if>
+      <if test="foul != null" >
+        Foul = #{foul,jdbcType=SMALLINT},
+      </if>
+      <if test="twoattack != null" >
+        TwoAttack = #{twoattack,jdbcType=SMALLINT},
+      </if>
+      <if test="totalmis != null" >
+        TotalMis = #{totalmis,jdbcType=SMALLINT},
+      </if>
+      <if test="result != null" >
+        result = #{result,jdbcType=TINYINT},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dayspass.datacenter.domain.LqTeamTechnic" >
+    update LQ_TeamTechnic
+    set ScheduleID = #{scheduleid,jdbcType=INTEGER},
+      TeamID = #{teamid,jdbcType=INTEGER},
+      MatchSeason = #{matchseason,jdbcType=CHAR},
+      IsHome = #{ishome,jdbcType=BIT},
+      PlayTime = #{playtime,jdbcType=SMALLINT},
+      Score = #{score,jdbcType=SMALLINT},
+      LostScore = #{lostscore,jdbcType=SMALLINT},
+      Shoot = #{shoot,jdbcType=SMALLINT},
+      Shoot_Hit = #{shootHit,jdbcType=SMALLINT},
+      ThreeMin = #{threemin,jdbcType=SMALLINT},
+      ThreeMin_Hit = #{threeminHit,jdbcType=SMALLINT},
+      PunishBall = #{punishball,jdbcType=SMALLINT},
+      PunishBall_Hit = #{punishballHit,jdbcType=SMALLINT},
+      Attack = #{attack,jdbcType=SMALLINT},
+      defend = #{defend,jdbcType=SMALLINT},
+      HelpAttack = #{helpattack,jdbcType=SMALLINT},
+      Rob = #{rob,jdbcType=SMALLINT},
+      Cover = #{cover,jdbcType=SMALLINT},
+      Misplay = #{misplay,jdbcType=SMALLINT},
+      Foul = #{foul,jdbcType=SMALLINT},
+      TwoAttack = #{twoattack,jdbcType=SMALLINT},
+      TotalMis = #{totalmis,jdbcType=SMALLINT},
+      result = #{result,jdbcType=TINYINT}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

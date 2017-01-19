@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dayspass.datacenter.dao.LqTeamOrderMapper" >
+  <resultMap id="BaseResultMap" type="com.dayspass.datacenter.domain.LqTeamOrder" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="TeamID" property="teamid" jdbcType="INTEGER" />
+    <result column="SclassID" property="sclassid" jdbcType="INTEGER" />
+    <result column="matchSeason" property="matchseason" jdbcType="CHAR" />
+    <result column="homewin" property="homewin" jdbcType="SMALLINT" />
+    <result column="homeloss" property="homeloss" jdbcType="SMALLINT" />
+    <result column="guestwin" property="guestwin" jdbcType="SMALLINT" />
+    <result column="guestloss" property="guestloss" jdbcType="SMALLINT" />
+    <result column="WinScale" property="winscale" jdbcType="REAL" />
+    <result column="state" property="state" jdbcType="SMALLINT" />
+    <result column="homeOrder" property="homeorder" jdbcType="SMALLINT" />
+    <result column="GuestOrder" property="guestorder" jdbcType="SMALLINT" />
+    <result column="TotalOrder" property="totalorder" jdbcType="SMALLINT" />
+    <result column="HomeScore" property="homescore" jdbcType="INTEGER" />
+    <result column="HomeLossScore" property="homelossscore" jdbcType="INTEGER" />
+    <result column="GuestScore" property="guestscore" jdbcType="INTEGER" />
+    <result column="GuestLossScore" property="guestlossscore" jdbcType="INTEGER" />
+    <result column="Near10Win" property="near10win" jdbcType="SMALLINT" />
+    <result column="Near10loss" property="near10loss" jdbcType="SMALLINT" />
+    <result column="Near10Score" property="near10score" jdbcType="SMALLINT" />
+    <result column="Near10LossScore" property="near10lossscore" jdbcType="SMALLINT" />
+    <result column="roundType1" property="roundtype1" jdbcType="VARCHAR" />
+    <result column="roundType2" property="roundtype2" jdbcType="VARCHAR" />
+    <result column="LeagueWin" property="leaguewin" jdbcType="INTEGER" />
+    <result column="LeagueLoss" property="leagueloss" jdbcType="INTEGER" />
+    <result column="DivisionWin" property="divisionwin" jdbcType="INTEGER" />
+    <result column="DivisionLoss" property="divisionloss" jdbcType="INTEGER" />
+    <result column="WinCha" property="wincha" jdbcType="REAL" />
+    <result column="DivisionOrder" property="divisionorder" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, TeamID, SclassID, matchSeason, homewin, homeloss, guestwin, guestloss, WinScale, 
+    state, homeOrder, GuestOrder, TotalOrder, HomeScore, HomeLossScore, GuestScore, GuestLossScore, 
+    Near10Win, Near10loss, Near10Score, Near10LossScore, roundType1, roundType2, LeagueWin, 
+    LeagueLoss, DivisionWin, DivisionLoss, WinCha, DivisionOrder
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from LQ_TeamOrder
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from LQ_TeamOrder
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.dayspass.datacenter.domain.LqTeamOrder" >
+    insert into LQ_TeamOrder (ID, TeamID, SclassID, 
+      matchSeason, homewin, homeloss, 
+      guestwin, guestloss, WinScale, 
+      state, homeOrder, GuestOrder, 
+      TotalOrder, HomeScore, HomeLossScore, 
+      GuestScore, GuestLossScore, Near10Win, 
+      Near10loss, Near10Score, Near10LossScore, 
+      roundType1, roundType2, LeagueWin, 
+      LeagueLoss, DivisionWin, DivisionLoss, 
+      WinCha, DivisionOrder)
+    values (#{id,jdbcType=INTEGER}, #{teamid,jdbcType=INTEGER}, #{sclassid,jdbcType=INTEGER}, 
+      #{matchseason,jdbcType=CHAR}, #{homewin,jdbcType=SMALLINT}, #{homeloss,jdbcType=SMALLINT}, 
+      #{guestwin,jdbcType=SMALLINT}, #{guestloss,jdbcType=SMALLINT}, #{winscale,jdbcType=REAL}, 
+      #{state,jdbcType=SMALLINT}, #{homeorder,jdbcType=SMALLINT}, #{guestorder,jdbcType=SMALLINT}, 
+      #{totalorder,jdbcType=SMALLINT}, #{homescore,jdbcType=INTEGER}, #{homelossscore,jdbcType=INTEGER}, 
+      #{guestscore,jdbcType=INTEGER}, #{guestlossscore,jdbcType=INTEGER}, #{near10win,jdbcType=SMALLINT}, 
+      #{near10loss,jdbcType=SMALLINT}, #{near10score,jdbcType=SMALLINT}, #{near10lossscore,jdbcType=SMALLINT}, 
+      #{roundtype1,jdbcType=VARCHAR}, #{roundtype2,jdbcType=VARCHAR}, #{leaguewin,jdbcType=INTEGER}, 
+      #{leagueloss,jdbcType=INTEGER}, #{divisionwin,jdbcType=INTEGER}, #{divisionloss,jdbcType=INTEGER}, 
+      #{wincha,jdbcType=REAL}, #{divisionorder,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dayspass.datacenter.domain.LqTeamOrder" >
+    insert into LQ_TeamOrder
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="teamid != null" >
+        TeamID,
+      </if>
+      <if test="sclassid != null" >
+        SclassID,
+      </if>
+      <if test="matchseason != null" >
+        matchSeason,
+      </if>
+      <if test="homewin != null" >
+        homewin,
+      </if>
+      <if test="homeloss != null" >
+        homeloss,
+      </if>
+      <if test="guestwin != null" >
+        guestwin,
+      </if>
+      <if test="guestloss != null" >
+        guestloss,
+      </if>
+      <if test="winscale != null" >
+        WinScale,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="homeorder != null" >
+        homeOrder,
+      </if>
+      <if test="guestorder != null" >
+        GuestOrder,
+      </if>
+      <if test="totalorder != null" >
+        TotalOrder,
+      </if>
+      <if test="homescore != null" >
+        HomeScore,
+      </if>
+      <if test="homelossscore != null" >
+        HomeLossScore,
+      </if>
+      <if test="guestscore != null" >
+        GuestScore,
+      </if>
+      <if test="guestlossscore != null" >
+        GuestLossScore,
+      </if>
+      <if test="near10win != null" >
+        Near10Win,
+      </if>
+      <if test="near10loss != null" >
+        Near10loss,
+      </if>
+      <if test="near10score != null" >
+        Near10Score,
+      </if>
+      <if test="near10lossscore != null" >
+        Near10LossScore,
+      </if>
+      <if test="roundtype1 != null" >
+        roundType1,
+      </if>
+      <if test="roundtype2 != null" >
+        roundType2,
+      </if>
+      <if test="leaguewin != null" >
+        LeagueWin,
+      </if>
+      <if test="leagueloss != null" >
+        LeagueLoss,
+      </if>
+      <if test="divisionwin != null" >
+        DivisionWin,
+      </if>
+      <if test="divisionloss != null" >
+        DivisionLoss,
+      </if>
+      <if test="wincha != null" >
+        WinCha,
+      </if>
+      <if test="divisionorder != null" >
+        DivisionOrder,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="teamid != null" >
+        #{teamid,jdbcType=INTEGER},
+      </if>
+      <if test="sclassid != null" >
+        #{sclassid,jdbcType=INTEGER},
+      </if>
+      <if test="matchseason != null" >
+        #{matchseason,jdbcType=CHAR},
+      </if>
+      <if test="homewin != null" >
+        #{homewin,jdbcType=SMALLINT},
+      </if>
+      <if test="homeloss != null" >
+        #{homeloss,jdbcType=SMALLINT},
+      </if>
+      <if test="guestwin != null" >
+        #{guestwin,jdbcType=SMALLINT},
+      </if>
+      <if test="guestloss != null" >
+        #{guestloss,jdbcType=SMALLINT},
+      </if>
+      <if test="winscale != null" >
+        #{winscale,jdbcType=REAL},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=SMALLINT},
+      </if>
+      <if test="homeorder != null" >
+        #{homeorder,jdbcType=SMALLINT},
+      </if>
+      <if test="guestorder != null" >
+        #{guestorder,jdbcType=SMALLINT},
+      </if>
+      <if test="totalorder != null" >
+        #{totalorder,jdbcType=SMALLINT},
+      </if>
+      <if test="homescore != null" >
+        #{homescore,jdbcType=INTEGER},
+      </if>
+      <if test="homelossscore != null" >
+        #{homelossscore,jdbcType=INTEGER},
+      </if>
+      <if test="guestscore != null" >
+        #{guestscore,jdbcType=INTEGER},
+      </if>
+      <if test="guestlossscore != null" >
+        #{guestlossscore,jdbcType=INTEGER},
+      </if>
+      <if test="near10win != null" >
+        #{near10win,jdbcType=SMALLINT},
+      </if>
+      <if test="near10loss != null" >
+        #{near10loss,jdbcType=SMALLINT},
+      </if>
+      <if test="near10score != null" >
+        #{near10score,jdbcType=SMALLINT},
+      </if>
+      <if test="near10lossscore != null" >
+        #{near10lossscore,jdbcType=SMALLINT},
+      </if>
+      <if test="roundtype1 != null" >
+        #{roundtype1,jdbcType=VARCHAR},
+      </if>
+      <if test="roundtype2 != null" >
+        #{roundtype2,jdbcType=VARCHAR},
+      </if>
+      <if test="leaguewin != null" >
+        #{leaguewin,jdbcType=INTEGER},
+      </if>
+      <if test="leagueloss != null" >
+        #{leagueloss,jdbcType=INTEGER},
+      </if>
+      <if test="divisionwin != null" >
+        #{divisionwin,jdbcType=INTEGER},
+      </if>
+      <if test="divisionloss != null" >
+        #{divisionloss,jdbcType=INTEGER},
+      </if>
+      <if test="wincha != null" >
+        #{wincha,jdbcType=REAL},
+      </if>
+      <if test="divisionorder != null" >
+        #{divisionorder,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dayspass.datacenter.domain.LqTeamOrder" >
+    update LQ_TeamOrder
+    <set >
+      <if test="teamid != null" >
+        TeamID = #{teamid,jdbcType=INTEGER},
+      </if>
+      <if test="sclassid != null" >
+        SclassID = #{sclassid,jdbcType=INTEGER},
+      </if>
+      <if test="matchseason != null" >
+        matchSeason = #{matchseason,jdbcType=CHAR},
+      </if>
+      <if test="homewin != null" >
+        homewin = #{homewin,jdbcType=SMALLINT},
+      </if>
+      <if test="homeloss != null" >
+        homeloss = #{homeloss,jdbcType=SMALLINT},
+      </if>
+      <if test="guestwin != null" >
+        guestwin = #{guestwin,jdbcType=SMALLINT},
+      </if>
+      <if test="guestloss != null" >
+        guestloss = #{guestloss,jdbcType=SMALLINT},
+      </if>
+      <if test="winscale != null" >
+        WinScale = #{winscale,jdbcType=REAL},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=SMALLINT},
+      </if>
+      <if test="homeorder != null" >
+        homeOrder = #{homeorder,jdbcType=SMALLINT},
+      </if>
+      <if test="guestorder != null" >
+        GuestOrder = #{guestorder,jdbcType=SMALLINT},
+      </if>
+      <if test="totalorder != null" >
+        TotalOrder = #{totalorder,jdbcType=SMALLINT},
+      </if>
+      <if test="homescore != null" >
+        HomeScore = #{homescore,jdbcType=INTEGER},
+      </if>
+      <if test="homelossscore != null" >
+        HomeLossScore = #{homelossscore,jdbcType=INTEGER},
+      </if>
+      <if test="guestscore != null" >
+        GuestScore = #{guestscore,jdbcType=INTEGER},
+      </if>
+      <if test="guestlossscore != null" >
+        GuestLossScore = #{guestlossscore,jdbcType=INTEGER},
+      </if>
+      <if test="near10win != null" >
+        Near10Win = #{near10win,jdbcType=SMALLINT},
+      </if>
+      <if test="near10loss != null" >
+        Near10loss = #{near10loss,jdbcType=SMALLINT},
+      </if>
+      <if test="near10score != null" >
+        Near10Score = #{near10score,jdbcType=SMALLINT},
+      </if>
+      <if test="near10lossscore != null" >
+        Near10LossScore = #{near10lossscore,jdbcType=SMALLINT},
+      </if>
+      <if test="roundtype1 != null" >
+        roundType1 = #{roundtype1,jdbcType=VARCHAR},
+      </if>
+      <if test="roundtype2 != null" >
+        roundType2 = #{roundtype2,jdbcType=VARCHAR},
+      </if>
+      <if test="leaguewin != null" >
+        LeagueWin = #{leaguewin,jdbcType=INTEGER},
+      </if>
+      <if test="leagueloss != null" >
+        LeagueLoss = #{leagueloss,jdbcType=INTEGER},
+      </if>
+      <if test="divisionwin != null" >
+        DivisionWin = #{divisionwin,jdbcType=INTEGER},
+      </if>
+      <if test="divisionloss != null" >
+        DivisionLoss = #{divisionloss,jdbcType=INTEGER},
+      </if>
+      <if test="wincha != null" >
+        WinCha = #{wincha,jdbcType=REAL},
+      </if>
+      <if test="divisionorder != null" >
+        DivisionOrder = #{divisionorder,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dayspass.datacenter.domain.LqTeamOrder" >
+    update LQ_TeamOrder
+    set TeamID = #{teamid,jdbcType=INTEGER},
+      SclassID = #{sclassid,jdbcType=INTEGER},
+      matchSeason = #{matchseason,jdbcType=CHAR},
+      homewin = #{homewin,jdbcType=SMALLINT},
+      homeloss = #{homeloss,jdbcType=SMALLINT},
+      guestwin = #{guestwin,jdbcType=SMALLINT},
+      guestloss = #{guestloss,jdbcType=SMALLINT},
+      WinScale = #{winscale,jdbcType=REAL},
+      state = #{state,jdbcType=SMALLINT},
+      homeOrder = #{homeorder,jdbcType=SMALLINT},
+      GuestOrder = #{guestorder,jdbcType=SMALLINT},
+      TotalOrder = #{totalorder,jdbcType=SMALLINT},
+      HomeScore = #{homescore,jdbcType=INTEGER},
+      HomeLossScore = #{homelossscore,jdbcType=INTEGER},
+      GuestScore = #{guestscore,jdbcType=INTEGER},
+      GuestLossScore = #{guestlossscore,jdbcType=INTEGER},
+      Near10Win = #{near10win,jdbcType=SMALLINT},
+      Near10loss = #{near10loss,jdbcType=SMALLINT},
+      Near10Score = #{near10score,jdbcType=SMALLINT},
+      Near10LossScore = #{near10lossscore,jdbcType=SMALLINT},
+      roundType1 = #{roundtype1,jdbcType=VARCHAR},
+      roundType2 = #{roundtype2,jdbcType=VARCHAR},
+      LeagueWin = #{leaguewin,jdbcType=INTEGER},
+      LeagueLoss = #{leagueloss,jdbcType=INTEGER},
+      DivisionWin = #{divisionwin,jdbcType=INTEGER},
+      DivisionLoss = #{divisionloss,jdbcType=INTEGER},
+      WinCha = #{wincha,jdbcType=REAL},
+      DivisionOrder = #{divisionorder,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

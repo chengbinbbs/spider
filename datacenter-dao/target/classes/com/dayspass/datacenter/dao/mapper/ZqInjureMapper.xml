@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dayspass.datacenter.dao.ZqInjureMapper" >
+  <resultMap id="BaseResultMap" type="com.dayspass.datacenter.domain.ZqInjure" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="ScheduleID" property="scheduleid" jdbcType="INTEGER" />
+    <result column="brief" property="brief" jdbcType="LONGVARCHAR" />
+    <result column="recommend" property="recommend" jdbcType="LONGVARCHAR" />
+    <result column="home_stop" property="homeStop" jdbcType="LONGVARCHAR" />
+    <result column="guest_stop" property="guestStop" jdbcType="LONGVARCHAR" />
+    <result column="home_injure" property="homeInjure" jdbcType="LONGVARCHAR" />
+    <result column="guest_injure" property="guestInjure" jdbcType="LONGVARCHAR" />
+    <result column="is_statis" property="isStatis" jdbcType="BIT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, ScheduleID,brief, recommend, home_stop, guest_stop, home_injure, guest_injurem,is_statis, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ZQ_Injure
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ZQ_Injure
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.dayspass.datacenter.domain.ZqInjure" >
+    insert into ZQ_Injure (id, ScheduleID, create_time, 
+      update_time, brief, recommend, 
+      home_stop, guest_stop, home_injure, 
+      guest_injure,is_statis)
+    values (#{id,jdbcType=INTEGER}, #{scheduleid,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{brief,jdbcType=LONGVARCHAR}, #{recommend,jdbcType=LONGVARCHAR}, 
+      #{homeStop,jdbcType=LONGVARCHAR}, #{guestStop,jdbcType=LONGVARCHAR}, #{homeInjure,jdbcType=LONGVARCHAR}, 
+      #{guestInjure,jdbcType=LONGVARCHAR},#{isStatis,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dayspass.datacenter.domain.ZqInjure" >
+    insert into ZQ_Injure
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="scheduleid != null" >
+        ScheduleID,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="brief != null" >
+        brief,
+      </if>
+      <if test="recommend != null" >
+        recommend,
+      </if>
+      <if test="homeStop != null" >
+        home_stop,
+      </if>
+      <if test="guestStop != null" >
+        guest_stop,
+      </if>
+      <if test="homeInjure != null" >
+        home_injure,
+      </if>
+      <if test="guestInjure != null" >
+        guest_injure,
+      </if>
+      <if test="isStatis != null" >
+        is_statis,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="scheduleid != null" >
+        #{scheduleid,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="brief != null" >
+        #{brief,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="recommend != null" >
+        #{recommend,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="homeStop != null" >
+        #{homeStop,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="guestStop != null" >
+        #{guestStop,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="homeInjure != null" >
+        #{homeInjure,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="guestInjure != null" >
+        #{guestInjure,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="isStatis != null" >
+        #{isStatis,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dayspass.datacenter.domain.ZqInjure" >
+    update ZQ_Injure
+    <set >
+      <if test="scheduleid != null" >
+        ScheduleID = #{scheduleid,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="brief != null" >
+        brief = #{brief,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="recommend != null" >
+        recommend = #{recommend,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="homeStop != null" >
+        home_stop = #{homeStop,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="guestStop != null" >
+        guest_stop = #{guestStop,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="homeInjure != null" >
+        home_injure = #{homeInjure,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="guestInjure != null" >
+        guest_injure = #{guestInjure,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="isStatis != null" >
+        is_statis = #{isStatis,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <!-- 查询比赛的伤停情况 -->
+  <select id="selectByScheduleID" resultMap="BaseResultMap">
+    select top 1
+    <include refid="Base_Column_List" />
+    from ZQ_Injure
+    where ScheduleID = #{scheduleid}
+  </select>
+  
+</mapper>

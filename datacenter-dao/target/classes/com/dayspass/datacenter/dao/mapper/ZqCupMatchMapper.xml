@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dayspass.datacenter.dao.ZqCupMatchMapper" >
+  <resultMap id="BaseResultMap" type="com.dayspass.datacenter.domain.ZqCupMatch" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="SclassID" property="sclassid" jdbcType="INTEGER" />
+    <result column="CupMatch_Type" property="cupmatchType" jdbcType="INTEGER" />
+    <result column="Grouping" property="grouping" jdbcType="VARCHAR" />
+    <result column="Area" property="area" jdbcType="TINYINT" />
+    <result column="Content" property="content" jdbcType="VARCHAR" />
+    <result column="strContent" property="strcontent" jdbcType="VARCHAR" />
+    <result column="matchseason" property="matchseason" jdbcType="VARCHAR" />
+    <result column="LineCount" property="linecount" jdbcType="SMALLINT" />
+    <result column="isUpdate" property="isupdate" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, SclassID, CupMatch_Type, Grouping, Area, Content, strContent, matchseason, LineCount, 
+    isUpdate
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ZQ_CupMatch
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ZQ_CupMatch
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.dayspass.datacenter.domain.ZqCupMatch" >
+    insert into ZQ_CupMatch (ID, SclassID, CupMatch_Type, 
+      Grouping, Area, Content, 
+      strContent, matchseason, LineCount, 
+      isUpdate)
+    values (#{id,jdbcType=INTEGER}, #{sclassid,jdbcType=INTEGER}, #{cupmatchType,jdbcType=INTEGER}, 
+      #{grouping,jdbcType=VARCHAR}, #{area,jdbcType=TINYINT}, #{content,jdbcType=VARCHAR}, 
+      #{strcontent,jdbcType=VARCHAR}, #{matchseason,jdbcType=VARCHAR}, #{linecount,jdbcType=SMALLINT}, 
+      #{isupdate,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dayspass.datacenter.domain.ZqCupMatch" >
+    insert into ZQ_CupMatch
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="sclassid != null" >
+        SclassID,
+      </if>
+      <if test="cupmatchType != null" >
+        CupMatch_Type,
+      </if>
+      <if test="grouping != null" >
+        Grouping,
+      </if>
+      <if test="area != null" >
+        Area,
+      </if>
+      <if test="content != null" >
+        Content,
+      </if>
+      <if test="strcontent != null" >
+        strContent,
+      </if>
+      <if test="matchseason != null" >
+        matchseason,
+      </if>
+      <if test="linecount != null" >
+        LineCount,
+      </if>
+      <if test="isupdate != null" >
+        isUpdate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="sclassid != null" >
+        #{sclassid,jdbcType=INTEGER},
+      </if>
+      <if test="cupmatchType != null" >
+        #{cupmatchType,jdbcType=INTEGER},
+      </if>
+      <if test="grouping != null" >
+        #{grouping,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        #{area,jdbcType=TINYINT},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="strcontent != null" >
+        #{strcontent,jdbcType=VARCHAR},
+      </if>
+      <if test="matchseason != null" >
+        #{matchseason,jdbcType=VARCHAR},
+      </if>
+      <if test="linecount != null" >
+        #{linecount,jdbcType=SMALLINT},
+      </if>
+      <if test="isupdate != null" >
+        #{isupdate,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dayspass.datacenter.domain.ZqCupMatch" >
+    update ZQ_CupMatch
+    <set >
+      <if test="sclassid != null" >
+        SclassID = #{sclassid,jdbcType=INTEGER},
+      </if>
+      <if test="cupmatchType != null" >
+        CupMatch_Type = #{cupmatchType,jdbcType=INTEGER},
+      </if>
+      <if test="grouping != null" >
+        Grouping = #{grouping,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        Area = #{area,jdbcType=TINYINT},
+      </if>
+      <if test="content != null" >
+        Content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="strcontent != null" >
+        strContent = #{strcontent,jdbcType=VARCHAR},
+      </if>
+      <if test="matchseason != null" >
+        matchseason = #{matchseason,jdbcType=VARCHAR},
+      </if>
+      <if test="linecount != null" >
+        LineCount = #{linecount,jdbcType=SMALLINT},
+      </if>
+      <if test="isupdate != null" >
+        isUpdate = #{isupdate,jdbcType=BIT},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dayspass.datacenter.domain.ZqCupMatch" >
+    update ZQ_CupMatch
+    set SclassID = #{sclassid,jdbcType=INTEGER},
+      CupMatch_Type = #{cupmatchType,jdbcType=INTEGER},
+      Grouping = #{grouping,jdbcType=VARCHAR},
+      Area = #{area,jdbcType=TINYINT},
+      Content = #{content,jdbcType=VARCHAR},
+      strContent = #{strcontent,jdbcType=VARCHAR},
+      matchseason = #{matchseason,jdbcType=VARCHAR},
+      LineCount = #{linecount,jdbcType=SMALLINT},
+      isUpdate = #{isupdate,jdbcType=BIT}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <!-- 条件查询 -->
+  <select id="queryAll" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ZQ_CupMatch 
+    where 1 = 1
+     <if test="sclassid != null" >
+        and SclassID = #{sclassid}
+      </if>
+      <if test="cupmatchType != null" >
+        and CupMatch_Type = #{cupmatchType}
+      </if>
+      <if test="grouping != null" >
+        and Grouping = #{grouping}
+      </if>
+      <if test="area != null" >
+        and Area = #{area}
+      </if>
+      <if test="matchseason != null" >
+        and matchseason = #{matchseason}
+      </if>
+  </select>
+  
+  <delete id="deleteCupMatch">
+    delete from ZQ_CupMatch
+    where SclassID = #{sclassid} and CupMatch_Type = #{cupmatchType}
+  </delete>
+  
+</mapper>

@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dayspass.datacenter.dao.LqPlayerMapper" >
+  <resultMap id="BaseResultMap" type="com.dayspass.datacenter.domain.LqPlayer" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="Number" property="number" jdbcType="CHAR" />
+    <result column="Name_F" property="nameF" jdbcType="CHAR" />
+    <result column="Name_Fs" property="nameFs" jdbcType="VARCHAR" />
+    <result column="Name_JS" property="nameJs" jdbcType="CHAR" />
+    <result column="Name_J" property="nameJ" jdbcType="CHAR" />
+    <result column="Name_E" property="nameE" jdbcType="CHAR" />
+    <result column="Name_short" property="nameShort" jdbcType="VARCHAR" />
+    <result column="TeamID" property="teamid" jdbcType="INTEGER" />
+    <result column="URL" property="url" jdbcType="CHAR" />
+    <result column="Place" property="place" jdbcType="CHAR" />
+    <result column="Birthday" property="birthday" jdbcType="TIMESTAMP" />
+    <result column="Tallness" property="tallness" jdbcType="SMALLINT" />
+    <result column="Weight" property="weight" jdbcType="SMALLINT" />
+    <result column="ComeFrom" property="comefrom" jdbcType="CHAR" />
+    <result column="Photo" property="photo" jdbcType="VARCHAR" />
+    <result column="NbaAge" property="nbaage" jdbcType="SMALLINT" />
+    <result column="isKey" property="iskey" jdbcType="BIT" />
+    <result column="PositionID" property="positionid" jdbcType="INTEGER" />
+    <result column="NationalityID" property="nationalityid" jdbcType="INTEGER" />
+    <result column="EndTime" property="endtime" jdbcType="TIMESTAMP" />
+    <result column="AnnualSalary" property="annualsalary" jdbcType="INTEGER" />
+    <result column="highSchool" property="highschool" jdbcType="VARCHAR" />
+    <result column="College" property="college" jdbcType="VARCHAR" />
+    <result column="draft" property="draft" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.dayspass.datacenter.domain.LqPlayer" extends="BaseResultMap" >
+    <result column="Introduce" property="introduce" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, Number, Name_F, Name_Fs, Name_JS, Name_J, Name_E, Name_short, TeamID, URL, Place, 
+    Birthday, Tallness, Weight, ComeFrom, Photo, NbaAge, isKey, PositionID, NationalityID, 
+    EndTime, AnnualSalary, highSchool, College, draft
+  </sql>
+  <sql id="Blob_Column_List" >
+    Introduce
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from LQ_Player
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from LQ_Player
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.dayspass.datacenter.domain.LqPlayer" >
+    insert into LQ_Player (ID, Number, Name_F, 
+      Name_Fs, Name_JS, Name_J, Name_E, 
+      Name_short, TeamID, URL, 
+      Place, Birthday, Tallness, 
+      Weight, ComeFrom, Photo, 
+      NbaAge, isKey, PositionID, 
+      NationalityID, EndTime, AnnualSalary, 
+      highSchool, College, draft, 
+      Introduce)
+    values (#{id,jdbcType=INTEGER}, #{number,jdbcType=CHAR}, #{nameF,jdbcType=CHAR}, 
+      #{nameFs,jdbcType=VARCHAR}, #{nameJs,jdbcType=CHAR}, #{nameJ,jdbcType=CHAR}, #{nameE,jdbcType=CHAR}, 
+      #{nameShort,jdbcType=VARCHAR}, #{teamid,jdbcType=INTEGER}, #{url,jdbcType=CHAR}, 
+      #{place,jdbcType=CHAR}, #{birthday,jdbcType=TIMESTAMP}, #{tallness,jdbcType=SMALLINT}, 
+      #{weight,jdbcType=SMALLINT}, #{comefrom,jdbcType=CHAR}, #{photo,jdbcType=VARCHAR}, 
+      #{nbaage,jdbcType=SMALLINT}, #{iskey,jdbcType=BIT}, #{positionid,jdbcType=INTEGER}, 
+      #{nationalityid,jdbcType=INTEGER}, #{endtime,jdbcType=TIMESTAMP}, #{annualsalary,jdbcType=INTEGER}, 
+      #{highschool,jdbcType=VARCHAR}, #{college,jdbcType=VARCHAR}, #{draft,jdbcType=VARCHAR}, 
+      #{introduce,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dayspass.datacenter.domain.LqPlayer" >
+    insert into LQ_Player
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="number != null" >
+        Number,
+      </if>
+      <if test="nameF != null" >
+        Name_F,
+      </if>
+      <if test="nameFs != null" >
+        Name_Fs,
+      </if>
+      <if test="nameJs != null" >
+        Name_JS,
+      </if>
+      <if test="nameJ != null" >
+        Name_J,
+      </if>
+      <if test="nameE != null" >
+        Name_E,
+      </if>
+      <if test="nameShort != null" >
+        Name_short,
+      </if>
+      <if test="teamid != null" >
+        TeamID,
+      </if>
+      <if test="url != null" >
+        URL,
+      </if>
+      <if test="place != null" >
+        Place,
+      </if>
+      <if test="birthday != null" >
+        Birthday,
+      </if>
+      <if test="tallness != null" >
+        Tallness,
+      </if>
+      <if test="weight != null" >
+        Weight,
+      </if>
+      <if test="comefrom != null" >
+        ComeFrom,
+      </if>
+      <if test="photo != null" >
+        Photo,
+      </if>
+      <if test="nbaage != null" >
+        NbaAge,
+      </if>
+      <if test="iskey != null" >
+        isKey,
+      </if>
+      <if test="positionid != null" >
+        PositionID,
+      </if>
+      <if test="nationalityid != null" >
+        NationalityID,
+      </if>
+      <if test="endtime != null" >
+        EndTime,
+      </if>
+      <if test="annualsalary != null" >
+        AnnualSalary,
+      </if>
+      <if test="highschool != null" >
+        highSchool,
+      </if>
+      <if test="college != null" >
+        College,
+      </if>
+      <if test="draft != null" >
+        draft,
+      </if>
+      <if test="introduce != null" >
+        Introduce,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="number != null" >
+        #{number,jdbcType=CHAR},
+      </if>
+      <if test="nameF != null" >
+        #{nameF,jdbcType=CHAR},
+      </if>
+      <if test="nameFs != null" >
+        #{nameFs,jdbcType=VARCHAR},
+      </if>
+      <if test="nameJs != null" >
+        #{nameJs,jdbcType=CHAR},
+      </if>
+      <if test="nameJ != null" >
+        #{nameJ,jdbcType=CHAR},
+      </if>
+      <if test="nameE != null" >
+        #{nameE,jdbcType=CHAR},
+      </if>
+      <if test="nameShort != null" >
+        #{nameShort,jdbcType=VARCHAR},
+      </if>
+      <if test="teamid != null" >
+        #{teamid,jdbcType=INTEGER},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=CHAR},
+      </if>
+      <if test="place != null" >
+        #{place,jdbcType=CHAR},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tallness != null" >
+        #{tallness,jdbcType=SMALLINT},
+      </if>
+      <if test="weight != null" >
+        #{weight,jdbcType=SMALLINT},
+      </if>
+      <if test="comefrom != null" >
+        #{comefrom,jdbcType=CHAR},
+      </if>
+      <if test="photo != null" >
+        #{photo,jdbcType=VARCHAR},
+      </if>
+      <if test="nbaage != null" >
+        #{nbaage,jdbcType=SMALLINT},
+      </if>
+      <if test="iskey != null" >
+        #{iskey,jdbcType=BIT},
+      </if>
+      <if test="positionid != null" >
+        #{positionid,jdbcType=INTEGER},
+      </if>
+      <if test="nationalityid != null" >
+        #{nationalityid,jdbcType=INTEGER},
+      </if>
+      <if test="endtime != null" >
+        #{endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="annualsalary != null" >
+        #{annualsalary,jdbcType=INTEGER},
+      </if>
+      <if test="highschool != null" >
+        #{highschool,jdbcType=VARCHAR},
+      </if>
+      <if test="college != null" >
+        #{college,jdbcType=VARCHAR},
+      </if>
+      <if test="draft != null" >
+        #{draft,jdbcType=VARCHAR},
+      </if>
+      <if test="introduce != null" >
+        #{introduce,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dayspass.datacenter.domain.LqPlayer" >
+    update LQ_Player
+    <set >
+      <if test="number != null" >
+        Number = #{number,jdbcType=CHAR},
+      </if>
+      <if test="nameF != null" >
+        Name_F = #{nameF,jdbcType=CHAR},
+      </if>
+      <if test="nameFs != null" >
+        Name_Fs = #{nameFs,jdbcType=VARCHAR},
+      </if>
+      <if test="nameJs != null" >
+        Name_JS = #{nameJs,jdbcType=CHAR},
+      </if>
+      <if test="nameJ != null" >
+        Name_J = #{nameJ,jdbcType=CHAR},
+      </if>
+      <if test="nameE != null" >
+        Name_E = #{nameE,jdbcType=CHAR},
+      </if>
+      <if test="nameShort != null" >
+        Name_short = #{nameShort,jdbcType=VARCHAR},
+      </if>
+      <if test="teamid != null" >
+        TeamID = #{teamid,jdbcType=INTEGER},
+      </if>
+      <if test="url != null" >
+        URL = #{url,jdbcType=CHAR},
+      </if>
+      <if test="place != null" >
+        Place = #{place,jdbcType=CHAR},
+      </if>
+      <if test="birthday != null" >
+        Birthday = #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tallness != null" >
+        Tallness = #{tallness,jdbcType=SMALLINT},
+      </if>
+      <if test="weight != null" >
+        Weight = #{weight,jdbcType=SMALLINT},
+      </if>
+      <if test="comefrom != null" >
+        ComeFrom = #{comefrom,jdbcType=CHAR},
+      </if>
+      <if test="photo != null" >
+        Photo = #{photo,jdbcType=VARCHAR},
+      </if>
+      <if test="nbaage != null" >
+        NbaAge = #{nbaage,jdbcType=SMALLINT},
+      </if>
+      <if test="iskey != null" >
+        isKey = #{iskey,jdbcType=BIT},
+      </if>
+      <if test="positionid != null" >
+        PositionID = #{positionid,jdbcType=INTEGER},
+      </if>
+      <if test="nationalityid != null" >
+        NationalityID = #{nationalityid,jdbcType=INTEGER},
+      </if>
+      <if test="endtime != null" >
+        EndTime = #{endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="annualsalary != null" >
+        AnnualSalary = #{annualsalary,jdbcType=INTEGER},
+      </if>
+      <if test="highschool != null" >
+        highSchool = #{highschool,jdbcType=VARCHAR},
+      </if>
+      <if test="college != null" >
+        College = #{college,jdbcType=VARCHAR},
+      </if>
+      <if test="draft != null" >
+        draft = #{draft,jdbcType=VARCHAR},
+      </if>
+      <if test="introduce != null" >
+        Introduce = #{introduce,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.dayspass.datacenter.domain.LqPlayer" >
+    update LQ_Player
+    set Number = #{number,jdbcType=CHAR},
+      Name_F = #{nameF,jdbcType=CHAR},
+      Name_Fs = #{nameFs,jdbcType=VARCHAR},
+      Name_JS = #{nameJs,jdbcType=CHAR},
+      Name_J = #{nameJ,jdbcType=CHAR},
+      Name_E = #{nameE,jdbcType=CHAR},
+      Name_short = #{nameShort,jdbcType=VARCHAR},
+      TeamID = #{teamid,jdbcType=INTEGER},
+      URL = #{url,jdbcType=CHAR},
+      Place = #{place,jdbcType=CHAR},
+      Birthday = #{birthday,jdbcType=TIMESTAMP},
+      Tallness = #{tallness,jdbcType=SMALLINT},
+      Weight = #{weight,jdbcType=SMALLINT},
+      ComeFrom = #{comefrom,jdbcType=CHAR},
+      Photo = #{photo,jdbcType=VARCHAR},
+      NbaAge = #{nbaage,jdbcType=SMALLINT},
+      isKey = #{iskey,jdbcType=BIT},
+      PositionID = #{positionid,jdbcType=INTEGER},
+      NationalityID = #{nationalityid,jdbcType=INTEGER},
+      EndTime = #{endtime,jdbcType=TIMESTAMP},
+      AnnualSalary = #{annualsalary,jdbcType=INTEGER},
+      highSchool = #{highschool,jdbcType=VARCHAR},
+      College = #{college,jdbcType=VARCHAR},
+      draft = #{draft,jdbcType=VARCHAR},
+      Introduce = #{introduce,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dayspass.datacenter.domain.LqPlayer" >
+    update LQ_Player
+    set Number = #{number,jdbcType=CHAR},
+      Name_F = #{nameF,jdbcType=CHAR},
+      Name_Fs = #{nameFs,jdbcType=VARCHAR},
+      Name_JS = #{nameJs,jdbcType=CHAR},
+      Name_J = #{nameJ,jdbcType=CHAR},
+      Name_E = #{nameE,jdbcType=CHAR},
+      Name_short = #{nameShort,jdbcType=VARCHAR},
+      TeamID = #{teamid,jdbcType=INTEGER},
+      URL = #{url,jdbcType=CHAR},
+      Place = #{place,jdbcType=CHAR},
+      Birthday = #{birthday,jdbcType=TIMESTAMP},
+      Tallness = #{tallness,jdbcType=SMALLINT},
+      Weight = #{weight,jdbcType=SMALLINT},
+      ComeFrom = #{comefrom,jdbcType=CHAR},
+      Photo = #{photo,jdbcType=VARCHAR},
+      NbaAge = #{nbaage,jdbcType=SMALLINT},
+      isKey = #{iskey,jdbcType=BIT},
+      PositionID = #{positionid,jdbcType=INTEGER},
+      NationalityID = #{nationalityid,jdbcType=INTEGER},
+      EndTime = #{endtime,jdbcType=TIMESTAMP},
+      AnnualSalary = #{annualsalary,jdbcType=INTEGER},
+      highSchool = #{highschool,jdbcType=VARCHAR},
+      College = #{college,jdbcType=VARCHAR},
+      draft = #{draft,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

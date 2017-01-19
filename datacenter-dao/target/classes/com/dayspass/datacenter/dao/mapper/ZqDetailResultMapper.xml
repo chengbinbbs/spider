@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dayspass.datacenter.dao.ZqDetailResultMapper" >
+  <resultMap id="BaseResultMap" type="com.dayspass.datacenter.domain.ZqDetailResult" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="ScheduleID" property="scheduleid" jdbcType="INTEGER" />
+    <result column="HappenTime" property="happentime" jdbcType="SMALLINT" />
+    <result column="TeamID" property="teamid" jdbcType="INTEGER" />
+    <result column="playername" property="playername" jdbcType="VARCHAR" />
+    <result column="PlayerID" property="playerid" jdbcType="INTEGER" />
+    <result column="Kind" property="kind" jdbcType="SMALLINT" />
+    <result column="modifyTime" property="modifytime" jdbcType="TIMESTAMP" />
+    <result column="playername_e" property="playernameE" jdbcType="NVARCHAR" />
+    <result column="playername_j" property="playernameJ" jdbcType="NVARCHAR" />
+    <result column="PlayerID_in" property="playeridIn" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, ScheduleID, HappenTime, TeamID, playername, PlayerID, Kind, modifyTime, playername_e, 
+    playername_j, PlayerID_in
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ZQ_DetailResult
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ZQ_DetailResult
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.dayspass.datacenter.domain.ZqDetailResult" >
+    insert into ZQ_DetailResult (ID, ScheduleID, HappenTime, 
+      TeamID, playername, PlayerID, 
+      Kind, modifyTime, playername_e, 
+      playername_j, PlayerID_in)
+    values (#{id,jdbcType=INTEGER}, #{scheduleid,jdbcType=INTEGER}, #{happentime,jdbcType=SMALLINT}, 
+      #{teamid,jdbcType=INTEGER}, #{playername,jdbcType=VARCHAR}, #{playerid,jdbcType=INTEGER}, 
+      #{kind,jdbcType=SMALLINT}, #{modifytime,jdbcType=TIMESTAMP}, #{playernameE,jdbcType=NVARCHAR}, 
+      #{playernameJ,jdbcType=NVARCHAR}, #{playeridIn,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dayspass.datacenter.domain.ZqDetailResult" >
+    insert into ZQ_DetailResult
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="scheduleid != null" >
+        ScheduleID,
+      </if>
+      <if test="happentime != null" >
+        HappenTime,
+      </if>
+      <if test="teamid != null" >
+        TeamID,
+      </if>
+      <if test="playername != null" >
+        playername,
+      </if>
+      <if test="playerid != null" >
+        PlayerID,
+      </if>
+      <if test="kind != null" >
+        Kind,
+      </if>
+      <if test="modifytime != null" >
+        modifyTime,
+      </if>
+      <if test="playernameE != null" >
+        playername_e,
+      </if>
+      <if test="playernameJ != null" >
+        playername_j,
+      </if>
+      <if test="playeridIn != null" >
+        PlayerID_in,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="scheduleid != null" >
+        #{scheduleid,jdbcType=INTEGER},
+      </if>
+      <if test="happentime != null" >
+        #{happentime,jdbcType=SMALLINT},
+      </if>
+      <if test="teamid != null" >
+        #{teamid,jdbcType=INTEGER},
+      </if>
+      <if test="playername != null" >
+        #{playername,jdbcType=VARCHAR},
+      </if>
+      <if test="playerid != null" >
+        #{playerid,jdbcType=INTEGER},
+      </if>
+      <if test="kind != null" >
+        #{kind,jdbcType=SMALLINT},
+      </if>
+      <if test="modifytime != null" >
+        #{modifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="playernameE != null" >
+        #{playernameE,jdbcType=NVARCHAR},
+      </if>
+      <if test="playernameJ != null" >
+        #{playernameJ,jdbcType=NVARCHAR},
+      </if>
+      <if test="playeridIn != null" >
+        #{playeridIn,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dayspass.datacenter.domain.ZqDetailResult" >
+    update ZQ_DetailResult
+    <set >
+      <if test="scheduleid != null" >
+        ScheduleID = #{scheduleid,jdbcType=INTEGER},
+      </if>
+      <if test="happentime != null" >
+        HappenTime = #{happentime,jdbcType=SMALLINT},
+      </if>
+      <if test="teamid != null" >
+        TeamID = #{teamid,jdbcType=INTEGER},
+      </if>
+      <if test="playername != null" >
+        playername = #{playername,jdbcType=VARCHAR},
+      </if>
+      <if test="playerid != null" >
+        PlayerID = #{playerid,jdbcType=INTEGER},
+      </if>
+      <if test="kind != null" >
+        Kind = #{kind,jdbcType=SMALLINT},
+      </if>
+      <if test="modifytime != null" >
+        modifyTime = #{modifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="playernameE != null" >
+        playername_e = #{playernameE,jdbcType=NVARCHAR},
+      </if>
+      <if test="playernameJ != null" >
+        playername_j = #{playernameJ,jdbcType=NVARCHAR},
+      </if>
+      <if test="playeridIn != null" >
+        PlayerID_in = #{playeridIn,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dayspass.datacenter.domain.ZqDetailResult" >
+    update ZQ_DetailResult
+    set ScheduleID = #{scheduleid,jdbcType=INTEGER},
+      HappenTime = #{happentime,jdbcType=SMALLINT},
+      TeamID = #{teamid,jdbcType=INTEGER},
+      playername = #{playername,jdbcType=VARCHAR},
+      PlayerID = #{playerid,jdbcType=INTEGER},
+      Kind = #{kind,jdbcType=SMALLINT},
+      modifyTime = #{modifytime,jdbcType=TIMESTAMP},
+      playername_e = #{playernameE,jdbcType=NVARCHAR},
+      playername_j = #{playernameJ,jdbcType=NVARCHAR},
+      PlayerID_in = #{playeridIn,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  
+   <!-- 条件查询列表 -->
+  <select id="queryAll" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ZQ_DetailResult
+     where 1 = 1
+     <if test="id != null">
+		and id = #{id} 
+	 </if>
+	 <if test="scheduleid != null and scheduleid != ''">
+		and ScheduleID = #{scheduleid} 
+	 </if>
+	 <if test="happentime != null and happentime != ''">
+		and HappenTime = #{happentime} 
+	 </if>
+	 <if test="teamid != null and teamid != ''">
+		and TeamID = #{teamid} 
+	 </if>
+	 <if test="playerid != null and playerid != ''">
+		and PlayerID = #{playerid} 
+	 </if>
+	 <if test="kind != null and kind != ''">
+		and Kind = #{kind} 
+	 </if>
+  </select>
+  
+  <!-- 球员技术统计 -->
+  <select id="queryPlayerScore" resultType="java.lang.Integer">
+    SELECT count(*) FROM `ZQ_DetailResult` d LEFT JOIN `ZQ_Schedule` s on s.ScheduleID=d.ScheduleID where (s.HomeTeamID=#{teamid} or s.GuestTeamID=#{teamid}) and s.SclassID=#{sclassid}
+	and s.MatchSeason=#{matchseason} and d.PlayerID=#{playerid} and d.Kind=1;
+  </select>
+  
+  <!-- 本场球员技术统计 -->
+  <select id="queryPlayerGoalsBySchedule" resultType="java.lang.Integer">
+    SELECT count(*) FROM `ZQ_DetailResult` where ScheduleID = #{scheduleid} and PlayerID=#{playerid} and Kind=1
+  </select>
+  
+  <!-- 查询球员近期进球记录 -->
+  <select id="queryPlayerGoalList" resultMap="BaseResultMap">
+  	select ml.ScheduleID, ml.PlayerID, ml.Name_short playername, ml.modifyTime from (
+  		select 
+  			r.ScheduleID,r.PlayerID,p.Name_short,r.modifyTime 
+  			from ZQ_DetailResult r, player p 
+  		where r.PlayerID = p.PlayerID 
+  		and r.TeamID = #{teamid}
+  		and #{players} in r.PlayerID
+  		and r.Kind = 1 
+  		and r.modifyTime > DATE_SUB(SYSDATE(),INTERVAL 6 MONTH)
+  	) ml group by ml.ScheduleID, ml.PlayerID order by ml.PlayerID, ml.modifyTime desc
+  </select>
+  
+  <delete id="deleteDetailResult">
+    delete from ZQ_DetailResult
+    where ID not in 
+      <foreach item="id" index="index" collection="ids" open="(" separator="," close=")">
+      #{id}
+      </foreach>
+     and ScheduleID = #{sid};
+  </delete>
+  
+  
+</mapper>

@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dayspass.datacenter.dao.LqPlayerTechnicMapper" >
+  <resultMap id="BaseResultMap" type="com.dayspass.datacenter.domain.LqPlayerTechnic" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="PlayerID" property="playerid" jdbcType="INTEGER" />
+    <result column="MatchSeason" property="matchseason" jdbcType="CHAR" />
+    <result column="TeamID" property="teamid" jdbcType="INTEGER" />
+    <result column="JoinTime" property="jointime" jdbcType="SMALLINT" />
+    <result column="FirstJoin" property="firstjoin" jdbcType="SMALLINT" />
+    <result column="PlayTime" property="playtime" jdbcType="SMALLINT" />
+    <result column="Shoot" property="shoot" jdbcType="SMALLINT" />
+    <result column="Shoot_Hit" property="shootHit" jdbcType="SMALLINT" />
+    <result column="ThreeMin" property="threemin" jdbcType="SMALLINT" />
+    <result column="ThreeMin_Hit" property="threeminHit" jdbcType="SMALLINT" />
+    <result column="PunishBall" property="punishball" jdbcType="SMALLINT" />
+    <result column="PunishBall_Hit" property="punishballHit" jdbcType="SMALLINT" />
+    <result column="Attack" property="attack" jdbcType="SMALLINT" />
+    <result column="Defend" property="defend" jdbcType="SMALLINT" />
+    <result column="HelpAttack" property="helpattack" jdbcType="SMALLINT" />
+    <result column="Rob" property="rob" jdbcType="SMALLINT" />
+    <result column="Cover" property="cover" jdbcType="SMALLINT" />
+    <result column="Misplay" property="misplay" jdbcType="SMALLINT" />
+    <result column="Foul" property="foul" jdbcType="SMALLINT" />
+    <result column="Score" property="score" jdbcType="SMALLINT" />
+    <result column="double_2" property="double2" jdbcType="SMALLINT" />
+    <result column="double_3" property="double3" jdbcType="SMALLINT" />
+    <result column="double_4" property="double4" jdbcType="SMALLINT" />
+    <result column="TechKind" property="techkind" jdbcType="SMALLINT" />
+    <result column="JoinTime_win" property="jointimeWin" jdbcType="SMALLINT" />
+    <result column="FirstJoin_win" property="firstjoinWin" jdbcType="SMALLINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, PlayerID, MatchSeason, TeamID, JoinTime, FirstJoin, PlayTime, Shoot, Shoot_Hit, 
+    ThreeMin, ThreeMin_Hit, PunishBall, PunishBall_Hit, Attack, Defend, HelpAttack, Rob, 
+    Cover, Misplay, Foul, Score, double_2, double_3, double_4, TechKind, JoinTime_win, 
+    FirstJoin_win
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from LQ_PlayerTechnic
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from LQ_PlayerTechnic
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.dayspass.datacenter.domain.LqPlayerTechnic" >
+    insert into LQ_PlayerTechnic (ID, PlayerID, MatchSeason, 
+      TeamID, JoinTime, FirstJoin, 
+      PlayTime, Shoot, Shoot_Hit, 
+      ThreeMin, ThreeMin_Hit, PunishBall, 
+      PunishBall_Hit, Attack, Defend, 
+      HelpAttack, Rob, Cover, 
+      Misplay, Foul, Score, 
+      double_2, double_3, double_4, 
+      TechKind, JoinTime_win, FirstJoin_win
+      )
+    values (#{id,jdbcType=INTEGER}, #{playerid,jdbcType=INTEGER}, #{matchseason,jdbcType=CHAR}, 
+      #{teamid,jdbcType=INTEGER}, #{jointime,jdbcType=SMALLINT}, #{firstjoin,jdbcType=SMALLINT}, 
+      #{playtime,jdbcType=SMALLINT}, #{shoot,jdbcType=SMALLINT}, #{shootHit,jdbcType=SMALLINT}, 
+      #{threemin,jdbcType=SMALLINT}, #{threeminHit,jdbcType=SMALLINT}, #{punishball,jdbcType=SMALLINT}, 
+      #{punishballHit,jdbcType=SMALLINT}, #{attack,jdbcType=SMALLINT}, #{defend,jdbcType=SMALLINT}, 
+      #{helpattack,jdbcType=SMALLINT}, #{rob,jdbcType=SMALLINT}, #{cover,jdbcType=SMALLINT}, 
+      #{misplay,jdbcType=SMALLINT}, #{foul,jdbcType=SMALLINT}, #{score,jdbcType=SMALLINT}, 
+      #{double2,jdbcType=SMALLINT}, #{double3,jdbcType=SMALLINT}, #{double4,jdbcType=SMALLINT}, 
+      #{techkind,jdbcType=SMALLINT}, #{jointimeWin,jdbcType=SMALLINT}, #{firstjoinWin,jdbcType=SMALLINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.dayspass.datacenter.domain.LqPlayerTechnic" >
+    insert into LQ_PlayerTechnic
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="playerid != null" >
+        PlayerID,
+      </if>
+      <if test="matchseason != null" >
+        MatchSeason,
+      </if>
+      <if test="teamid != null" >
+        TeamID,
+      </if>
+      <if test="jointime != null" >
+        JoinTime,
+      </if>
+      <if test="firstjoin != null" >
+        FirstJoin,
+      </if>
+      <if test="playtime != null" >
+        PlayTime,
+      </if>
+      <if test="shoot != null" >
+        Shoot,
+      </if>
+      <if test="shootHit != null" >
+        Shoot_Hit,
+      </if>
+      <if test="threemin != null" >
+        ThreeMin,
+      </if>
+      <if test="threeminHit != null" >
+        ThreeMin_Hit,
+      </if>
+      <if test="punishball != null" >
+        PunishBall,
+      </if>
+      <if test="punishballHit != null" >
+        PunishBall_Hit,
+      </if>
+      <if test="attack != null" >
+        Attack,
+      </if>
+      <if test="defend != null" >
+        Defend,
+      </if>
+      <if test="helpattack != null" >
+        HelpAttack,
+      </if>
+      <if test="rob != null" >
+        Rob,
+      </if>
+      <if test="cover != null" >
+        Cover,
+      </if>
+      <if test="misplay != null" >
+        Misplay,
+      </if>
+      <if test="foul != null" >
+        Foul,
+      </if>
+      <if test="score != null" >
+        Score,
+      </if>
+      <if test="double2 != null" >
+        double_2,
+      </if>
+      <if test="double3 != null" >
+        double_3,
+      </if>
+      <if test="double4 != null" >
+        double_4,
+      </if>
+      <if test="techkind != null" >
+        TechKind,
+      </if>
+      <if test="jointimeWin != null" >
+        JoinTime_win,
+      </if>
+      <if test="firstjoinWin != null" >
+        FirstJoin_win,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="playerid != null" >
+        #{playerid,jdbcType=INTEGER},
+      </if>
+      <if test="matchseason != null" >
+        #{matchseason,jdbcType=CHAR},
+      </if>
+      <if test="teamid != null" >
+        #{teamid,jdbcType=INTEGER},
+      </if>
+      <if test="jointime != null" >
+        #{jointime,jdbcType=SMALLINT},
+      </if>
+      <if test="firstjoin != null" >
+        #{firstjoin,jdbcType=SMALLINT},
+      </if>
+      <if test="playtime != null" >
+        #{playtime,jdbcType=SMALLINT},
+      </if>
+      <if test="shoot != null" >
+        #{shoot,jdbcType=SMALLINT},
+      </if>
+      <if test="shootHit != null" >
+        #{shootHit,jdbcType=SMALLINT},
+      </if>
+      <if test="threemin != null" >
+        #{threemin,jdbcType=SMALLINT},
+      </if>
+      <if test="threeminHit != null" >
+        #{threeminHit,jdbcType=SMALLINT},
+      </if>
+      <if test="punishball != null" >
+        #{punishball,jdbcType=SMALLINT},
+      </if>
+      <if test="punishballHit != null" >
+        #{punishballHit,jdbcType=SMALLINT},
+      </if>
+      <if test="attack != null" >
+        #{attack,jdbcType=SMALLINT},
+      </if>
+      <if test="defend != null" >
+        #{defend,jdbcType=SMALLINT},
+      </if>
+      <if test="helpattack != null" >
+        #{helpattack,jdbcType=SMALLINT},
+      </if>
+      <if test="rob != null" >
+        #{rob,jdbcType=SMALLINT},
+      </if>
+      <if test="cover != null" >
+        #{cover,jdbcType=SMALLINT},
+      </if>
+      <if test="misplay != null" >
+        #{misplay,jdbcType=SMALLINT},
+      </if>
+      <if test="foul != null" >
+        #{foul,jdbcType=SMALLINT},
+      </if>
+      <if test="score != null" >
+        #{score,jdbcType=SMALLINT},
+      </if>
+      <if test="double2 != null" >
+        #{double2,jdbcType=SMALLINT},
+      </if>
+      <if test="double3 != null" >
+        #{double3,jdbcType=SMALLINT},
+      </if>
+      <if test="double4 != null" >
+        #{double4,jdbcType=SMALLINT},
+      </if>
+      <if test="techkind != null" >
+        #{techkind,jdbcType=SMALLINT},
+      </if>
+      <if test="jointimeWin != null" >
+        #{jointimeWin,jdbcType=SMALLINT},
+      </if>
+      <if test="firstjoinWin != null" >
+        #{firstjoinWin,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dayspass.datacenter.domain.LqPlayerTechnic" >
+    update LQ_PlayerTechnic
+    <set >
+      <if test="playerid != null" >
+        PlayerID = #{playerid,jdbcType=INTEGER},
+      </if>
+      <if test="matchseason != null" >
+        MatchSeason = #{matchseason,jdbcType=CHAR},
+      </if>
+      <if test="teamid != null" >
+        TeamID = #{teamid,jdbcType=INTEGER},
+      </if>
+      <if test="jointime != null" >
+        JoinTime = #{jointime,jdbcType=SMALLINT},
+      </if>
+      <if test="firstjoin != null" >
+        FirstJoin = #{firstjoin,jdbcType=SMALLINT},
+      </if>
+      <if test="playtime != null" >
+        PlayTime = #{playtime,jdbcType=SMALLINT},
+      </if>
+      <if test="shoot != null" >
+        Shoot = #{shoot,jdbcType=SMALLINT},
+      </if>
+      <if test="shootHit != null" >
+        Shoot_Hit = #{shootHit,jdbcType=SMALLINT},
+      </if>
+      <if test="threemin != null" >
+        ThreeMin = #{threemin,jdbcType=SMALLINT},
+      </if>
+      <if test="threeminHit != null" >
+        ThreeMin_Hit = #{threeminHit,jdbcType=SMALLINT},
+      </if>
+      <if test="punishball != null" >
+        PunishBall = #{punishball,jdbcType=SMALLINT},
+      </if>
+      <if test="punishballHit != null" >
+        PunishBall_Hit = #{punishballHit,jdbcType=SMALLINT},
+      </if>
+      <if test="attack != null" >
+        Attack = #{attack,jdbcType=SMALLINT},
+      </if>
+      <if test="defend != null" >
+        Defend = #{defend,jdbcType=SMALLINT},
+      </if>
+      <if test="helpattack != null" >
+        HelpAttack = #{helpattack,jdbcType=SMALLINT},
+      </if>
+      <if test="rob != null" >
+        Rob = #{rob,jdbcType=SMALLINT},
+      </if>
+      <if test="cover != null" >
+        Cover = #{cover,jdbcType=SMALLINT},
+      </if>
+      <if test="misplay != null" >
+        Misplay = #{misplay,jdbcType=SMALLINT},
+      </if>
+      <if test="foul != null" >
+        Foul = #{foul,jdbcType=SMALLINT},
+      </if>
+      <if test="score != null" >
+        Score = #{score,jdbcType=SMALLINT},
+      </if>
+      <if test="double2 != null" >
+        double_2 = #{double2,jdbcType=SMALLINT},
+      </if>
+      <if test="double3 != null" >
+        double_3 = #{double3,jdbcType=SMALLINT},
+      </if>
+      <if test="double4 != null" >
+        double_4 = #{double4,jdbcType=SMALLINT},
+      </if>
+      <if test="techkind != null" >
+        TechKind = #{techkind,jdbcType=SMALLINT},
+      </if>
+      <if test="jointimeWin != null" >
+        JoinTime_win = #{jointimeWin,jdbcType=SMALLINT},
+      </if>
+      <if test="firstjoinWin != null" >
+        FirstJoin_win = #{firstjoinWin,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dayspass.datacenter.domain.LqPlayerTechnic" >
+    update LQ_PlayerTechnic
+    set PlayerID = #{playerid,jdbcType=INTEGER},
+      MatchSeason = #{matchseason,jdbcType=CHAR},
+      TeamID = #{teamid,jdbcType=INTEGER},
+      JoinTime = #{jointime,jdbcType=SMALLINT},
+      FirstJoin = #{firstjoin,jdbcType=SMALLINT},
+      PlayTime = #{playtime,jdbcType=SMALLINT},
+      Shoot = #{shoot,jdbcType=SMALLINT},
+      Shoot_Hit = #{shootHit,jdbcType=SMALLINT},
+      ThreeMin = #{threemin,jdbcType=SMALLINT},
+      ThreeMin_Hit = #{threeminHit,jdbcType=SMALLINT},
+      PunishBall = #{punishball,jdbcType=SMALLINT},
+      PunishBall_Hit = #{punishballHit,jdbcType=SMALLINT},
+      Attack = #{attack,jdbcType=SMALLINT},
+      Defend = #{defend,jdbcType=SMALLINT},
+      HelpAttack = #{helpattack,jdbcType=SMALLINT},
+      Rob = #{rob,jdbcType=SMALLINT},
+      Cover = #{cover,jdbcType=SMALLINT},
+      Misplay = #{misplay,jdbcType=SMALLINT},
+      Foul = #{foul,jdbcType=SMALLINT},
+      Score = #{score,jdbcType=SMALLINT},
+      double_2 = #{double2,jdbcType=SMALLINT},
+      double_3 = #{double3,jdbcType=SMALLINT},
+      double_4 = #{double4,jdbcType=SMALLINT},
+      TechKind = #{techkind,jdbcType=SMALLINT},
+      JoinTime_win = #{jointimeWin,jdbcType=SMALLINT},
+      FirstJoin_win = #{firstjoinWin,jdbcType=SMALLINT}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

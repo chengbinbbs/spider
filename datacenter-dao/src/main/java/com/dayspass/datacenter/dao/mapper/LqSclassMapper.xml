@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dayspass.datacenter.dao.LqSclassMapper" >
+  <resultMap id="BaseResultMap" type="com.dayspass.datacenter.domain.LqSclass" >
+    <id column="sclassID" property="sclassid" jdbcType="INTEGER" />
+    <result column="name_en" property="nameEn" jdbcType="VARCHAR" />
+    <result column="Name_cn" property="nameCn" jdbcType="VARCHAR" />
+    <result column="Name_tw" property="nameTw" jdbcType="VARCHAR" />
+    <result column="color" property="color" jdbcType="CHAR" />
+    <result column="sclassType" property="sclasstype" jdbcType="TINYINT" />
+    <result column="sclassTime" property="sclasstime" jdbcType="CHAR" />
+    <result column="currMatchSeason" property="currmatchseason" jdbcType="CHAR" />
+    <result column="currYear" property="curryear" jdbcType="INTEGER" />
+    <result column="currMonth" property="currmonth" jdbcType="INTEGER" />
+    <result column="listID" property="listid" jdbcType="INTEGER" />
+    <result column="sclassKind" property="sclasskind" jdbcType="TINYINT" />
+    <result column="infoID" property="infoid" jdbcType="TINYINT" />
+    <result column="FlagPic" property="flagpic" jdbcType="VARCHAR" />
+    <result column="IfShow" property="ifshow" jdbcType="BIT" />
+    <result column="RoundTypes" property="roundtypes" jdbcType="VARCHAR" />
+    <result column="OrderKind" property="orderkind" jdbcType="TINYINT" />
+    <result column="BeginSeason" property="beginseason" jdbcType="VARCHAR" />
+    <result column="Name_FS" property="nameFs" jdbcType="VARCHAR" />
+    <result column="Bf_simply_disp" property="bfSimplyDisp" jdbcType="BIT" />
+    <result column="league_id" property="leagueId" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.dayspass.datacenter.domain.LqSclassWithBLOBs" extends="BaseResultMap" >
+    <result column="HistoryWinner" property="historywinner" jdbcType="LONGVARCHAR" />
+    <result column="Rules" property="rules" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    sclassID, name_en, Name_cn, Name_tw, color, sclassType, sclassTime, currMatchSeason, 
+    currYear, currMonth, listID, sclassKind, infoID, FlagPic, IfShow, RoundTypes, OrderKind, 
+    BeginSeason, Name_FS, Bf_simply_disp, league_id
+  </sql>
+  <sql id="Blob_Column_List" >
+    HistoryWinner, Rules
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from LQ_Sclass
+    where sclassID = #{sclassid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from LQ_Sclass
+    where sclassID = #{sclassid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.dayspass.datacenter.domain.LqSclassWithBLOBs" >
+    insert into LQ_Sclass (sclassID, name_en, Name_cn, 
+      Name_tw, color, sclassType, 
+      sclassTime, currMatchSeason, currYear, 
+      currMonth, listID, sclassKind, 
+      infoID, FlagPic, IfShow, 
+      RoundTypes, OrderKind, BeginSeason, 
+      Name_FS, Bf_simply_disp, league_id, 
+      HistoryWinner, Rules)
+    values (#{sclassid,jdbcType=INTEGER}, #{nameEn,jdbcType=VARCHAR}, #{nameCn,jdbcType=VARCHAR}, 
+      #{nameTw,jdbcType=VARCHAR}, #{color,jdbcType=CHAR}, #{sclasstype,jdbcType=TINYINT}, 
+      #{sclasstime,jdbcType=CHAR}, #{currmatchseason,jdbcType=CHAR}, #{curryear,jdbcType=INTEGER}, 
+      #{currmonth,jdbcType=INTEGER}, #{listid,jdbcType=INTEGER}, #{sclasskind,jdbcType=TINYINT}, 
+      #{infoid,jdbcType=TINYINT}, #{flagpic,jdbcType=VARCHAR}, #{ifshow,jdbcType=BIT}, 
+      #{roundtypes,jdbcType=VARCHAR}, #{orderkind,jdbcType=TINYINT}, #{beginseason,jdbcType=VARCHAR}, 
+      #{nameFs,jdbcType=VARCHAR}, #{bfSimplyDisp,jdbcType=BIT}, #{leagueId,jdbcType=INTEGER}, 
+      #{historywinner,jdbcType=LONGVARCHAR}, #{rules,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dayspass.datacenter.domain.LqSclassWithBLOBs" >
+    insert into LQ_Sclass
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sclassid != null" >
+        sclassID,
+      </if>
+      <if test="nameEn != null" >
+        name_en,
+      </if>
+      <if test="nameCn != null" >
+        Name_cn,
+      </if>
+      <if test="nameTw != null" >
+        Name_tw,
+      </if>
+      <if test="color != null" >
+        color,
+      </if>
+      <if test="sclasstype != null" >
+        sclassType,
+      </if>
+      <if test="sclasstime != null" >
+        sclassTime,
+      </if>
+      <if test="currmatchseason != null" >
+        currMatchSeason,
+      </if>
+      <if test="curryear != null" >
+        currYear,
+      </if>
+      <if test="currmonth != null" >
+        currMonth,
+      </if>
+      <if test="listid != null" >
+        listID,
+      </if>
+      <if test="sclasskind != null" >
+        sclassKind,
+      </if>
+      <if test="infoid != null" >
+        infoID,
+      </if>
+      <if test="flagpic != null" >
+        FlagPic,
+      </if>
+      <if test="ifshow != null" >
+        IfShow,
+      </if>
+      <if test="roundtypes != null" >
+        RoundTypes,
+      </if>
+      <if test="orderkind != null" >
+        OrderKind,
+      </if>
+      <if test="beginseason != null" >
+        BeginSeason,
+      </if>
+      <if test="nameFs != null" >
+        Name_FS,
+      </if>
+      <if test="bfSimplyDisp != null" >
+        Bf_simply_disp,
+      </if>
+      <if test="leagueId != null" >
+        league_id,
+      </if>
+      <if test="historywinner != null" >
+        HistoryWinner,
+      </if>
+      <if test="rules != null" >
+        Rules,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sclassid != null" >
+        #{sclassid,jdbcType=INTEGER},
+      </if>
+      <if test="nameEn != null" >
+        #{nameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="nameCn != null" >
+        #{nameCn,jdbcType=VARCHAR},
+      </if>
+      <if test="nameTw != null" >
+        #{nameTw,jdbcType=VARCHAR},
+      </if>
+      <if test="color != null" >
+        #{color,jdbcType=CHAR},
+      </if>
+      <if test="sclasstype != null" >
+        #{sclasstype,jdbcType=TINYINT},
+      </if>
+      <if test="sclasstime != null" >
+        #{sclasstime,jdbcType=CHAR},
+      </if>
+      <if test="currmatchseason != null" >
+        #{currmatchseason,jdbcType=CHAR},
+      </if>
+      <if test="curryear != null" >
+        #{curryear,jdbcType=INTEGER},
+      </if>
+      <if test="currmonth != null" >
+        #{currmonth,jdbcType=INTEGER},
+      </if>
+      <if test="listid != null" >
+        #{listid,jdbcType=INTEGER},
+      </if>
+      <if test="sclasskind != null" >
+        #{sclasskind,jdbcType=TINYINT},
+      </if>
+      <if test="infoid != null" >
+        #{infoid,jdbcType=TINYINT},
+      </if>
+      <if test="flagpic != null" >
+        #{flagpic,jdbcType=VARCHAR},
+      </if>
+      <if test="ifshow != null" >
+        #{ifshow,jdbcType=BIT},
+      </if>
+      <if test="roundtypes != null" >
+        #{roundtypes,jdbcType=VARCHAR},
+      </if>
+      <if test="orderkind != null" >
+        #{orderkind,jdbcType=TINYINT},
+      </if>
+      <if test="beginseason != null" >
+        #{beginseason,jdbcType=VARCHAR},
+      </if>
+      <if test="nameFs != null" >
+        #{nameFs,jdbcType=VARCHAR},
+      </if>
+      <if test="bfSimplyDisp != null" >
+        #{bfSimplyDisp,jdbcType=BIT},
+      </if>
+      <if test="leagueId != null" >
+        #{leagueId,jdbcType=INTEGER},
+      </if>
+      <if test="historywinner != null" >
+        #{historywinner,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="rules != null" >
+        #{rules,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dayspass.datacenter.domain.LqSclassWithBLOBs" >
+    update LQ_Sclass
+    <set >
+      <if test="nameEn != null" >
+        name_en = #{nameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="nameCn != null" >
+        Name_cn = #{nameCn,jdbcType=VARCHAR},
+      </if>
+      <if test="nameTw != null" >
+        Name_tw = #{nameTw,jdbcType=VARCHAR},
+      </if>
+      <if test="color != null" >
+        color = #{color,jdbcType=CHAR},
+      </if>
+      <if test="sclasstype != null" >
+        sclassType = #{sclasstype,jdbcType=TINYINT},
+      </if>
+      <if test="sclasstime != null" >
+        sclassTime = #{sclasstime,jdbcType=CHAR},
+      </if>
+      <if test="currmatchseason != null" >
+        currMatchSeason = #{currmatchseason,jdbcType=CHAR},
+      </if>
+      <if test="curryear != null" >
+        currYear = #{curryear,jdbcType=INTEGER},
+      </if>
+      <if test="currmonth != null" >
+        currMonth = #{currmonth,jdbcType=INTEGER},
+      </if>
+      <if test="listid != null" >
+        listID = #{listid,jdbcType=INTEGER},
+      </if>
+      <if test="sclasskind != null" >
+        sclassKind = #{sclasskind,jdbcType=TINYINT},
+      </if>
+      <if test="infoid != null" >
+        infoID = #{infoid,jdbcType=TINYINT},
+      </if>
+      <if test="flagpic != null" >
+        FlagPic = #{flagpic,jdbcType=VARCHAR},
+      </if>
+      <if test="ifshow != null" >
+        IfShow = #{ifshow,jdbcType=BIT},
+      </if>
+      <if test="roundtypes != null" >
+        RoundTypes = #{roundtypes,jdbcType=VARCHAR},
+      </if>
+      <if test="orderkind != null" >
+        OrderKind = #{orderkind,jdbcType=TINYINT},
+      </if>
+      <if test="beginseason != null" >
+        BeginSeason = #{beginseason,jdbcType=VARCHAR},
+      </if>
+      <if test="nameFs != null" >
+        Name_FS = #{nameFs,jdbcType=VARCHAR},
+      </if>
+      <if test="bfSimplyDisp != null" >
+        Bf_simply_disp = #{bfSimplyDisp,jdbcType=BIT},
+      </if>
+      <if test="leagueId != null" >
+        league_id = #{leagueId,jdbcType=INTEGER},
+      </if>
+      <if test="historywinner != null" >
+        HistoryWinner = #{historywinner,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="rules != null" >
+        Rules = #{rules,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where sclassID = #{sclassid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.dayspass.datacenter.domain.LqSclassWithBLOBs" >
+    update LQ_Sclass
+    set name_en = #{nameEn,jdbcType=VARCHAR},
+      Name_cn = #{nameCn,jdbcType=VARCHAR},
+      Name_tw = #{nameTw,jdbcType=VARCHAR},
+      color = #{color,jdbcType=CHAR},
+      sclassType = #{sclasstype,jdbcType=TINYINT},
+      sclassTime = #{sclasstime,jdbcType=CHAR},
+      currMatchSeason = #{currmatchseason,jdbcType=CHAR},
+      currYear = #{curryear,jdbcType=INTEGER},
+      currMonth = #{currmonth,jdbcType=INTEGER},
+      listID = #{listid,jdbcType=INTEGER},
+      sclassKind = #{sclasskind,jdbcType=TINYINT},
+      infoID = #{infoid,jdbcType=TINYINT},
+      FlagPic = #{flagpic,jdbcType=VARCHAR},
+      IfShow = #{ifshow,jdbcType=BIT},
+      RoundTypes = #{roundtypes,jdbcType=VARCHAR},
+      OrderKind = #{orderkind,jdbcType=TINYINT},
+      BeginSeason = #{beginseason,jdbcType=VARCHAR},
+      Name_FS = #{nameFs,jdbcType=VARCHAR},
+      Bf_simply_disp = #{bfSimplyDisp,jdbcType=BIT},
+      league_id = #{leagueId,jdbcType=INTEGER},
+      HistoryWinner = #{historywinner,jdbcType=LONGVARCHAR},
+      Rules = #{rules,jdbcType=LONGVARCHAR}
+    where sclassID = #{sclassid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dayspass.datacenter.domain.LqSclass" >
+    update LQ_Sclass
+    set name_en = #{nameEn,jdbcType=VARCHAR},
+      Name_cn = #{nameCn,jdbcType=VARCHAR},
+      Name_tw = #{nameTw,jdbcType=VARCHAR},
+      color = #{color,jdbcType=CHAR},
+      sclassType = #{sclasstype,jdbcType=TINYINT},
+      sclassTime = #{sclasstime,jdbcType=CHAR},
+      currMatchSeason = #{currmatchseason,jdbcType=CHAR},
+      currYear = #{curryear,jdbcType=INTEGER},
+      currMonth = #{currmonth,jdbcType=INTEGER},
+      listID = #{listid,jdbcType=INTEGER},
+      sclassKind = #{sclasskind,jdbcType=TINYINT},
+      infoID = #{infoid,jdbcType=TINYINT},
+      FlagPic = #{flagpic,jdbcType=VARCHAR},
+      IfShow = #{ifshow,jdbcType=BIT},
+      RoundTypes = #{roundtypes,jdbcType=VARCHAR},
+      OrderKind = #{orderkind,jdbcType=TINYINT},
+      BeginSeason = #{beginseason,jdbcType=VARCHAR},
+      Name_FS = #{nameFs,jdbcType=VARCHAR},
+      Bf_simply_disp = #{bfSimplyDisp,jdbcType=BIT},
+      league_id = #{leagueId,jdbcType=INTEGER}
+    where sclassID = #{sclassid,jdbcType=INTEGER}
+  </update>
+</mapper>

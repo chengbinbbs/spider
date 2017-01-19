@@ -1,0 +1,743 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dayspass.datacenter.dao.LqScheduleMapper" >
+  <resultMap id="BaseResultMap" type="com.dayspass.datacenter.domain.LqSchedule" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="SclassID" property="sclassid" jdbcType="SMALLINT" />
+    <result column="MatchSeason" property="matchseason" jdbcType="CHAR" />
+    <result column="MatchKind" property="matchkind" jdbcType="SMALLINT" />
+    <result column="HomeTeamID" property="hometeamid" jdbcType="INTEGER" />
+    <result column="GuestTeamID" property="guestteamid" jdbcType="INTEGER" />
+    <result column="HomeTeam" property="hometeam" jdbcType="VARCHAR" />
+    <result column="GuestTeam" property="guestteam" jdbcType="VARCHAR" />
+    <result column="MatchTime" property="matchtime" jdbcType="TIMESTAMP" />
+    <result column="Location" property="location" jdbcType="CHAR" />
+    <result column="HomeOne" property="homeone" jdbcType="SMALLINT" />
+    <result column="HomeTwo" property="hometwo" jdbcType="SMALLINT" />
+    <result column="HomeThree" property="homethree" jdbcType="SMALLINT" />
+    <result column="HomeFour" property="homefour" jdbcType="SMALLINT" />
+    <result column="GuestOne" property="guestone" jdbcType="SMALLINT" />
+    <result column="GuestTwo" property="guesttwo" jdbcType="SMALLINT" />
+    <result column="GuestThree" property="guestthree" jdbcType="SMALLINT" />
+    <result column="GuestFour" property="guestfour" jdbcType="SMALLINT" />
+    <result column="AddTime" property="addtime" jdbcType="SMALLINT" />
+    <result column="HomeAddTime1" property="homeaddtime1" jdbcType="SMALLINT" />
+    <result column="HomeAddTime2" property="homeaddtime2" jdbcType="SMALLINT" />
+    <result column="HomeAddTime3" property="homeaddtime3" jdbcType="SMALLINT" />
+    <result column="HomeAddTime4" property="homeaddtime4" jdbcType="SMALLINT" />
+    <result column="HomeAddTime5" property="homeaddtime5" jdbcType="SMALLINT" />
+    <result column="GuestAddTime1" property="guestaddtime1" jdbcType="SMALLINT" />
+    <result column="GuestAddTime2" property="guestaddtime2" jdbcType="SMALLINT" />
+    <result column="GuestAddTime3" property="guestaddtime3" jdbcType="SMALLINT" />
+    <result column="GuestAddTime4" property="guestaddtime4" jdbcType="SMALLINT" />
+    <result column="GuestAddTime5" property="guestaddtime5" jdbcType="SMALLINT" />
+    <result column="HomeScore" property="homescore" jdbcType="SMALLINT" />
+    <result column="GuestScore" property="guestscore" jdbcType="SMALLINT" />
+    <result column="MatchState" property="matchstate" jdbcType="SMALLINT" />
+    <result column="HomeFast" property="homefast" jdbcType="SMALLINT" />
+    <result column="GuestFast" property="guestfast" jdbcType="SMALLINT" />
+    <result column="HomeInside" property="homeinside" jdbcType="SMALLINT" />
+    <result column="GuestInside" property="guestinside" jdbcType="SMALLINT" />
+    <result column="HomeExceed" property="homeexceed" jdbcType="SMALLINT" />
+    <result column="GuestExceed" property="guestexceed" jdbcType="SMALLINT" />
+    <result column="TV" property="tv" jdbcType="CHAR" />
+    <result column="Umpire" property="umpire" jdbcType="CHAR" />
+    <result column="CostTime" property="costtime" jdbcType="CHAR" />
+    <result column="Visitor" property="visitor" jdbcType="INTEGER" />
+    <result column="addTechnic" property="addtechnic" jdbcType="BIT" />
+    <result column="remaintime" property="remaintime" jdbcType="VARCHAR" />
+    <result column="bf_changetime" property="bfChangetime" jdbcType="TIMESTAMP" />
+    <result column="Home_Order" property="homeOrder" jdbcType="VARCHAR" />
+    <result column="Guest_Order" property="guestOrder" jdbcType="VARCHAR" />
+    <result column="RoundType1" property="roundtype1" jdbcType="VARCHAR" />
+    <result column="RoundType2" property="roundtype2" jdbcType="VARCHAR" />
+    <result column="RoundKind" property="roundkind" jdbcType="TINYINT" />
+    <result column="AddStats" property="addstats" jdbcType="BIT" />
+    <result column="bfShow" property="bfshow" jdbcType="BIT" />
+    <result column="IsNeutral" property="isneutral" jdbcType="BIT" />
+    <result column="descript" property="descript" jdbcType="VARCHAR" />
+    <result column="PlayoffsID" property="playoffsid" jdbcType="INTEGER" />
+    <result column="CupQualifyID" property="cupqualifyid" jdbcType="INTEGER" />
+    <result column="Explainlist" property="explainlist" jdbcType="VARCHAR" />
+    <result column="sid" property="sid" jdbcType="INTEGER" />
+    <result column="explain" property="explain" jdbcType="LONGVARCHAR" />
+    <result column="explain2" property="explain2" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, SclassID, MatchSeason, MatchKind, HomeTeamID, GuestTeamID, HomeTeam, GuestTeam, 
+    MatchTime, Location, HomeOne, HomeTwo, HomeThree, HomeFour, GuestOne, GuestTwo, GuestThree, 
+    GuestFour, AddTime, HomeAddTime1, HomeAddTime2, HomeAddTime3, HomeAddTime4, HomeAddTime5, 
+    GuestAddTime1, GuestAddTime2, GuestAddTime3, GuestAddTime4, GuestAddTime5, HomeScore, 
+    GuestScore, MatchState, HomeFast, GuestFast, HomeInside, GuestInside, HomeExceed, 
+    GuestExceed, TV, Umpire, CostTime, Visitor, addTechnic, remaintime, bf_changetime, 
+    Home_Order, Guest_Order, RoundType1, RoundType2, RoundKind, AddStats, bfShow, IsNeutral, 
+    descript, PlayoffsID, CupQualifyID, Explainlist, sid,explain, explain2
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from LQ_Schedule
+    where sid = #{sid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from LQ_Schedule
+    where sid = #{sid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.dayspass.datacenter.domain.LqSchedule" >
+    insert into LQ_Schedule (ID, SclassID, MatchSeason, 
+      MatchKind, HomeTeamID, GuestTeamID, 
+      HomeTeam, GuestTeam, MatchTime, 
+      Location, HomeOne, HomeTwo, 
+      HomeThree, HomeFour, GuestOne, 
+      GuestTwo, GuestThree, GuestFour, 
+      AddTime, HomeAddTime1, HomeAddTime2, 
+      HomeAddTime3, HomeAddTime4, HomeAddTime5, 
+      GuestAddTime1, GuestAddTime2, GuestAddTime3, 
+      GuestAddTime4, GuestAddTime5, HomeScore, 
+      GuestScore, MatchState, HomeFast, 
+      GuestFast, HomeInside, GuestInside, 
+      HomeExceed, GuestExceed, TV, 
+      Umpire, CostTime, Visitor, 
+      addTechnic, remaintime, bf_changetime, 
+      Home_Order, Guest_Order, RoundType1, 
+      RoundType2, RoundKind, AddStats, 
+      bfShow, IsNeutral, descript, 
+      PlayoffsID, CupQualifyID, Explainlist, 
+      sid, explain, explain2
+      )
+    values (#{id,jdbcType=INTEGER}, #{sclassid,jdbcType=SMALLINT}, #{matchseason,jdbcType=CHAR}, 
+      #{matchkind,jdbcType=SMALLINT}, #{hometeamid,jdbcType=INTEGER}, #{guestteamid,jdbcType=INTEGER}, 
+      #{hometeam,jdbcType=VARCHAR}, #{guestteam,jdbcType=VARCHAR}, #{matchtime,jdbcType=TIMESTAMP}, 
+      #{location,jdbcType=CHAR}, #{homeone,jdbcType=SMALLINT}, #{hometwo,jdbcType=SMALLINT}, 
+      #{homethree,jdbcType=SMALLINT}, #{homefour,jdbcType=SMALLINT}, #{guestone,jdbcType=SMALLINT}, 
+      #{guesttwo,jdbcType=SMALLINT}, #{guestthree,jdbcType=SMALLINT}, #{guestfour,jdbcType=SMALLINT}, 
+      #{addtime,jdbcType=SMALLINT}, #{homeaddtime1,jdbcType=SMALLINT}, #{homeaddtime2,jdbcType=SMALLINT}, 
+      #{homeaddtime3,jdbcType=SMALLINT}, #{homeaddtime4,jdbcType=SMALLINT}, #{homeaddtime5,jdbcType=SMALLINT}, 
+      #{guestaddtime1,jdbcType=SMALLINT}, #{guestaddtime2,jdbcType=SMALLINT}, #{guestaddtime3,jdbcType=SMALLINT}, 
+      #{guestaddtime4,jdbcType=SMALLINT}, #{guestaddtime5,jdbcType=SMALLINT}, #{homescore,jdbcType=SMALLINT}, 
+      #{guestscore,jdbcType=SMALLINT}, #{matchstate,jdbcType=SMALLINT}, #{homefast,jdbcType=SMALLINT}, 
+      #{guestfast,jdbcType=SMALLINT}, #{homeinside,jdbcType=SMALLINT}, #{guestinside,jdbcType=SMALLINT}, 
+      #{homeexceed,jdbcType=SMALLINT}, #{guestexceed,jdbcType=SMALLINT}, #{tv,jdbcType=CHAR}, 
+      #{umpire,jdbcType=CHAR}, #{costtime,jdbcType=CHAR}, #{visitor,jdbcType=INTEGER}, 
+      #{addtechnic,jdbcType=BIT}, #{remaintime,jdbcType=VARCHAR}, #{bfChangetime,jdbcType=TIMESTAMP}, 
+      #{homeOrder,jdbcType=VARCHAR}, #{guestOrder,jdbcType=VARCHAR}, #{roundtype1,jdbcType=VARCHAR}, 
+      #{roundtype2,jdbcType=VARCHAR}, #{roundkind,jdbcType=TINYINT}, #{addstats,jdbcType=BIT}, 
+      #{bfshow,jdbcType=BIT}, #{isneutral,jdbcType=BIT}, #{descript,jdbcType=VARCHAR}, 
+      #{playoffsid,jdbcType=INTEGER}, #{cupqualifyid,jdbcType=INTEGER}, #{explainlist,jdbcType=VARCHAR}, 
+      #{sid,jdbcType=INTEGER}, #{explain,jdbcType=LONGVARCHAR}, #{explain2,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.dayspass.datacenter.domain.LqSchedule" >
+    insert into LQ_Schedule
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="sclassid != null" >
+        SclassID,
+      </if>
+      <if test="matchseason != null" >
+        MatchSeason,
+      </if>
+      <if test="matchkind != null" >
+        MatchKind,
+      </if>
+      <if test="hometeamid != null" >
+        HomeTeamID,
+      </if>
+      <if test="guestteamid != null" >
+        GuestTeamID,
+      </if>
+      <if test="hometeam != null" >
+        HomeTeam,
+      </if>
+      <if test="guestteam != null" >
+        GuestTeam,
+      </if>
+      <if test="matchtime != null" >
+        MatchTime,
+      </if>
+      <if test="location != null" >
+        Location,
+      </if>
+      <if test="homeone != null" >
+        HomeOne,
+      </if>
+      <if test="hometwo != null" >
+        HomeTwo,
+      </if>
+      <if test="homethree != null" >
+        HomeThree,
+      </if>
+      <if test="homefour != null" >
+        HomeFour,
+      </if>
+      <if test="guestone != null" >
+        GuestOne,
+      </if>
+      <if test="guesttwo != null" >
+        GuestTwo,
+      </if>
+      <if test="guestthree != null" >
+        GuestThree,
+      </if>
+      <if test="guestfour != null" >
+        GuestFour,
+      </if>
+      <if test="addtime != null" >
+        AddTime,
+      </if>
+      <if test="homeaddtime1 != null" >
+        HomeAddTime1,
+      </if>
+      <if test="homeaddtime2 != null" >
+        HomeAddTime2,
+      </if>
+      <if test="homeaddtime3 != null" >
+        HomeAddTime3,
+      </if>
+      <if test="homeaddtime4 != null" >
+        HomeAddTime4,
+      </if>
+      <if test="homeaddtime5 != null" >
+        HomeAddTime5,
+      </if>
+      <if test="guestaddtime1 != null" >
+        GuestAddTime1,
+      </if>
+      <if test="guestaddtime2 != null" >
+        GuestAddTime2,
+      </if>
+      <if test="guestaddtime3 != null" >
+        GuestAddTime3,
+      </if>
+      <if test="guestaddtime4 != null" >
+        GuestAddTime4,
+      </if>
+      <if test="guestaddtime5 != null" >
+        GuestAddTime5,
+      </if>
+      <if test="homescore != null" >
+        HomeScore,
+      </if>
+      <if test="guestscore != null" >
+        GuestScore,
+      </if>
+      <if test="matchstate != null" >
+        MatchState,
+      </if>
+      <if test="homefast != null" >
+        HomeFast,
+      </if>
+      <if test="guestfast != null" >
+        GuestFast,
+      </if>
+      <if test="homeinside != null" >
+        HomeInside,
+      </if>
+      <if test="guestinside != null" >
+        GuestInside,
+      </if>
+      <if test="homeexceed != null" >
+        HomeExceed,
+      </if>
+      <if test="guestexceed != null" >
+        GuestExceed,
+      </if>
+      <if test="tv != null" >
+        TV,
+      </if>
+      <if test="umpire != null" >
+        Umpire,
+      </if>
+      <if test="costtime != null" >
+        CostTime,
+      </if>
+      <if test="visitor != null" >
+        Visitor,
+      </if>
+      <if test="addtechnic != null" >
+        addTechnic,
+      </if>
+      <if test="remaintime != null" >
+        remaintime,
+      </if>
+      <if test="bfChangetime != null" >
+        bf_changetime,
+      </if>
+      <if test="homeOrder != null" >
+        Home_Order,
+      </if>
+      <if test="guestOrder != null" >
+        Guest_Order,
+      </if>
+      <if test="roundtype1 != null" >
+        RoundType1,
+      </if>
+      <if test="roundtype2 != null" >
+        RoundType2,
+      </if>
+      <if test="roundkind != null" >
+        RoundKind,
+      </if>
+      <if test="addstats != null" >
+        AddStats,
+      </if>
+      <if test="bfshow != null" >
+        bfShow,
+      </if>
+      <if test="isneutral != null" >
+        IsNeutral,
+      </if>
+      <if test="descript != null" >
+        descript,
+      </if>
+      <if test="playoffsid != null" >
+        PlayoffsID,
+      </if>
+      <if test="cupqualifyid != null" >
+        CupQualifyID,
+      </if>
+      <if test="explainlist != null" >
+        Explainlist,
+      </if>
+      <if test="sid != null" >
+        sid,
+      </if>
+      <if test="explain != null" >
+        explain,
+      </if>
+      <if test="explain2 != null" >
+        explain2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="sclassid != null" >
+        #{sclassid,jdbcType=SMALLINT},
+      </if>
+      <if test="matchseason != null" >
+        #{matchseason,jdbcType=CHAR},
+      </if>
+      <if test="matchkind != null" >
+        #{matchkind,jdbcType=SMALLINT},
+      </if>
+      <if test="hometeamid != null" >
+        #{hometeamid,jdbcType=INTEGER},
+      </if>
+      <if test="guestteamid != null" >
+        #{guestteamid,jdbcType=INTEGER},
+      </if>
+      <if test="hometeam != null" >
+        #{hometeam,jdbcType=VARCHAR},
+      </if>
+      <if test="guestteam != null" >
+        #{guestteam,jdbcType=VARCHAR},
+      </if>
+      <if test="matchtime != null" >
+        #{matchtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="location != null" >
+        #{location,jdbcType=CHAR},
+      </if>
+      <if test="homeone != null" >
+        #{homeone,jdbcType=SMALLINT},
+      </if>
+      <if test="hometwo != null" >
+        #{hometwo,jdbcType=SMALLINT},
+      </if>
+      <if test="homethree != null" >
+        #{homethree,jdbcType=SMALLINT},
+      </if>
+      <if test="homefour != null" >
+        #{homefour,jdbcType=SMALLINT},
+      </if>
+      <if test="guestone != null" >
+        #{guestone,jdbcType=SMALLINT},
+      </if>
+      <if test="guesttwo != null" >
+        #{guesttwo,jdbcType=SMALLINT},
+      </if>
+      <if test="guestthree != null" >
+        #{guestthree,jdbcType=SMALLINT},
+      </if>
+      <if test="guestfour != null" >
+        #{guestfour,jdbcType=SMALLINT},
+      </if>
+      <if test="addtime != null" >
+        #{addtime,jdbcType=SMALLINT},
+      </if>
+      <if test="homeaddtime1 != null" >
+        #{homeaddtime1,jdbcType=SMALLINT},
+      </if>
+      <if test="homeaddtime2 != null" >
+        #{homeaddtime2,jdbcType=SMALLINT},
+      </if>
+      <if test="homeaddtime3 != null" >
+        #{homeaddtime3,jdbcType=SMALLINT},
+      </if>
+      <if test="homeaddtime4 != null" >
+        #{homeaddtime4,jdbcType=SMALLINT},
+      </if>
+      <if test="homeaddtime5 != null" >
+        #{homeaddtime5,jdbcType=SMALLINT},
+      </if>
+      <if test="guestaddtime1 != null" >
+        #{guestaddtime1,jdbcType=SMALLINT},
+      </if>
+      <if test="guestaddtime2 != null" >
+        #{guestaddtime2,jdbcType=SMALLINT},
+      </if>
+      <if test="guestaddtime3 != null" >
+        #{guestaddtime3,jdbcType=SMALLINT},
+      </if>
+      <if test="guestaddtime4 != null" >
+        #{guestaddtime4,jdbcType=SMALLINT},
+      </if>
+      <if test="guestaddtime5 != null" >
+        #{guestaddtime5,jdbcType=SMALLINT},
+      </if>
+      <if test="homescore != null" >
+        #{homescore,jdbcType=SMALLINT},
+      </if>
+      <if test="guestscore != null" >
+        #{guestscore,jdbcType=SMALLINT},
+      </if>
+      <if test="matchstate != null" >
+        #{matchstate,jdbcType=SMALLINT},
+      </if>
+      <if test="homefast != null" >
+        #{homefast,jdbcType=SMALLINT},
+      </if>
+      <if test="guestfast != null" >
+        #{guestfast,jdbcType=SMALLINT},
+      </if>
+      <if test="homeinside != null" >
+        #{homeinside,jdbcType=SMALLINT},
+      </if>
+      <if test="guestinside != null" >
+        #{guestinside,jdbcType=SMALLINT},
+      </if>
+      <if test="homeexceed != null" >
+        #{homeexceed,jdbcType=SMALLINT},
+      </if>
+      <if test="guestexceed != null" >
+        #{guestexceed,jdbcType=SMALLINT},
+      </if>
+      <if test="tv != null" >
+        #{tv,jdbcType=CHAR},
+      </if>
+      <if test="umpire != null" >
+        #{umpire,jdbcType=CHAR},
+      </if>
+      <if test="costtime != null" >
+        #{costtime,jdbcType=CHAR},
+      </if>
+      <if test="visitor != null" >
+        #{visitor,jdbcType=INTEGER},
+      </if>
+      <if test="addtechnic != null" >
+        #{addtechnic,jdbcType=BIT},
+      </if>
+      <if test="remaintime != null" >
+        #{remaintime,jdbcType=VARCHAR},
+      </if>
+      <if test="bfChangetime != null" >
+        #{bfChangetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="homeOrder != null" >
+        #{homeOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="guestOrder != null" >
+        #{guestOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="roundtype1 != null" >
+        #{roundtype1,jdbcType=VARCHAR},
+      </if>
+      <if test="roundtype2 != null" >
+        #{roundtype2,jdbcType=VARCHAR},
+      </if>
+      <if test="roundkind != null" >
+        #{roundkind,jdbcType=TINYINT},
+      </if>
+      <if test="addstats != null" >
+        #{addstats,jdbcType=BIT},
+      </if>
+      <if test="bfshow != null" >
+        #{bfshow,jdbcType=BIT},
+      </if>
+      <if test="isneutral != null" >
+        #{isneutral,jdbcType=BIT},
+      </if>
+      <if test="descript != null" >
+        #{descript,jdbcType=VARCHAR},
+      </if>
+      <if test="playoffsid != null" >
+        #{playoffsid,jdbcType=INTEGER},
+      </if>
+      <if test="cupqualifyid != null" >
+        #{cupqualifyid,jdbcType=INTEGER},
+      </if>
+      <if test="explainlist != null" >
+        #{explainlist,jdbcType=VARCHAR},
+      </if>
+      <if test="sid != null" >
+        #{sid,jdbcType=INTEGER},
+      </if>
+      <if test="explain != null" >
+        #{explain,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="explain2 != null" >
+        #{explain2,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dayspass.datacenter.domain.LqSchedule" >
+    update LQ_Schedule
+    <set >
+      <if test="sclassid != null" >
+        SclassID = #{sclassid,jdbcType=SMALLINT},
+      </if>
+      <if test="matchseason != null" >
+        MatchSeason = #{matchseason,jdbcType=CHAR},
+      </if>
+      <if test="matchkind != null" >
+        MatchKind = #{matchkind,jdbcType=SMALLINT},
+      </if>
+      <if test="hometeamid != null" >
+        HomeTeamID = #{hometeamid,jdbcType=INTEGER},
+      </if>
+      <if test="guestteamid != null" >
+        GuestTeamID = #{guestteamid,jdbcType=INTEGER},
+      </if>
+      <if test="hometeam != null" >
+        HomeTeam = #{hometeam,jdbcType=VARCHAR},
+      </if>
+      <if test="guestteam != null" >
+        GuestTeam = #{guestteam,jdbcType=VARCHAR},
+      </if>
+      <if test="matchtime != null" >
+        MatchTime = #{matchtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="location != null" >
+        Location = #{location,jdbcType=CHAR},
+      </if>
+      <if test="homeone != null" >
+        HomeOne = #{homeone,jdbcType=SMALLINT},
+      </if>
+      <if test="hometwo != null" >
+        HomeTwo = #{hometwo,jdbcType=SMALLINT},
+      </if>
+      <if test="homethree != null" >
+        HomeThree = #{homethree,jdbcType=SMALLINT},
+      </if>
+      <if test="homefour != null" >
+        HomeFour = #{homefour,jdbcType=SMALLINT},
+      </if>
+      <if test="guestone != null" >
+        GuestOne = #{guestone,jdbcType=SMALLINT},
+      </if>
+      <if test="guesttwo != null" >
+        GuestTwo = #{guesttwo,jdbcType=SMALLINT},
+      </if>
+      <if test="guestthree != null" >
+        GuestThree = #{guestthree,jdbcType=SMALLINT},
+      </if>
+      <if test="guestfour != null" >
+        GuestFour = #{guestfour,jdbcType=SMALLINT},
+      </if>
+      <if test="addtime != null" >
+        AddTime = #{addtime,jdbcType=SMALLINT},
+      </if>
+      <if test="homeaddtime1 != null" >
+        HomeAddTime1 = #{homeaddtime1,jdbcType=SMALLINT},
+      </if>
+      <if test="homeaddtime2 != null" >
+        HomeAddTime2 = #{homeaddtime2,jdbcType=SMALLINT},
+      </if>
+      <if test="homeaddtime3 != null" >
+        HomeAddTime3 = #{homeaddtime3,jdbcType=SMALLINT},
+      </if>
+      <if test="homeaddtime4 != null" >
+        HomeAddTime4 = #{homeaddtime4,jdbcType=SMALLINT},
+      </if>
+      <if test="homeaddtime5 != null" >
+        HomeAddTime5 = #{homeaddtime5,jdbcType=SMALLINT},
+      </if>
+      <if test="guestaddtime1 != null" >
+        GuestAddTime1 = #{guestaddtime1,jdbcType=SMALLINT},
+      </if>
+      <if test="guestaddtime2 != null" >
+        GuestAddTime2 = #{guestaddtime2,jdbcType=SMALLINT},
+      </if>
+      <if test="guestaddtime3 != null" >
+        GuestAddTime3 = #{guestaddtime3,jdbcType=SMALLINT},
+      </if>
+      <if test="guestaddtime4 != null" >
+        GuestAddTime4 = #{guestaddtime4,jdbcType=SMALLINT},
+      </if>
+      <if test="guestaddtime5 != null" >
+        GuestAddTime5 = #{guestaddtime5,jdbcType=SMALLINT},
+      </if>
+      <if test="homescore != null" >
+        HomeScore = #{homescore,jdbcType=SMALLINT},
+      </if>
+      <if test="guestscore != null" >
+        GuestScore = #{guestscore,jdbcType=SMALLINT},
+      </if>
+      <if test="matchstate != null" >
+        MatchState = #{matchstate,jdbcType=SMALLINT},
+      </if>
+      <if test="homefast != null" >
+        HomeFast = #{homefast,jdbcType=SMALLINT},
+      </if>
+      <if test="guestfast != null" >
+        GuestFast = #{guestfast,jdbcType=SMALLINT},
+      </if>
+      <if test="homeinside != null" >
+        HomeInside = #{homeinside,jdbcType=SMALLINT},
+      </if>
+      <if test="guestinside != null" >
+        GuestInside = #{guestinside,jdbcType=SMALLINT},
+      </if>
+      <if test="homeexceed != null" >
+        HomeExceed = #{homeexceed,jdbcType=SMALLINT},
+      </if>
+      <if test="guestexceed != null" >
+        GuestExceed = #{guestexceed,jdbcType=SMALLINT},
+      </if>
+      <if test="tv != null" >
+        TV = #{tv,jdbcType=CHAR},
+      </if>
+      <if test="umpire != null" >
+        Umpire = #{umpire,jdbcType=CHAR},
+      </if>
+      <if test="costtime != null" >
+        CostTime = #{costtime,jdbcType=CHAR},
+      </if>
+      <if test="visitor != null" >
+        Visitor = #{visitor,jdbcType=INTEGER},
+      </if>
+      <if test="addtechnic != null" >
+        addTechnic = #{addtechnic,jdbcType=BIT},
+      </if>
+      <if test="remaintime != null" >
+        remaintime = #{remaintime,jdbcType=VARCHAR},
+      </if>
+      <if test="bfChangetime != null" >
+        bf_changetime = #{bfChangetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="homeOrder != null" >
+        Home_Order = #{homeOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="guestOrder != null" >
+        Guest_Order = #{guestOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="roundtype1 != null" >
+        RoundType1 = #{roundtype1,jdbcType=VARCHAR},
+      </if>
+      <if test="roundtype2 != null" >
+        RoundType2 = #{roundtype2,jdbcType=VARCHAR},
+      </if>
+      <if test="roundkind != null" >
+        RoundKind = #{roundkind,jdbcType=TINYINT},
+      </if>
+      <if test="addstats != null" >
+        AddStats = #{addstats,jdbcType=BIT},
+      </if>
+      <if test="bfshow != null" >
+        bfShow = #{bfshow,jdbcType=BIT},
+      </if>
+      <if test="isneutral != null" >
+        IsNeutral = #{isneutral,jdbcType=BIT},
+      </if>
+      <if test="descript != null" >
+        descript = #{descript,jdbcType=VARCHAR},
+      </if>
+      <if test="playoffsid != null" >
+        PlayoffsID = #{playoffsid,jdbcType=INTEGER},
+      </if>
+      <if test="cupqualifyid != null" >
+        CupQualifyID = #{cupqualifyid,jdbcType=INTEGER},
+      </if>
+      <if test="explainlist != null" >
+        Explainlist = #{explainlist,jdbcType=VARCHAR},
+      </if>
+      <if test="sid != null" >
+        sid = #{sid,jdbcType=INTEGER},
+      </if>
+      <if test="explain != null" >
+        explain = #{explain,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="explain2 != null" >
+        explain2 = #{explain2,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where sid = #{sid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dayspass.datacenter.domain.LqSchedule" >
+    update LQ_Schedule
+    set SclassID = #{sclassid,jdbcType=SMALLINT},
+      MatchSeason = #{matchseason,jdbcType=CHAR},
+      MatchKind = #{matchkind,jdbcType=SMALLINT},
+      HomeTeamID = #{hometeamid,jdbcType=INTEGER},
+      GuestTeamID = #{guestteamid,jdbcType=INTEGER},
+      HomeTeam = #{hometeam,jdbcType=VARCHAR},
+      GuestTeam = #{guestteam,jdbcType=VARCHAR},
+      MatchTime = #{matchtime,jdbcType=TIMESTAMP},
+      Location = #{location,jdbcType=CHAR},
+      HomeOne = #{homeone,jdbcType=SMALLINT},
+      HomeTwo = #{hometwo,jdbcType=SMALLINT},
+      HomeThree = #{homethree,jdbcType=SMALLINT},
+      HomeFour = #{homefour,jdbcType=SMALLINT},
+      GuestOne = #{guestone,jdbcType=SMALLINT},
+      GuestTwo = #{guesttwo,jdbcType=SMALLINT},
+      GuestThree = #{guestthree,jdbcType=SMALLINT},
+      GuestFour = #{guestfour,jdbcType=SMALLINT},
+      AddTime = #{addtime,jdbcType=SMALLINT},
+      HomeAddTime1 = #{homeaddtime1,jdbcType=SMALLINT},
+      HomeAddTime2 = #{homeaddtime2,jdbcType=SMALLINT},
+      HomeAddTime3 = #{homeaddtime3,jdbcType=SMALLINT},
+      HomeAddTime4 = #{homeaddtime4,jdbcType=SMALLINT},
+      HomeAddTime5 = #{homeaddtime5,jdbcType=SMALLINT},
+      GuestAddTime1 = #{guestaddtime1,jdbcType=SMALLINT},
+      GuestAddTime2 = #{guestaddtime2,jdbcType=SMALLINT},
+      GuestAddTime3 = #{guestaddtime3,jdbcType=SMALLINT},
+      GuestAddTime4 = #{guestaddtime4,jdbcType=SMALLINT},
+      GuestAddTime5 = #{guestaddtime5,jdbcType=SMALLINT},
+      HomeScore = #{homescore,jdbcType=SMALLINT},
+      GuestScore = #{guestscore,jdbcType=SMALLINT},
+      MatchState = #{matchstate,jdbcType=SMALLINT},
+      HomeFast = #{homefast,jdbcType=SMALLINT},
+      GuestFast = #{guestfast,jdbcType=SMALLINT},
+      HomeInside = #{homeinside,jdbcType=SMALLINT},
+      GuestInside = #{guestinside,jdbcType=SMALLINT},
+      HomeExceed = #{homeexceed,jdbcType=SMALLINT},
+      GuestExceed = #{guestexceed,jdbcType=SMALLINT},
+      TV = #{tv,jdbcType=CHAR},
+      Umpire = #{umpire,jdbcType=CHAR},
+      CostTime = #{costtime,jdbcType=CHAR},
+      Visitor = #{visitor,jdbcType=INTEGER},
+      addTechnic = #{addtechnic,jdbcType=BIT},
+      remaintime = #{remaintime,jdbcType=VARCHAR},
+      bf_changetime = #{bfChangetime,jdbcType=TIMESTAMP},
+      Home_Order = #{homeOrder,jdbcType=VARCHAR},
+      Guest_Order = #{guestOrder,jdbcType=VARCHAR},
+      RoundType1 = #{roundtype1,jdbcType=VARCHAR},
+      RoundType2 = #{roundtype2,jdbcType=VARCHAR},
+      RoundKind = #{roundkind,jdbcType=TINYINT},
+      AddStats = #{addstats,jdbcType=BIT},
+      bfShow = #{bfshow,jdbcType=BIT},
+      IsNeutral = #{isneutral,jdbcType=BIT},
+      descript = #{descript,jdbcType=VARCHAR},
+      PlayoffsID = #{playoffsid,jdbcType=INTEGER},
+      CupQualifyID = #{cupqualifyid,jdbcType=INTEGER},
+      Explainlist = #{explainlist,jdbcType=VARCHAR},
+      sid = #{sid,jdbcType=INTEGER},
+      explain = #{explain,jdbcType=LONGVARCHAR},
+      explain2 = #{explain2,jdbcType=LONGVARCHAR}
+    where sid = #{sid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dayspass.datacenter.dao.LqLocationMapper" >
+  <resultMap id="BaseResultMap" type="com.dayspass.datacenter.domain.LqLocation" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="Name_E" property="nameE" jdbcType="VARCHAR" />
+    <result column="Name_F" property="nameF" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, name, Name_E, Name_F
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from LQ_Location
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from LQ_Location
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.dayspass.datacenter.domain.LqLocation" >
+    insert into LQ_Location (ID, name, Name_E, 
+      Name_F)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{nameE,jdbcType=VARCHAR}, 
+      #{nameF,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dayspass.datacenter.domain.LqLocation" >
+    insert into LQ_Location
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="nameE != null" >
+        Name_E,
+      </if>
+      <if test="nameF != null" >
+        Name_F,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="nameE != null" >
+        #{nameE,jdbcType=VARCHAR},
+      </if>
+      <if test="nameF != null" >
+        #{nameF,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dayspass.datacenter.domain.LqLocation" >
+    update LQ_Location
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="nameE != null" >
+        Name_E = #{nameE,jdbcType=VARCHAR},
+      </if>
+      <if test="nameF != null" >
+        Name_F = #{nameF,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dayspass.datacenter.domain.LqLocation" >
+    update LQ_Location
+    set name = #{name,jdbcType=VARCHAR},
+      Name_E = #{nameE,jdbcType=VARCHAR},
+      Name_F = #{nameF,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

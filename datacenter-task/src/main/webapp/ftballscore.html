@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<script src="js/jquery.js"></script>
+<script src="js/moment-with-langs.js"></script>
+<script src="js/zqbf.js"></script>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0">
+		
+		<link type="text/css" rel="stylesheet" href="https://res2.daysluck.com/res/css/reset.css">
+		<link type="text/css" rel="stylesheet" href="css/score.css">
+		<title></title>
+	</head>
+	<body>
+		<div class="warp">
+			  <header class="screheader">
+					<!--<span class="settbnt"></span>-->
+					<a href="/index" class="GoIndex" onclick='location.href="https://mobile.daysluck.com/"'>大厅</a>
+					<div id="blcklists" class="blcklist">
+					    <a class="blck firblck current">
+							<p class="jcblckdesc">竞彩足球</p>
+							<span class="trgleicon "></span>
+						</a>
+						<div class="spacelay">
+							
+						</div>
+						<!-- <a href="basketscore.html" class="blck">
+							竞彩篮球
+						</a> -->
+					</div>
+					<!-- <span class="filterbnt"></span> -->
+				</header>
+	          <ul class="seledatelist">
+				
+			</ul>
+			
+			<ul class="termlist" style="display: none;">
+				<li>
+					<span>17001期</span>
+				</li>
+				<li>
+					<span>17002期</span>
+				</li>
+			    <li class="current">
+					<span>17003期</span>
+				</li>
+				<li>
+				    <span>17004期</span>
+				</li>
+				<li>
+					<span>17005期</span>
+				</li>
+			</ul>
+			
+			  <div class="scoremtlist">
+				<div class="scoretbox">
+					<div class="scorefpart">
+						<span class="scdesc mt10">18:00</span>
+						<span class="scdesc mt10">001 英超</span>
+						<span class="downicon dwn1"></span>
+					</div>
+					<div class="scorespart">
+						<div class="scoreilist">
+							<span class="scoreblck firblck">
+								<img class="scimg" src="images/match_01.png" />
+								<p class="sdesc">托特纳姆</p>
+							</span>
+							<span class="scoreblck scoreconts">
+								  <p class="scoredesc mt10"><b class="scround"></b><b class="ftsize scont">34</b></p>
+								  <!--<p class="bluclr">3：1</p>-->
+								  <p class="scpoint ">102:91</p>
+							</span>
+							<span class="scoreblck thirblck">
+								<img class="sceimg" src="images/match_02.png" />
+								<p class="sdesc">马竞(主)</p>
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class="scoretbox">
+					<div class="scorefpart">
+						<span class="scdesc mt10">18:00</span>
+						<span class="scdesc mt10">001 英超</span>
+						<span class="downicon dwn2"></span>
+					</div>
+					<div class="scorespart">
+						<div class="scoreilist">
+							<span class="scoreblck firblck">
+								<img class="scimg" src="images/match_01.png" />
+								<p class="sdesc">托特纳姆</p>
+							</span>
+							<span class="scoreblck scoreconts">
+								  <p class="mt10 orclr">完场</p>
+								  
+								  <p class="scpoint orclr">4:1</p>
+							</span>
+							<span class="scoreblck thirblck">
+								<img class="sceimg" src="images/match_02.png" />
+								<p class="sdesc">马竞(主)</p>
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class="scoretbox">
+					<div class="scorefpart">
+						<span class="scdesc mt10">18:00</span>
+						<span class="scdesc mt10">001 英超</span>
+						<span class="downicon dwn3"></span>
+					</div>
+					<div class="scorespart">
+						<div class="scoreilist">
+							<span class="scoreblck firblck">
+								<img class="scimg" src="images/match_01.png" />
+								<p class="sdesc">托特纳姆</p>
+							</span>
+							<span class="scoreblck scoreconts">
+								  <p class="mt10 orclr">延期</p>
+							</span>
+							<span class="scoreblck thirblck">
+								<img class="sceimg" src="images/match_02.png" />
+								<p class="sdesc">马竞(主)</p>
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<ul class="competlist" style="display: none;">
+				<li>
+					<div class="guestpart">
+						<span class="hotpart"></span>
+						<div class="sportlist">
+							<div class="sptlist">
+								<span class="sptblck sptpartdesc">004英超</span>
+								<span class="sptblck sptsecdesc">35</span>
+							</div>
+							<div class="sptlist">
+								<span class="sptblck sptpartdesc rclor">托特纳姆</span>
+								<span class="sptblck sptsecdesc">2:0</span>
+								<span class="sptblck">马竟</span>
+							</div>
+						</div>
+					</div>
+					<div class="hostpart">
+						<span class="ftpart"></span>
+						<div class="sportlist">
+							<div class="sptlist">
+								<span class="sptblck sptpartdesc">004英超</span>
+								<span class="sptblck sptsecdesc">40</span>
+							</div>
+							<div class="sptlist">
+								<span class="sptblck sptpartdesc">托特纳姆</span>
+								<span class="sptblck sptsecdesc">2:6</span>
+								<span class="sptblck">马竟</span>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+			
+		</div>
+		<div id="MoreLocked" >
+			
+		</div>
+		<div id="MoreDetail">
+			<div id="MoreLists" class="MoreLists">
+				<div class="matcomp" onclick='score.loadStage("jc");'>
+					<a class="sportblck current" data-desc="竞彩足球">竞彩足球<span class="tickicon"></span></a>
+				</div>
+				<div class="matcomp" onclick='score.loadStage("zc");'>
+				    <a class="sportblck secblckspt " data-desc="胜负彩">
+				    	胜负彩
+				    	<span class="tickicon"></span>
+				    </a>
+				</div>
+			</div>
+		</div>
+		
+	</body>
+</html>

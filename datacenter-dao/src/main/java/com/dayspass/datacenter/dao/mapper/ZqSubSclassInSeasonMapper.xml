@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dayspass.datacenter.dao.ZqSubSclassInSeasonMapper" >
+  <resultMap id="BaseResultMap" type="com.dayspass.datacenter.domain.ZqSubSclassInSeason" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="SubsclassID" property="subsclassid" jdbcType="INTEGER" />
+    <result column="matchSeason" property="matchseason" jdbcType="VARCHAR" />
+    <result column="sortNumber" property="sortnumber" jdbcType="INTEGER" />
+    <result column="curr_round" property="currRound" jdbcType="INTEGER" />
+    <result column="count_round" property="countRound" jdbcType="INTEGER" />
+    <result column="IsCurrentSclass" property="iscurrentsclass" jdbcType="BIT" />
+    <result column="IsHaveScore" property="ishavescore" jdbcType="BIT" />
+    <result column="IsAnalyScore" property="isanalyscore" jdbcType="BIT" />
+    <result column="IsZu" property="iszu" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, SubsclassID, matchSeason, sortNumber, curr_round, count_round, IsCurrentSclass, 
+    IsHaveScore, IsAnalyScore, IsZu
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ZQ_SubSclassInSeason
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ZQ_SubSclassInSeason
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.dayspass.datacenter.domain.ZqSubSclassInSeason" >
+    insert into ZQ_SubSclassInSeason (ID, SubsclassID, matchSeason, 
+      sortNumber, curr_round, count_round, 
+      IsCurrentSclass, IsHaveScore, IsAnalyScore, 
+      IsZu)
+    values (#{id,jdbcType=INTEGER}, #{subsclassid,jdbcType=INTEGER}, #{matchseason,jdbcType=VARCHAR}, 
+      #{sortnumber,jdbcType=INTEGER}, #{currRound,jdbcType=INTEGER}, #{countRound,jdbcType=INTEGER}, 
+      #{iscurrentsclass,jdbcType=BIT}, #{ishavescore,jdbcType=BIT}, #{isanalyscore,jdbcType=BIT}, 
+      #{iszu,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dayspass.datacenter.domain.ZqSubSclassInSeason" >
+    insert into ZQ_SubSclassInSeason
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="subsclassid != null" >
+        SubsclassID,
+      </if>
+      <if test="matchseason != null" >
+        matchSeason,
+      </if>
+      <if test="sortnumber != null" >
+        sortNumber,
+      </if>
+      <if test="currRound != null" >
+        curr_round,
+      </if>
+      <if test="countRound != null" >
+        count_round,
+      </if>
+      <if test="iscurrentsclass != null" >
+        IsCurrentSclass,
+      </if>
+      <if test="ishavescore != null" >
+        IsHaveScore,
+      </if>
+      <if test="isanalyscore != null" >
+        IsAnalyScore,
+      </if>
+      <if test="iszu != null" >
+        IsZu,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="subsclassid != null" >
+        #{subsclassid,jdbcType=INTEGER},
+      </if>
+      <if test="matchseason != null" >
+        #{matchseason,jdbcType=VARCHAR},
+      </if>
+      <if test="sortnumber != null" >
+        #{sortnumber,jdbcType=INTEGER},
+      </if>
+      <if test="currRound != null" >
+        #{currRound,jdbcType=INTEGER},
+      </if>
+      <if test="countRound != null" >
+        #{countRound,jdbcType=INTEGER},
+      </if>
+      <if test="iscurrentsclass != null" >
+        #{iscurrentsclass,jdbcType=BIT},
+      </if>
+      <if test="ishavescore != null" >
+        #{ishavescore,jdbcType=BIT},
+      </if>
+      <if test="isanalyscore != null" >
+        #{isanalyscore,jdbcType=BIT},
+      </if>
+      <if test="iszu != null" >
+        #{iszu,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dayspass.datacenter.domain.ZqSubSclassInSeason" >
+    update ZQ_SubSclassInSeason
+    <set >
+      <if test="subsclassid != null" >
+        SubsclassID = #{subsclassid,jdbcType=INTEGER},
+      </if>
+      <if test="matchseason != null" >
+        matchSeason = #{matchseason,jdbcType=VARCHAR},
+      </if>
+      <if test="sortnumber != null" >
+        sortNumber = #{sortnumber,jdbcType=INTEGER},
+      </if>
+      <if test="currRound != null" >
+        curr_round = #{currRound,jdbcType=INTEGER},
+      </if>
+      <if test="countRound != null" >
+        count_round = #{countRound,jdbcType=INTEGER},
+      </if>
+      <if test="iscurrentsclass != null" >
+        IsCurrentSclass = #{iscurrentsclass,jdbcType=BIT},
+      </if>
+      <if test="ishavescore != null" >
+        IsHaveScore = #{ishavescore,jdbcType=BIT},
+      </if>
+      <if test="isanalyscore != null" >
+        IsAnalyScore = #{isanalyscore,jdbcType=BIT},
+      </if>
+      <if test="iszu != null" >
+        IsZu = #{iszu,jdbcType=BIT},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dayspass.datacenter.domain.ZqSubSclassInSeason" >
+    update ZQ_SubSclassInSeason
+    set SubsclassID = #{subsclassid,jdbcType=INTEGER},
+      matchSeason = #{matchseason,jdbcType=VARCHAR},
+      sortNumber = #{sortnumber,jdbcType=INTEGER},
+      curr_round = #{currRound,jdbcType=INTEGER},
+      count_round = #{countRound,jdbcType=INTEGER},
+      IsCurrentSclass = #{iscurrentsclass,jdbcType=BIT},
+      IsHaveScore = #{ishavescore,jdbcType=BIT},
+      IsAnalyScore = #{isanalyscore,jdbcType=BIT},
+      IsZu = #{iszu,jdbcType=BIT}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

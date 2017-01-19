@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dayspass.datacenter.dao.ZqScoreMapper" >
+  <resultMap id="BaseResultMap" type="com.dayspass.datacenter.domain.ZqScore" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="TeamID" property="teamid" jdbcType="INTEGER" />
+    <result column="rank" property="rank" jdbcType="INTEGER" />
+    <result column="SclassID" property="sclassid" jdbcType="INTEGER" />
+    <result column="Win_Score" property="winScore" jdbcType="INTEGER" />
+    <result column="Flat_Score" property="flatScore" jdbcType="INTEGER" />
+    <result column="Fail_Score" property="failScore" jdbcType="INTEGER" />
+    <result column="Total_Homescore" property="totalHomescore" jdbcType="INTEGER" />
+    <result column="Total_Guestscore" property="totalGuestscore" jdbcType="INTEGER" />
+    <result column="total_score" property="totalScore" jdbcType="INTEGER" />
+    <result column="homeorguest" property="homeorguest" jdbcType="TINYINT" />
+    <result column="Matchseason" property="matchseason" jdbcType="CHAR" />
+    <result column="deduct" property="deduct" jdbcType="INTEGER" />
+    <result column="cause" property="cause" jdbcType="NCHAR" />
+    <result column="Goal" property="goal" jdbcType="INTEGER" />
+    <result column="causeEn" property="causeen" jdbcType="VARCHAR" />
+    <result column="subSclassID" property="subsclassid" jdbcType="INTEGER" />
+    <result column="RedCard" property="redcard" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, TeamID,rank, SclassID, Win_Score, Flat_Score, Fail_Score, Total_Homescore, Total_Guestscore,total_score, 
+    homeorguest, Matchseason, deduct, cause, Goal, causeEn, subSclassID, RedCard
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ZQ_Score
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ZQ_Score
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.dayspass.datacenter.domain.ZqScore" >
+    insert into ZQ_Score (ID, TeamID, rank,SclassID, 
+      Win_Score, Flat_Score, Fail_Score, 
+      Total_Homescore, Total_Guestscore, homeorguest, total_score,
+      Matchseason, deduct, cause, 
+      Goal, causeEn, subSclassID, 
+      RedCard)
+    values (#{id,jdbcType=INTEGER}, #{teamid,jdbcType=INTEGER}, #{rank,jdbcType=INTEGER},#{sclassid,jdbcType=INTEGER}, 
+      #{winScore,jdbcType=INTEGER}, #{flatScore,jdbcType=INTEGER}, #{failScore,jdbcType=INTEGER}, 
+      #{totalHomescore,jdbcType=INTEGER}, #{totalGuestscore,jdbcType=INTEGER}, #{homeorguest,jdbcType=TINYINT}, 
+      #{total_score,jdbcType=INTEGER},#{matchseason,jdbcType=CHAR}, #{deduct,jdbcType=INTEGER}, #{cause,jdbcType=NCHAR}, 
+      #{goal,jdbcType=INTEGER}, #{causeen,jdbcType=VARCHAR}, #{subsclassid,jdbcType=INTEGER}, 
+      #{redcard,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dayspass.datacenter.domain.ZqScore" >
+    insert into ZQ_Score
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="teamid != null" >
+        TeamID,
+      </if>
+      <if test="rank != null" >
+        rank,
+      </if>
+      <if test="sclassid != null" >
+        SclassID,
+      </if>
+      <if test="winScore != null" >
+        Win_Score,
+      </if>
+      <if test="flatScore != null" >
+        Flat_Score,
+      </if>
+      <if test="failScore != null" >
+        Fail_Score,
+      </if>
+      <if test="totalHomescore != null" >
+        Total_Homescore,
+      </if>
+      <if test="totalGuestscore != null" >
+        Total_Guestscore,
+      </if>
+      <if test="totalScore != null" >
+        total_score,
+      </if>
+      <if test="homeorguest != null" >
+        homeorguest,
+      </if>
+      <if test="matchseason != null" >
+        Matchseason,
+      </if>
+      <if test="deduct != null" >
+        deduct,
+      </if>
+      <if test="cause != null" >
+        cause,
+      </if>
+      <if test="goal != null" >
+        Goal,
+      </if>
+      <if test="causeen != null" >
+        causeEn,
+      </if>
+      <if test="subsclassid != null" >
+        subSclassID,
+      </if>
+      <if test="redcard != null" >
+        RedCard,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="teamid != null" >
+        #{teamid,jdbcType=INTEGER},
+      </if>
+      <if test="rank != null" >
+        #{rank,jdbcType=INTEGER},
+      </if>
+      <if test="sclassid != null" >
+        #{sclassid,jdbcType=INTEGER},
+      </if>
+      <if test="winScore != null" >
+        #{winScore,jdbcType=INTEGER},
+      </if>
+      <if test="flatScore != null" >
+        #{flatScore,jdbcType=INTEGER},
+      </if>
+      <if test="failScore != null" >
+        #{failScore,jdbcType=INTEGER},
+      </if>
+      <if test="totalHomescore != null" >
+        #{totalHomescore,jdbcType=INTEGER},
+      </if>
+      <if test="totalGuestscore != null" >
+        #{totalGuestscore,jdbcType=INTEGER},
+      </if>
+      <if test="totalScore != null" >
+        #{totalScore,jdbcType=INTEGER},
+      </if>
+      <if test="homeorguest != null" >
+        #{homeorguest,jdbcType=TINYINT},
+      </if>
+      <if test="matchseason != null" >
+        #{matchseason,jdbcType=CHAR},
+      </if>
+      <if test="deduct != null" >
+        #{deduct,jdbcType=INTEGER},
+      </if>
+      <if test="cause != null" >
+        #{cause,jdbcType=NCHAR},
+      </if>
+      <if test="goal != null" >
+        #{goal,jdbcType=INTEGER},
+      </if>
+      <if test="causeen != null" >
+        #{causeen,jdbcType=VARCHAR},
+      </if>
+      <if test="subsclassid != null" >
+        #{subsclassid,jdbcType=INTEGER},
+      </if>
+      <if test="redcard != null" >
+        #{redcard,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dayspass.datacenter.domain.ZqScore" >
+    update ZQ_Score
+    <set >
+      <if test="teamid != null" >
+        TeamID = #{teamid,jdbcType=INTEGER},
+      </if>
+      <if test="rank != null" >
+        rank = #{rank,jdbcType=INTEGER},
+      </if>
+      <if test="sclassid != null" >
+        SclassID = #{sclassid,jdbcType=INTEGER},
+      </if>
+      <if test="winScore != null" >
+        Win_Score = #{winScore,jdbcType=INTEGER},
+      </if>
+      <if test="flatScore != null" >
+        Flat_Score = #{flatScore,jdbcType=INTEGER},
+      </if>
+      <if test="failScore != null" >
+        Fail_Score = #{failScore,jdbcType=INTEGER},
+      </if>
+      <if test="totalHomescore != null" >
+        Total_Homescore = #{totalHomescore,jdbcType=INTEGER},
+      </if>
+      <if test="totalGuestscore != null" >
+        Total_Guestscore = #{totalGuestscore,jdbcType=INTEGER},
+      </if>
+      <if test="totalScore != null" >
+        total_score = #{totalScore,jdbcType=INTEGER},
+      </if>
+      <if test="homeorguest != null" >
+        homeorguest = #{homeorguest,jdbcType=TINYINT},
+      </if>
+      <if test="matchseason != null" >
+        Matchseason = #{matchseason,jdbcType=CHAR},
+      </if>
+      <if test="deduct != null" >
+        deduct = #{deduct,jdbcType=INTEGER},
+      </if>
+      <if test="cause != null" >
+        cause = #{cause,jdbcType=NCHAR},
+      </if>
+      <if test="goal != null" >
+        Goal = #{goal,jdbcType=INTEGER},
+      </if>
+      <if test="causeen != null" >
+        causeEn = #{causeen,jdbcType=VARCHAR},
+      </if>
+      <if test="subsclassid != null" >
+        subSclassID = #{subsclassid,jdbcType=INTEGER},
+      </if>
+      <if test="redcard != null" >
+        RedCard = #{redcard,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dayspass.datacenter.domain.ZqScore" >
+    update ZQ_Score
+    set TeamID = #{teamid,jdbcType=INTEGER},
+      total_score = #{totalScore,jdbcType=INTEGER},
+      SclassID = #{sclassid,jdbcType=INTEGER},
+      Win_Score = #{winScore,jdbcType=INTEGER},
+      Flat_Score = #{flatScore,jdbcType=INTEGER},
+      Fail_Score = #{failScore,jdbcType=INTEGER},
+      Total_Homescore = #{totalHomescore,jdbcType=INTEGER},
+      Total_Guestscore = #{totalGuestscore,jdbcType=INTEGER},
+      total_score = #{totalScore,jdbcType=INTEGER},
+      homeorguest = #{homeorguest,jdbcType=TINYINT},
+      Matchseason = #{matchseason,jdbcType=CHAR},
+      deduct = #{deduct,jdbcType=INTEGER},
+      cause = #{cause,jdbcType=NCHAR},
+      Goal = #{goal,jdbcType=INTEGER},
+      causeEn = #{causeen,jdbcType=VARCHAR},
+      subSclassID = #{subsclassid,jdbcType=INTEGER},
+      RedCard = #{redcard,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <!-- 条件查询积分列表 -->
+  <select id="queryAll" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ZQ_Score
+    where 1 = 1
+     <if test="id != null">
+		and ID = #{id} 
+	 </if>
+	 <if test="teamid != null">
+		and TeamID = #{teamid} 
+	 </if>
+	 <if test="sclassid != null">
+		and SclassID = #{sclassid} 
+	 </if>
+	 <if test="subsclassid != null">
+		and subSclassID = #{subsclassid} 
+	 </if>
+	 <if test="homeorguest != null">
+		and homeorguest = #{homeorguest} 
+	 </if>
+	 <if test="matchseason != null">
+		and Matchseason = #{matchseason} 
+	 </if>
+	 ORDER BY Matchseason desc
+  </select>
+  
+</mapper>
