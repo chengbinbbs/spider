@@ -7,7 +7,7 @@
     <relativePath>../datacenter-parent</relativePath>
   </parent>
   <artifactId>datacenter-dao</artifactId>
-  <description>得仕彩票数据中心数据层包</description>
+  <description>数据中心数据层包</description>
   
   <dependencies>
   		<dependency>
