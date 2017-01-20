@@ -8,7 +8,7 @@
   </parent>
   <artifactId>datacenter-task</artifactId>
   <packaging>war</packaging>
-  <description>得仕彩票数据中心任务线程</description>
+  <description>数据中心任务线程</description>
   <dependencies>
 	<dependency>
 		<groupId>datacenter</groupId>
