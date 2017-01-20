@@ -7,7 +7,7 @@
     <relativePath>../datacenter-parent</relativePath>
   </parent>
   <artifactId>datacenter-service</artifactId>
-  <description>得仕彩票数据中心业务包</description>
+  <description>数据中心业务包</description>
   <dependencies>
 	<dependency>
 		<groupId>datacenter</groupId>
