@@ -8,7 +8,7 @@
   </parent>
   <artifactId>datacenter-interface</artifactId>
   <packaging>war</packaging>
-  <description>得仕彩票数据中心web接口服务</description>
+  <description>数据中心web接口服务</description>
   <dependencies>
   		<dependency>
 			<groupId>datacenter</groupId>
