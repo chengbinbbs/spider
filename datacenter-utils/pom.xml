@@ -31,5 +31,5 @@
   <properties>
 	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
-  <description>得仕彩票数据中心工具包</description>
+  <description>数据中心工具包</description>
 </project>
