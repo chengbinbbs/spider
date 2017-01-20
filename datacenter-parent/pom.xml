@@ -276,5 +276,5 @@
 		<stormect.build.sourceEncoding>UTF-8</stormect.build.sourceEncoding>
 		<stormect.reporting.outputEncoding>UTF-8</stormect.reporting.outputEncoding>
 	</properties>
-	<description>得仕彩票数据中心父节点</description>
+	<description>数据中心</description>
 </project>
