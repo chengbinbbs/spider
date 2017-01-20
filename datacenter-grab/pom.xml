@@ -8,7 +8,7 @@
   </parent>
   <artifactId>datacenter-grab</artifactId>
   <packaging>war</packaging>
-  <description>得仕彩票数据中心抓取服务</description>
+  <description>数据中心抓取服务</description>
   <dependencies>
 	<dependency>
 		<groupId>datacenter</groupId>
