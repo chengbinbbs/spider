@@ -7,7 +7,7 @@
     <relativePath>../datacenter-parent</relativePath>
   </parent>
   <artifactId>datacenter-domain</artifactId>
-  <description>得仕彩票数据中心实体包</description>
+  <description>数据中心实体包</description>
   
   <properties>
 	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
